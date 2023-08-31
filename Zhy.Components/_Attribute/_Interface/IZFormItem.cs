@@ -17,11 +17,10 @@ namespace Zhy.Components._Attribute
     /// <summary>
     /// 
     /// </summary>
-    public interface IZFormItem : IZFormSortItem
+    internal interface IZFormItem : IZFormSortItem
     {
         string Title { get; set; }
         string MemberPath { get; set; }
         bool IsReadOnlyItem { get; set; }
-        object Data { get; set; }
     }
 }

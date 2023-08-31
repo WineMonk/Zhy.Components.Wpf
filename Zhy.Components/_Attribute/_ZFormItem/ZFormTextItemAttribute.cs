@@ -16,12 +16,14 @@ using Zhy.Components._Attribute._Base;
 namespace Zhy.Components._Attribute._ZFormItem
 {
     /// <summary>
-    /// 
+    /// 输入框表单项
     /// </summary>
     public class ZFormTextItemAttribute : ZFormItemAttribute
     {
-        public ZFormTextItemAttribute(string title) : base(title)
-        {
-        }
+        /// <summary>
+        /// 输入框表单项
+        /// </summary>
+        /// <param name="title">标题</param>
+        public ZFormTextItemAttribute(string title) : base(title) { }
     }
 }

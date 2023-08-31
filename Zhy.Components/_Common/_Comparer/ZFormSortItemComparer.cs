@@ -16,9 +16,9 @@ using Zhy.Components._Attribute;
 namespace Zhy.Components._Common._Comparer
 {
     /// <summary>
-    /// 
+    /// IZFormSortItem 排序比较器
     /// </summary>
-    public class ZFormSortItemComparer : IComparer<IZFormSortItem>
+    internal class ZFormSortItemComparer : IComparer<IZFormSortItem>
     {
         private bool _isInverted;
         public ZFormSortItemComparer(bool isInverted = false) 

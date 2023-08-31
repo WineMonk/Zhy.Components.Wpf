@@ -17,7 +17,7 @@ using System.Windows;
 namespace Zhy.Components._Common._Utils
 {
     /// <summary>
-    /// 
+    /// TextBox 工具
     /// </summary>
     internal class TextBoxHelper : DependencyObject
     {

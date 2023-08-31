@@ -17,7 +17,7 @@ namespace Zhy.Components._Attribute
     /// <summary>
     /// 
     /// </summary>
-    public interface IZFormSortItem
+    internal interface IZFormSortItem
     {
         int Index { get; set; }
     }

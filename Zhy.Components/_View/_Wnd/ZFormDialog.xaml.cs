@@ -29,6 +29,11 @@ namespace Zhy.Components._View._Window
     {
         Func<ObservableObject, bool> _funcValuesCheck = null;
         ObservableObject _observableObject = null;
+        /// <summary>
+        /// 表单项对话框
+        /// </summary>
+        /// <param name="observableObject">表单项实例</param>
+        /// <param name="funcValuesCheck">属性验证方法，输入为当前编辑的表单项实例，如验证各项属性符合要求则返回true，否则返回false</param>
         public ZFormDialog(ObservableObject observableObject, Func<ObservableObject, bool> funcValuesCheck = null)
         {
             _observableObject = observableObject;

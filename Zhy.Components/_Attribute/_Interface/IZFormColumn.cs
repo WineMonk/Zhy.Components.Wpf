@@ -18,7 +18,7 @@ namespace Zhy.Components._Attribute
     /// <summary>
     /// 
     /// </summary>
-    public interface IZFormColumn : IZFormSortItem
+    internal interface IZFormColumn : IZFormSortItem
     {
         string Title { get; set; }
         string MemberPath { get; set; }

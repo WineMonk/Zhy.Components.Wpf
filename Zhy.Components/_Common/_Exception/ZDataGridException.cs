@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace Zhy.Components._Exception
 {
     /// <summary>
-    /// 
+    /// ZDataGrid控件错误
     /// </summary>
     [Serializable]
     public class ZDataGridException : Exception

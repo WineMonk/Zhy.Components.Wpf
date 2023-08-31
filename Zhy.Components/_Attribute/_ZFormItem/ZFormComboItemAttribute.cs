@@ -16,14 +16,18 @@ using Zhy.Components._Attribute._Base;
 namespace Zhy.Components._Attribute._ZFormItem
 {
     /// <summary>
-    /// 
+    /// 下拉列表框表单项
     /// </summary>
     public class ZFormComboItemAttribute : ZFormItemAttribute
     {
-        public ZFormComboItemAttribute(string title) : base(title)
-        {
-        }
-
+        /// <summary>
+        /// 下拉列表框表单项
+        /// </summary>
+        /// <param name="title">标题</param>
+        public ZFormComboItemAttribute(string title) : base(title) { }
+        /// <summary>
+        /// 数据项源属性名
+        /// </summary>
         public string ItemsSourceProperty { get; set; }
     }
 }

@@ -18,18 +18,35 @@ using Zhy.Components._Enum;
 namespace Zhy.Components._Attribute._ZFormColumn
 {
     /// <summary>
-    /// 
+    /// 按钮选择框表单列
     /// </summary>
     public class ZFormTextButtonColumnAttribute : ZFormTextButtonItemAttribute, IZFormColumn
     {
-        public ZFormTextButtonColumnAttribute(string title) : base(title)
-        {
-        }
-
+        /// <summary>
+        /// 按钮选择框表单列
+        /// </summary>
+        /// <param name="title">标题</param>
+        public ZFormTextButtonColumnAttribute(string title) : base(title) { }
+        /// <summary>
+        /// 列宽度
+        /// </summary>
         public double Width { get; set; } = 1;
+        /// <summary>
+        /// 列宽度单位
+        /// </summary>
         public DataGridLengthUnitType WidthUnit { get; set; } = DataGridLengthUnitType.Star;
+        /// <summary>
+        /// 是否为查询列
+        /// 查询时查询该列的值，则为true，否则为false。
+        /// </summary>
         public bool IsSearchProperty { get; set; }
+        /// <summary>
+        /// 是否为只读列
+        /// </summary>
         public bool IsReadOnlyColumn { get; set; }
+        /// <summary>
+        /// 作为表单项时是否隐藏此项
+        /// </summary>
         public bool IsHideFormItem { get; set; }
     }
 }

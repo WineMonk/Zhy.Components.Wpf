@@ -18,7 +18,7 @@ namespace Zhy.Components._Attribute
     /// <summary>
     /// 
     /// </summary>
-    public interface IZFormFuncButton : IZFormSortItem
+    internal interface IZFormFuncButton : IZFormSortItem
     {
         string ButtonContent { get; set; }
         ZFormButtonStyle ButtonStyle { get; set; }

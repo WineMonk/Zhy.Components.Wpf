@@ -22,28 +22,50 @@ namespace Zhy.Components._View._UserControl
     /// </summary>
     public partial class ZDataGrid : UserControl
     {
+        /// <summary>
+        /// 数据项源
+        /// </summary>
         public IList ItemsSource
         {
             get { return (IList)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
-
+        /// <summary>
+        /// 是否为只读
+        /// </summary>
         public bool IsReadOnly
         {
             get { return (bool)GetValue(IsReadOnlyProperty); }
             set { SetValue(IsReadOnlyProperty, value); }
         }
-
+        /// <summary>
+        /// 查询按钮样式
+        /// </summary>
         public ZFormButtonStyle SearchButtonStyle
         {
             get { return (ZFormButtonStyle)GetValue(SearchButtonStyleProperty); }
             set { SetValue(SearchButtonStyleProperty, value); }
         }
+        /// <summary>
+        /// ZDataGrid 表单控件
+        /// </summary>
+        public ZDataGrid()
+        {
+            InitializeComponent();
+            InitDataGridComponent();
+            InitSearchComponent();
+        }
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        public void Refresh()
+        {
+            InitDataGridColumn();
+        }
 
-        // Using a DependencyProperty as the backing store for SearchButtonStyle.  This enables animation, styling, binding, etc...
+
         public static readonly DependencyProperty SearchButtonStyleProperty =
             DependencyProperty.Register("SearchButtonStyle", typeof(ZFormButtonStyle), typeof(ZDataGrid), new PropertyMetadata(ZFormButtonStyle.DefaultButton, OnSearchButtonStylePropertyChanged));
-
         private static void OnSearchButtonStylePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ZFormButtonStyle newValue = (ZFormButtonStyle)e.NewValue;
@@ -57,7 +79,6 @@ namespace Zhy.Components._View._UserControl
 
         public static readonly DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(ZDataGrid), new PropertyMetadata(true, OnIsReadOnlyPropertyChanged));
-
         private static void OnIsReadOnlyPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ZDataGrid zDataGrid = d as ZDataGrid;
@@ -70,17 +91,6 @@ namespace Zhy.Components._View._UserControl
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IList), typeof(ZDataGrid), new PropertyMetadata(default(IList)));
 
-        public ZDataGrid()
-        {
-            InitializeComponent();
-            InitDataGridComponent();
-            InitSearchComponent();
-        }
-
-        public void Refresh()
-        {
-            InitDataGridColumn();
-        }
 
         internal void RefreshSearchComponent()
         {
