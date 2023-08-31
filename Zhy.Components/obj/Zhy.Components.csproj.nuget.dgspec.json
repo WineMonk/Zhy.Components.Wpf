@@ -46,7 +46,7 @@
           "dependencies": {
             "CommunityToolkit.Mvvm": {
               "target": "Package",
-              "version": "[8.2.1, )"
+              "version": "[7.0.1, )"
             }
           },
           "imports": [

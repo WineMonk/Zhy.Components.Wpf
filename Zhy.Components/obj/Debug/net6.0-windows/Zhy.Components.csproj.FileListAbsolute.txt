@@ -21,3 +21,5 @@ D:\file\program\Zhy.Components\Zhy.Components\obj\Debug\net6.0-windows\_View\_Wn
 D:\file\program\Zhy.Components\Zhy.Components\obj\Debug\net6.0-windows\_View\_Wnd\ZFormGrid.g.cs
 D:\file\program\Zhy.Components\Zhy.Components\obj\Debug\net6.0-windows\_View\_Wnd\ZFormDialog.baml
 D:\file\program\Zhy.Components\Zhy.Components\obj\Debug\net6.0-windows\_View\_Wnd\ZFormGrid.baml
+D:\file\program\Zhy.Components\Zhy.Components\bin\Debug\net6.0-windows\Zhy.Components.xml
+D:\file\program\Zhy.Components\Zhy.Components\obj\Debug\net6.0-windows\Zhy.Components.xml
