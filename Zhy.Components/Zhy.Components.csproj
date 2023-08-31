@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="_Attribute\ZDataColumnAttribute.cs" />
+    <Compile Remove="_Attribute\ZFormDataGridAttribute.cs" />
+    <Compile Remove="_Attribute\ZOperateButtonAttribute.cs" />
+    <Compile Remove="_Attribute\_Base\ZFormColumnAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_Model\" />
+    <Folder Include="_View\_Theme\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+  </ItemGroup>
+
+</Project>
