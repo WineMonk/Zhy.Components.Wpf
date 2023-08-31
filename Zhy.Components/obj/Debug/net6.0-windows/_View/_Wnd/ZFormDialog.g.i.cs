@@ -77,7 +77,7 @@ namespace Zhy.Components._View._Window {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zhy.Components;V1.0.0.0;component/_view/_wnd/zformdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zhy.Components;component/_view/_wnd/zformdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\_View\_Wnd\ZFormDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

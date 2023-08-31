@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zhy.Components._Enum;
 
-namespace Zhy.Components._Attribute
+namespace Zhy.Components._Attribute._Base
 {
     /// <summary>
     /// 

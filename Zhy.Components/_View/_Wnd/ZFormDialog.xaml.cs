@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Zhy.Components._Attribute;
+using Zhy.Components._Attribute._Base;
+using Zhy.Components._Attribute._ZFormItem;
 using Zhy.Components._Common._Comparer;
 
 namespace Zhy.Components._View._Window

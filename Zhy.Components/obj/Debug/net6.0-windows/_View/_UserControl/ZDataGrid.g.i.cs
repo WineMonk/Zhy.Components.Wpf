@@ -85,7 +85,7 @@ namespace Zhy.Components._View._UserControl {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zhy.Components;V1.0.0.0;component/_view/_usercontrol/zdatagrid.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zhy.Components;component/_view/_usercontrol/zdatagrid.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\_View\_UserControl\ZDataGrid.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
