@@ -63,7 +63,9 @@ namespace Zhy.Components._View._UserControl
             InitDataGridColumn();
         }
 
-
+        /// <summary>
+        /// 查询按钮样式依赖属性
+        /// </summary>
         public static readonly DependencyProperty SearchButtonStyleProperty =
             DependencyProperty.Register("SearchButtonStyle", typeof(ZFormButtonStyle), typeof(ZDataGrid), new PropertyMetadata(ZFormButtonStyle.DefaultButton, OnSearchButtonStylePropertyChanged));
         private static void OnSearchButtonStylePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -76,7 +78,9 @@ namespace Zhy.Components._View._UserControl
             if (zDataGrid != null)
                 zDataGrid.RefreshSearchComponent();
         }
-
+        /// <summary>
+        /// 是否为只读依赖属性
+        /// </summary>
         public static readonly DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(ZDataGrid), new PropertyMetadata(true, OnIsReadOnlyPropertyChanged));
         private static void OnIsReadOnlyPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -87,7 +91,9 @@ namespace Zhy.Components._View._UserControl
             if (newValue != oldValue && zDataGrid != null)
                 zDataGrid.Refresh();
         }
-
+        /// <summary>
+        /// 数据项源依赖属性
+        /// </summary>
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IList), typeof(ZDataGrid), new PropertyMetadata(default(IList)));
 
