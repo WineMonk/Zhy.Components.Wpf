@@ -9,7 +9,7 @@
       "Zhy.Demo/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.1",
-          "Zhy.Components": "1.0.0"
+          "Zhy.Components.Wpf": "1.0.0"
         },
         "runtime": {
           "Zhy.Demo.dll": {}
@@ -23,12 +23,12 @@
           }
         }
       },
-      "Zhy.Components/1.0.0": {
+      "Zhy.Components.Wpf/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.1"
         },
         "runtime": {
-          "Zhy.Components.dll": {}
+          "Zhy.Components.Wpf.dll": {}
         }
       }
     }
@@ -46,7 +46,7 @@
       "path": "communitytoolkit.mvvm/8.2.1",
       "hashPath": "communitytoolkit.mvvm.8.2.1.nupkg.sha512"
     },
-    "Zhy.Components/1.0.0": {
+    "Zhy.Components.Wpf/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

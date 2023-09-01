@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Zhy.Components._View._Window;
+using Zhy.Components.Wpf._View._Window;
 using Zhy.Demo._Common;
 using Zhy.Demo._Model;
 using Zhy.Demo._View;

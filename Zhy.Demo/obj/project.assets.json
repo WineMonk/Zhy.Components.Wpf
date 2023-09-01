@@ -18,17 +18,17 @@
           "buildTransitive/netstandard2.1/CommunityToolkit.Mvvm.targets": {}
         }
       },
-      "Zhy.Components/1.0.0": {
+      "Zhy.Components.Wpf/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "CommunityToolkit.Mvvm": "7.0.1"
         },
         "compile": {
-          "bin/placeholder/Zhy.Components.dll": {}
+          "bin/placeholder/Zhy.Components.Wpf.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Zhy.Components.dll": {}
+          "bin/placeholder/Zhy.Components.Wpf.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -68,16 +68,16 @@
         "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
       ]
     },
-    "Zhy.Components/1.0.0": {
+    "Zhy.Components.Wpf/1.0.0": {
       "type": "project",
-      "path": "../Zhy.Components/Zhy.Components.csproj",
-      "msbuildProject": "../Zhy.Components/Zhy.Components.csproj"
+      "path": "../Zhy.Components.Wpf/Zhy.Components.Wpf.csproj",
+      "msbuildProject": "../Zhy.Components.Wpf/Zhy.Components.Wpf.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "CommunityToolkit.Mvvm >= 8.2.1",
-      "Zhy.Components >= 1.0.0"
+      "Zhy.Components.Wpf >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -112,8 +112,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "D:\\file\\program\\Zhy.Components\\Zhy.Components\\Zhy.Components.csproj": {
-              "projectPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components\\Zhy.Components.csproj"
+            "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
+              "projectPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj"
             }
           }
         }

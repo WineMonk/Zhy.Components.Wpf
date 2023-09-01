@@ -19,11 +19,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using Zhy.Components._Attribute._Base;
-using Zhy.Components._Attribute._ZFormColumn;
-using Zhy.Components._Attribute._ZFormItem;
-using Zhy.Components._Enum;
-using Zhy.Components._View._Window;
+using Zhy.Components.Wpf._Attribute._Base;
+using Zhy.Components.Wpf._Attribute._ZFormColumn;
+using Zhy.Components.Wpf._Attribute._ZFormItem;
+using Zhy.Components.Wpf._Enum;
+using Zhy.Components.Wpf._View._Window;
 
 namespace Zhy.Demo._Model
 {

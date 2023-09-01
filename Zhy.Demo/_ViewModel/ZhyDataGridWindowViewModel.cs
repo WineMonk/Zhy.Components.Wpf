@@ -16,8 +16,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Zhy.Components._Attribute;
-using Zhy.Components._Enum;
+using Zhy.Components.Wpf._Attribute;
+using Zhy.Components.Wpf._Enum;
 using Zhy.Demo._Common;
 using Zhy.Demo._Model;
 

@@ -4,14 +4,14 @@
     "D:\\file\\program\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj": {}
   },
   "projects": {
-    "D:\\file\\program\\Zhy.Components\\Zhy.Components\\Zhy.Components.csproj": {
+    "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\file\\program\\Zhy.Components\\Zhy.Components\\Zhy.Components.csproj",
-        "projectName": "Zhy.Components",
-        "projectPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components\\Zhy.Components.csproj",
+        "projectUniqueName": "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj",
+        "projectName": "Zhy.Components.Wpf",
+        "projectPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components\\obj\\",
+        "outputPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\software\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -100,8 +100,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\file\\program\\Zhy.Components\\Zhy.Components\\Zhy.Components.csproj": {
-                "projectPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components\\Zhy.Components.csproj"
+              "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
+                "projectPath": "D:\\file\\program\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj"
               }
             }
           }

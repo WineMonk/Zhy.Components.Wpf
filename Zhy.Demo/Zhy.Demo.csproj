@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zhy.Components\Zhy.Components.csproj" />
+    <ProjectReference Include="..\Zhy.Components.Wpf\Zhy.Components.Wpf.csproj" />
   </ItemGroup>
 
 </Project>
