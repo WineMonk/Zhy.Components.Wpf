@@ -46,8 +46,9 @@
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\Zhy.Components\bin\Debug\net6.0-windows\Zhy.Components.dll" />
-<DocumentationSource sourceFile="..\Zhy.Components\bin\Debug\net6.0-windows\Zhy.Components.xml" /></DocumentationSources>
-    <VisibleItems>Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
+      <DocumentationSource sourceFile="..\Zhy.Components\bin\Debug\net6.0-windows\Zhy.Components.xml" />
+    </DocumentationSources>
+    <VisibleItems>Attributes, InheritedMembers, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
     <BinaryTOC>True</BinaryTOC>
