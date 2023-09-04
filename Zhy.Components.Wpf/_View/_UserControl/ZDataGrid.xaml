@@ -29,7 +29,7 @@
             <DataGrid
                 x:Name="dataGrid"
                 Background="Transparent"
-                ItemsSource="{Binding ItemsSource, ElementName=userControlZDataGrid, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding ItemsSource, Mode=TwoWay, ElementName=userControlZDataGrid, UpdateSourceTrigger=PropertyChanged}"
                 Style="{DynamicResource InfoGrid}" />
         </DockPanel>
     </Grid>

@@ -41,12 +41,13 @@
     <Preliminary>False</Preliminary>
     <CopyrightHref>https://shaoshao.net.cn/</CopyrightHref>
     <CopyrightText>&amp;#169%3b2020 - 2023 By shaozhy</CopyrightText>
-    <FeedbackEMailAddress>1361151272%40qq.com</FeedbackEMailAddress>
-    <FeedbackEMailLinkText>1361151272%40qq.com</FeedbackEMailLinkText>
+    <FeedbackEMailAddress>shaozhy4869%40gmail.com</FeedbackEMailAddress>
+    <FeedbackEMailLinkText>shaozhy4869%40gmail.com</FeedbackEMailLinkText>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\Zhy.Components.Wpf\bin\Debug\net6.0-windows\Zhy.Components.Wpf.dll" />
-<DocumentationSource sourceFile="..\Zhy.Components.Wpf\bin\Debug\net6.0-windows\Zhy.Components.Wpf.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\Zhy.Components.Wpf\bin\Debug\net6.0-windows\Zhy.Components.Wpf.xml" />
+    </DocumentationSources>
     <VisibleItems>Attributes, InheritedMembers, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>

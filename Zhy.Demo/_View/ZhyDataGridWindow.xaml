@@ -16,9 +16,21 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Command="{Binding CommandChangeReadOnly}" Content="改变可编辑状态" />
-            <Button Command="{Binding CommandChangeItemsSource}" Content="改变数据源" />
-            <Button Command="{Binding CommandChangeSearchButtonStyle}" Content="改变查询按钮样式" />
+            <Button
+                Margin="1"
+                Command="{Binding CommandChangeReadOnly}"
+                Content="改变可编辑状态"
+                Style="{DynamicResource DefaultButton}" />
+            <Button
+                Margin="1"
+                Command="{Binding CommandChangeItemsSource}"
+                Content="改变数据源"
+                Style="{DynamicResource DefaultButton}" />
+            <Button
+                Margin="1"
+                Command="{Binding CommandChangeSearchButtonStyle}"
+                Content="改变查询按钮样式"
+                Style="{DynamicResource DefaultButton}" />
         </StackPanel>
         <_usercontrol:ZDataGrid
             x:Name="zDataGrid"
