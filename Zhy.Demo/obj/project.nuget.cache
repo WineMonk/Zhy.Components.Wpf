@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pW+jCN60M0tfmfOJ/3pU947+dC6UZmltEgJW9+drC+GCuYM7ZlyGxVqYEHkELudpv0PeQR3ZtOZT54T+wxlang==",
+  "dgSpecHash": "igU6b1q0RP4UWqlek/OXNydezx772hQCrzn+D68AzXs5OI9IKdUxQjYaXyZYeeFLR3XZcg6kd0vHhrdzAm9WCg==",
   "success": true,
-  "projectFilePath": "D:\\file\\program\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj",
+  "projectFilePath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.1\\communitytoolkit.mvvm.8.2.1.nupkg.sha512"
   ],
