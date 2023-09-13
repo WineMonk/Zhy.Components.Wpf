@@ -39,7 +39,7 @@ namespace Zhy.Demo._ViewModel
             accountInfo.Role = accountInfo.Roles.FirstOrDefault(r => r == "系统管理员");
             accountInfo.Permission.ForEach(permission => permission.IsChecked = true);
             TestItems.Add(accountInfo);
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 accountInfo = new AccountInfo();
                 accountInfo.NO = i + 2;
@@ -47,7 +47,7 @@ namespace Zhy.Demo._ViewModel
                 accountInfo.Username = CommonUtils.GenerateRandomName();
                 accountInfo.ArchivesPath = "D:\\admin\\admin.ad";
                 accountInfo.Role = accountInfo.Roles.FirstOrDefault(r => r == "员工");
-                accountInfo.Permission.ForEach(permission => permission.IsChecked = true);
+                accountInfo.Permission.ForEach(permission => permission.IsChecked = new Random().Next(0,2)==1);
                 TestItems.Add(accountInfo);
             }
         }
@@ -58,7 +58,7 @@ namespace Zhy.Demo._ViewModel
             get { return _testItems; }
             set { SetProperty(ref _testItems, value); }
         }
-        private bool _isReadOnly = true;
+        private bool _isReadOnly = false;
         public bool PropertyIsReadOnly
         {
             get { return _isReadOnly; }

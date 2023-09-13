@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Zhy.Components.Wpf._View._UserControl"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pu="https://opensource.panuon.com/wpf-ui"
     x:Name="userControlZDataGrid"
     d:DesignHeight="450"
     d:DesignWidth="800"

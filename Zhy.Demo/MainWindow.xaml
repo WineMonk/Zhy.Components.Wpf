@@ -13,6 +13,7 @@
         <UniformGrid>
             <Button
                 x:Name="buttonZhyDataGrid"
+                Width="auto"
                 Margin="10"
                 Click="buttonZhyDataGrid_Click"
                 Content="ZhyDataGrid"

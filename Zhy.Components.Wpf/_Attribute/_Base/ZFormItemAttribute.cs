@@ -23,7 +23,7 @@ namespace Zhy.Components.Wpf._Attribute._Base
         /// <summary>
         /// 索引，用于排序
         /// </summary>
-        public int Index { get; set; }
+        public int Index { get; set; } = -1;
         /// <summary>
         /// 标题
         /// </summary>

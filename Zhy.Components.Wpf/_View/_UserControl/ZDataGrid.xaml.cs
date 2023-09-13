@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 using Zhy.Components.Wpf._Attribute;
 using Zhy.Components.Wpf._Attribute._Base;
 using Zhy.Components.Wpf._Attribute._ZFormColumn;
@@ -120,7 +121,7 @@ namespace Zhy.Components.Wpf._View._UserControl
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.BorderThickness = new Thickness(0.8);
             textBoxSearch.Margin = new Thickness(1, 2, 1, 2);
-            textBoxSearch.SetValue(TextBoxHelper.TextMarkProperty, "输入查询内容");
+            textBoxSearch.SetValue(_Common._Utils.TextBoxHelper.TextMarkProperty, "输入查询内容");
             textBoxSearch.VerticalContentAlignment = VerticalAlignment.Center;
             textBoxSearch.Style = this.FindResource("InfoTextBox") as Style;
             Button buttonCancelSearch = new Button();
@@ -194,7 +195,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                 if (item is TextBox && ((TextBox)item).Name == "textBoxSearch")
                 {
                     TextBox textBoxItem = (TextBox)item;
-                    textBoxItem.SetValue(TextBoxHelper.TextMarkProperty, mark);
+                    textBoxItem.SetValue(_Common._Utils.TextBoxHelper.TextMarkProperty, mark);
                     return;
                 }
             }
@@ -465,6 +466,7 @@ namespace Zhy.Components.Wpf._View._UserControl
 
                         dataTemplate.VisualTree = cellFactory;
                         dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGridTemplateColumn.MinWidth = 120;
                         dataGridTemplateColumn.SortMemberPath = propertyInfo.Name +
                             (string.IsNullOrEmpty(zButtonAttribute.MemberPath) ? "" : ".") +
                             zButtonAttribute.MemberPath;
@@ -518,6 +520,63 @@ namespace Zhy.Components.Wpf._View._UserControl
                             zComboAttribute.MemberPath;
                         dataGridTemplateColumn.CanUserSort = true;
                         cellFactory.AppendChild(comboBox);
+                        dataTemplate.VisualTree = cellFactory;
+                        dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGrid.Columns.Add(dataGridTemplateColumn);
+                    }
+                    else if (attribute is ZFormMultiCheckColumnAttribute)
+                    {
+                        ZFormMultiCheckColumnAttribute zMultiCheckAttribute = (ZFormMultiCheckColumnAttribute)attribute;
+                        DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
+                        { Header = zMultiCheckAttribute.Title, Width = new DataGridLength(zMultiCheckAttribute.Width, zMultiCheckAttribute.WidthUnit) };
+                        dataGridTemplateColumn.SortMemberPath = propertyInfo.Name;
+                        DataTemplate dataTemplate = new DataTemplate();
+                        FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
+
+                        //FrameworkElementFactory multiCheckBox = new FrameworkElementFactory(typeof(MultiComboBox));
+                        //multiCheckBox.SetValue(MultiComboBox.BorderThicknessProperty, new Thickness(0));
+                        //multiCheckBox.SetBinding(MultiComboBox.ForegroundProperty, new Binding());
+                        //multiCheckBox.SetBinding(MultiComboBox.BackgroundProperty, new Binding());
+                        //multiCheckBox.SetBinding(MultiComboBox.ItemsSourceProperty, new Binding()
+                        //{
+                        //    Path = new PropertyPath(propertyInfo.Name),
+                        //    Mode = BindingMode.TwoWay,
+                        //    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                        //});
+                        //multiCheckBox.SetBinding(MultiComboBox.IsSelectedProperty, new Binding()
+                        //{
+                        //    Path = new PropertyPath(zMultiCheckAttribute.MemberPath),
+                        //    Mode = BindingMode.TwoWay,
+                        //    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                        //});
+                        //Style styleCheck = new Style(typeof(CheckBox));
+                        //styleCheck.Setters.Add(new Setter(CheckBox.IsCheckedProperty, new Binding()
+                        //{
+                        //    Path = new PropertyPath(zMultiCheckAttribute.MemberPath),
+                        //    Mode = BindingMode.TwoWay,
+                        //    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                        //}));
+                        //Style styleLabel = new Style(typeof(Label));
+                        //styleLabel.Setters.Add(new Setter(Label.BackgroundProperty, this.FindResource("InfoBrushFocusedDark")));
+                        //styleLabel.Setters.Add(new Setter(Label.HeightProperty, 24.0));
+                        //styleLabel.Setters.Add(new Setter(Label.MarginProperty, new Thickness(2)));
+                        //multiCheckBox.SetValue(MultiComboBox.DisplayMemberPathProperty, zMultiCheckAttribute.ContentProperty);
+                        //cellFactory.AppendChild(multiCheckBox);
+
+                        FrameworkElementFactory multiCheckBox = new FrameworkElementFactory(typeof(MultiCheckBox));
+                        multiCheckBox.SetBinding(MultiCheckBox.ItemsSourceProperty, new Binding()
+                        {
+                            Path = new PropertyPath(propertyInfo.Name),
+                            Mode = BindingMode.TwoWay,
+                            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                        });
+                        multiCheckBox.SetValue(MultiCheckBox.ContentPropertyNameProperty, zMultiCheckAttribute.ContentProperty);
+                        multiCheckBox.SetValue(MultiCheckBox.CheckPropertyNameProperty, zMultiCheckAttribute.MemberPath);
+                        cellFactory.AppendChild(multiCheckBox);
+                        dataGridTemplateColumn.SortMemberPath = propertyInfo.Name +
+                            (string.IsNullOrEmpty(zMultiCheckAttribute.MemberPath) ? "" : ".") +
+                            zMultiCheckAttribute.MemberPath;
+                        dataGridTemplateColumn.CanUserSort = true;
                         dataTemplate.VisualTree = cellFactory;
                         dataGridTemplateColumn.CellTemplate = dataTemplate;
                         dataGrid.Columns.Add(dataGridTemplateColumn);
