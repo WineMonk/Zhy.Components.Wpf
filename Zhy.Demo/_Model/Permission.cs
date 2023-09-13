@@ -6,6 +6,7 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,14 @@ namespace Zhy.Demo._Model
     /// <summary>
     /// 
     /// </summary>
-    public class Permission
+    public class Permission:ObservableObject
     {
-        public bool IsChecked { get; set; } = false;
+        private bool _isChecked = false;
+        public bool IsChecked 
+        {
+            get { return _isChecked; }
+            set  { SetProperty(ref _isChecked, value); }
+        }
         public string Name { get; set; }
         public string Desc { get; set; }
 

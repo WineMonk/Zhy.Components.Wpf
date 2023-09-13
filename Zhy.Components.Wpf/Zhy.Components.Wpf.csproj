@@ -12,9 +12,11 @@
     <Compile Remove="_Attribute\ZFormDataGridAttribute.cs" />
     <Compile Remove="_Attribute\ZOperateButtonAttribute.cs" />
     <Compile Remove="_Attribute\_Base\ZFormColumnAttribute.cs" />
+    <Compile Remove="_View\_UserControl\MultiComboBox.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="_View\_Model\" />
     <Folder Include="_View\_Theme\" />
   </ItemGroup>
 

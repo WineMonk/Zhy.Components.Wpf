@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Zhy.Demo._View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="800"
+    Width="1500"
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
