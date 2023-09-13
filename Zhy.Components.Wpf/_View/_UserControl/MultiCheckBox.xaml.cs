@@ -240,11 +240,16 @@ namespace Zhy.Components.Wpf._View._UserControl
             if (!CheckedItemsSource.Contains(checkBox.DataContext))
             {
                 int idx = CheckedItemsSource.Count;
+                int totalIdx = ItemsSource.IndexOf(checkBox.DataContext);
                 for (int i = 0; i < CheckedItemsSource.Count; i++)
                 {
-                    int v = ItemsSource.IndexOf(checkBox.DataContext);
-                    if (v < idx)
-                        idx = v;
+                    var item = CheckedItemsSource[i];
+                    int totalIdxCur = ItemsSource.IndexOf(item);
+                    if (totalIdx < totalIdxCur)
+                    {
+                        idx = i;
+                        break;
+                    }
                 }
                 PropertyInfo? propertyInfo = checkBox.DataContext.GetType().GetProperty(CheckPropertyName);
                 if (propertyInfo == null)
