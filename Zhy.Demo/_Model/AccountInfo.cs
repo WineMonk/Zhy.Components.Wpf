@@ -22,6 +22,7 @@ using System.Windows.Documents;
 using Zhy.Components.Wpf._Attribute._Base;
 using Zhy.Components.Wpf._Attribute._ZFormColumn;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
+using Zhy.Components.Wpf._Common._Utils;
 using Zhy.Components.Wpf._Enum;
 using Zhy.Components.Wpf._View._Window;
 
@@ -41,15 +42,15 @@ namespace Zhy.Demo._Model
         private string _archivesPath;
         private List<Permission> _permission = new List<Permission>()
         {
-            new Permission(false, "人事审批","人事审批权限"),
-            new Permission(false, "财务审批","财务审批权限"),
-            new Permission(false, "后勤审批","后勤审批权限"),
-            new Permission(false, "行政审批","行政审批权限"),
-            new Permission(false, "公章审批","公章审批权限")
+            new Permission(false, "测试项1","测试项1"),
+            new Permission(false, "测试项2","测试项2"),
+            new Permission(false, "测试项3","测试项3"),
+            new Permission(false, "测试项4","测试项4"),
+            new Permission(false, "测试项5","测试项5")
         };
         private List<string> _roles = new List<string>()
         {
-            "系统管理员","主管","员工"
+            "系统管理员","角色1"
         };
 
         [ZFormTextColumn("序 号", Index = 1, IsReadOnlyColumn = true, IsHideFormItem = true, WidthUnit = DataGridLengthUnitType.Auto)]
@@ -77,6 +78,24 @@ namespace Zhy.Demo._Model
         public RelayCommand<AccountInfo> CommandModifyArchivesPath => new RelayCommand<AccountInfo>(ModifyArchivesPath);
         public List<string> Roles { get => _roles; set => _roles = value; }
 
+        [ZFormFuncButton(ButtonContent = "全 选", Index = 0, Location = ButtonLocation.Bottom)]
+        public static void CheckTotalItem(IEnumerable items)
+        {
+            IList<AccountInfo> accountInfos = items as IList<AccountInfo>;
+            foreach (var item in accountInfos)
+            {
+                item.IsChecked = true;
+            }
+        }
+        [ZFormFuncButton(ButtonContent = "全不选", Index = 1, Location = ButtonLocation.Bottom)]
+        public static void UncheckTotalItem(IEnumerable items)
+        {
+            IList<AccountInfo> accountInfos = items as IList<AccountInfo>;
+            foreach (var item in accountInfos)
+            {
+                item.IsChecked = false;
+            }
+        }
         [ZFormFuncButton(ButtonContent = "添 加", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
         public static void AddItem(IEnumerable items)
         {
@@ -121,47 +140,7 @@ namespace Zhy.Demo._Model
             AccountInfo accountInfo = param[0] as AccountInfo;
             if (accountInfo == null)
                 return;
-            string msg = null;
-            PropertyInfo[] propertyInfos = accountInfo.GetType().GetProperties();
-            foreach (var propertyInfo in propertyInfos)
-            {
-                ZFormItemAttribute? zFormItemAttribute = propertyInfo.GetCustomAttribute<ZFormItemAttribute>();
-                if (zFormItemAttribute == null)
-                    continue;
-                if (zFormItemAttribute is ZFormMultiCheckItemAttribute)
-                {
-                    ZFormMultiCheckItemAttribute zFormMultiCheckItem = (ZFormMultiCheckItemAttribute)zFormItemAttribute;
-                    PropertyInfo? propertyInfo1 = accountInfo.GetType().GetProperty(propertyInfo.Name);
-                    object? val = propertyInfo1.GetValue(accountInfo);
-                    IList list = val as IList;
-                    msg += zFormItemAttribute.Title + ": ";
-                    foreach (var item in list)
-                    {
-                        PropertyInfo? propertyInfo2 = item.GetType().GetProperty(zFormMultiCheckItem.MemberPath);
-                        PropertyInfo? propertyInfo3 = item.GetType().GetProperty(zFormMultiCheckItem.ContentProperty);
-                        object? vval = propertyInfo2.GetValue(item);
-                        bool check = (bool)vval;
-                        if (check)
-                            msg += propertyInfo3.GetValue(item) + " ";
-                    }
-                }
-                else if (zFormItemAttribute is ZFormTextButtonColumnAttribute || zFormItemAttribute is ZFormComboColumnAttribute)
-                {
-                    if (string.IsNullOrEmpty(zFormItemAttribute.MemberPath))
-                        msg += zFormItemAttribute.Title + ": " + propertyInfo.GetValue(accountInfo) + "\r\n";
-                    else
-                    {
-                        object? val = propertyInfo.GetValue(accountInfo);
-                        if (val == null) continue;
-                        PropertyInfo? propertyInfo2 = val.GetType().GetProperty(zFormItemAttribute.MemberPath);
-                        msg += zFormItemAttribute.Title + ": " + propertyInfo2.GetValue(val) + "\r\n";
-                    }
-                }
-                else
-                {
-                    msg += zFormItemAttribute.Title + ": " + propertyInfo.GetValue(accountInfo) + "\r\n";
-                }
-            }
+            string msg = FormItemUtils.Print(accountInfo);
             MessageBox.Show(msg, "属性信息", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void ModifyArchivesPath(AccountInfo accountInfo)

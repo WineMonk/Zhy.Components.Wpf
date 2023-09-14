@@ -18,6 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <DockPanel LastChildFill="False">
             <DockPanel x:Name="dockPanelSearch" MaxWidth="420" />
@@ -33,5 +34,22 @@
                 ItemsSource="{Binding ItemsSource, Mode=TwoWay, ElementName=userControlZDataGrid, UpdateSourceTrigger=PropertyChanged}"
                 Style="{DynamicResource InfoGrid}" />
         </DockPanel>
+        <DockPanel Grid.Row="2">
+            <TextBlock
+                Margin="3,0"
+                VerticalAlignment="Center"
+                DockPanel.Dock="Right"
+                Text="项" />
+            <TextBlock
+                x:Name="textBlockCount"
+                VerticalAlignment="Center"
+                DockPanel.Dock="Right"
+                Text="{Binding Count}" />
+            <DockPanel
+                x:Name="dockPanelBottom"
+                DockPanel.Dock="Left"
+                LastChildFill="False" />
+        </DockPanel>
+
     </Grid>
 </UserControl>

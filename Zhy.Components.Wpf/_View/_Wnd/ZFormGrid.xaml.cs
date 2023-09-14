@@ -19,6 +19,9 @@ namespace Zhy.Components.Wpf._View._Window
     /// </summary>
     public partial class ZFormGrid : Window
     {
+        /// <summary>
+        /// ZFormGrid
+        /// </summary>
         public ZFormGrid()
         {
             InitializeComponent();

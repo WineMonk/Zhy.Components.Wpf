@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Zhy.Demo._View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="1500"
+    Width="800"
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -15,7 +15,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Visibility="Collapsed">
             <Button
                 Margin="1"
                 Command="{Binding CommandChangeReadOnly}"

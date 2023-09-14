@@ -17,8 +17,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Zhy.Components.Wpf._Attribute;
 using Zhy.Components.Wpf._Attribute._Base;
+using Zhy.Components.Wpf._Attribute._ZFormColumn;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
 using Zhy.Components.Wpf._Common._Comparer;
+using Zhy.Components.Wpf._View._UserControl;
 
 namespace Zhy.Components.Wpf._View._Window
 {
@@ -185,41 +187,20 @@ namespace Zhy.Components.Wpf._View._Window
                     textBlock.SetValue(TextBlock.FontSizeProperty, 15.0);
                     textBlock.SetValue(TextBlock.TextProperty, $"{currentCount++}. {zFormMultiCheck.Title}");
                     stackPanel.Children.Add(textBlock);
-                    ItemsControl itemsControl = new ItemsControl();
-                    itemsControl.SetValue(ItemsControl.VerticalAlignmentProperty, VerticalAlignment.Center);
-                    itemsControl.SetValue(ItemsControl.HorizontalAlignmentProperty, HorizontalAlignment.Center);
-                    itemsControl.SetValue(ItemsControl.ItemsPanelProperty,
-                        new ItemsPanelTemplate(new FrameworkElementFactory(typeof(WrapPanel))));
-                    itemsControl.SetBinding(ItemsControl.ItemsSourceProperty, new Binding()
+                    MultiCheckBox multiCheckBox = new MultiCheckBox();
+                    multiCheckBox.SetBinding(MultiCheckBox.ItemsSourceProperty, new Binding()
                     {
                         Path = new PropertyPath(propertyInfo.Name),
                         Mode = BindingMode.TwoWay,
                         UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
                     });
-                    DataTemplate dataTemplate = new DataTemplate();
-                    FrameworkElementFactory itemFactory = new FrameworkElementFactory(typeof(DockPanel));
-                    FrameworkElementFactory checkBoxFactory = new FrameworkElementFactory(typeof(CheckBox));
-                    checkBoxFactory.SetBinding(CheckBox.ContentProperty, new Binding()
-                    {
-                        Path = new PropertyPath(zFormMultiCheck.ContentProperty),
-                        Mode = BindingMode.TwoWay,
-                        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                    });
-                    checkBoxFactory.SetBinding(CheckBox.IsCheckedProperty, new Binding()
-                    {
-                        Path = new PropertyPath(zFormMultiCheck.MemberPath),
-                        Mode = BindingMode.TwoWay,
-                        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                    });
-                    checkBoxFactory.SetValue(CheckBox.MarginProperty, new Thickness(0, 0, 20, 0));
-                    itemFactory.AppendChild(checkBoxFactory);
-                    dataTemplate.VisualTree = itemFactory;
-                    itemsControl.ItemTemplate = dataTemplate;
+                    multiCheckBox.SetValue(MultiCheckBox.ContentPropertyNameProperty, zFormMultiCheck.ContentProperty);
+                    multiCheckBox.SetValue(MultiCheckBox.CheckPropertyNameProperty, zFormMultiCheck.MemberPath);
                     Border border = new Border();
                     border.SetValue(Border.MinHeightProperty, 30.0);
                     border.SetValue(Border.BorderBrushProperty, new SolidColorBrush(Color.FromRgb(150, 150, 150)));
                     border.SetValue(Border.BorderThicknessProperty, new Thickness(0.8));
-                    border.Child = itemsControl;
+                    border.Child = multiCheckBox;
                     stackPanel.Children.Add(border);
                 }
             }

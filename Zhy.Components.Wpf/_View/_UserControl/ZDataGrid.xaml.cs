@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -12,6 +15,7 @@ using Zhy.Components.Wpf._Attribute;
 using Zhy.Components.Wpf._Attribute._Base;
 using Zhy.Components.Wpf._Attribute._ZFormColumn;
 using Zhy.Components.Wpf._Common._Comparer;
+using Zhy.Components.Wpf._Common._Converter;
 using Zhy.Components.Wpf._Common._Utils;
 using Zhy.Components.Wpf._Enum;
 using Zhy.Components.Wpf._Exception;
@@ -96,15 +100,21 @@ namespace Zhy.Components.Wpf._View._UserControl
         /// 数据项源依赖属性
         /// </summary>
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(IList), typeof(ZDataGrid), new PropertyMetadata(default(IList)));
-
+            DependencyProperty.Register("ItemsSource", typeof(IList), typeof(ZDataGrid), new PropertyMetadata(default(IList), OnItemsSourcePropertyChanged));
+        private static void OnItemsSourcePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ZDataGrid zDataGrid = d as ZDataGrid;
+            TextBlock textBlockCount = zDataGrid.FindName("textBlockCount") as TextBlock;
+            if (textBlockCount == null)
+                return;
+            textBlockCount.DataContext = e.NewValue;
+        }
 
         internal void RefreshSearchComponent()
         {
             InitSearchComponent();
         }
         
-
         #region 查询
         private IList _totalObservableObjects;
         private IList _searchObservableObjects;
@@ -532,46 +542,15 @@ namespace Zhy.Components.Wpf._View._UserControl
                         dataGridTemplateColumn.SortMemberPath = propertyInfo.Name;
                         DataTemplate dataTemplate = new DataTemplate();
                         FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
-
-                        //FrameworkElementFactory multiCheckBox = new FrameworkElementFactory(typeof(MultiComboBox));
-                        //multiCheckBox.SetValue(MultiComboBox.BorderThicknessProperty, new Thickness(0));
-                        //multiCheckBox.SetBinding(MultiComboBox.ForegroundProperty, new Binding());
-                        //multiCheckBox.SetBinding(MultiComboBox.BackgroundProperty, new Binding());
-                        //multiCheckBox.SetBinding(MultiComboBox.ItemsSourceProperty, new Binding()
-                        //{
-                        //    Path = new PropertyPath(propertyInfo.Name),
-                        //    Mode = BindingMode.TwoWay,
-                        //    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                        //});
-                        //multiCheckBox.SetBinding(MultiComboBox.IsSelectedProperty, new Binding()
-                        //{
-                        //    Path = new PropertyPath(zMultiCheckAttribute.MemberPath),
-                        //    Mode = BindingMode.TwoWay,
-                        //    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                        //});
-                        //Style styleCheck = new Style(typeof(CheckBox));
-                        //styleCheck.Setters.Add(new Setter(CheckBox.IsCheckedProperty, new Binding()
-                        //{
-                        //    Path = new PropertyPath(zMultiCheckAttribute.MemberPath),
-                        //    Mode = BindingMode.TwoWay,
-                        //    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                        //}));
-                        //Style styleLabel = new Style(typeof(Label));
-                        //styleLabel.Setters.Add(new Setter(Label.BackgroundProperty, this.FindResource("InfoBrushFocusedDark")));
-                        //styleLabel.Setters.Add(new Setter(Label.HeightProperty, 24.0));
-                        //styleLabel.Setters.Add(new Setter(Label.MarginProperty, new Thickness(2)));
-                        //multiCheckBox.SetValue(MultiComboBox.DisplayMemberPathProperty, zMultiCheckAttribute.ContentProperty);
-                        //cellFactory.AppendChild(multiCheckBox);
-
                         FrameworkElementFactory multiCheckBox = new FrameworkElementFactory(typeof(MultiCheckBox));
+                        multiCheckBox.SetValue(MultiCheckBox.CheckPropertyNameProperty, zMultiCheckAttribute.MemberPath);
+                        multiCheckBox.SetValue(MultiCheckBox.ContentPropertyNameProperty, zMultiCheckAttribute.ContentProperty);
                         multiCheckBox.SetBinding(MultiCheckBox.ItemsSourceProperty, new Binding()
                         {
                             Path = new PropertyPath(propertyInfo.Name),
                             Mode = BindingMode.TwoWay,
                             UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
                         });
-                        multiCheckBox.SetValue(MultiCheckBox.ContentPropertyNameProperty, zMultiCheckAttribute.ContentProperty);
-                        multiCheckBox.SetValue(MultiCheckBox.CheckPropertyNameProperty, zMultiCheckAttribute.MemberPath);
                         cellFactory.AppendChild(multiCheckBox);
                         dataGridTemplateColumn.SortMemberPath = propertyInfo.Name +
                             (string.IsNullOrEmpty(zMultiCheckAttribute.MemberPath) ? "" : ".") +
@@ -678,6 +657,65 @@ namespace Zhy.Components.Wpf._View._UserControl
                             zComboAttribute.MemberPath;
                         dataGrid.Columns.Add(dataGridTemplateColumn);
                     }
+                    else if (attribute is ZFormMultiCheckColumnAttribute)
+                    {
+                        ZFormMultiCheckColumnAttribute zMultiCheckAttribute = (ZFormMultiCheckColumnAttribute)attribute;
+                        DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
+                        { Header = zMultiCheckAttribute.Title, Width = new DataGridLength(zMultiCheckAttribute.Width, zMultiCheckAttribute.WidthUnit) };
+                        dataGridTemplateColumn.SortMemberPath = propertyInfo.Name;
+                        DataTemplate dataTemplate = new DataTemplate();
+                        FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
+
+                        FrameworkElementFactory itemsPanel = new FrameworkElementFactory(typeof(StackPanel));
+                        itemsPanel.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
+                        FrameworkElementFactory itemsControl = new FrameworkElementFactory(typeof(ItemsControl));
+                        ItemsPanelTemplate itemsPanelTemplate = new ItemsPanelTemplate(itemsPanel);
+                        itemsControl.SetValue(ItemsControl.ItemsPanelProperty, itemsPanelTemplate);
+                        itemsControl.SetBinding(ItemsControl.ItemsSourceProperty, new Binding()
+                        {
+                            Path = new PropertyPath(propertyInfo.Name),
+                            Mode = BindingMode.TwoWay,
+                            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                        });
+                        DataTemplate dataTemplateItemsControl = new DataTemplate();
+                        FrameworkElementFactory frameworkElementFactory = new FrameworkElementFactory(typeof(Border), "borderContentItem");
+                        frameworkElementFactory.SetValue(Border.HeightProperty, 24.0);
+                        frameworkElementFactory.SetValue(Border.MarginProperty, new Thickness(3));
+                        frameworkElementFactory.SetValue(Border.BackgroundProperty, new SolidColorBrush(Colors.AliceBlue));
+                        FrameworkElementFactory dockPanel = new FrameworkElementFactory(typeof(DockPanel));
+                        FrameworkElementFactory button2 = new FrameworkElementFactory(typeof(Button), "buttonContentItem");
+                        button2.SetValue(Button.MarginProperty, new Thickness(2, 0, 2, 0));
+                        button2.SetValue(Button.BackgroundProperty, new SolidColorBrush(Colors.Transparent));
+                        button2.SetValue(Button.BorderThicknessProperty, new Thickness(0));
+                        button2.SetValue(Button.CursorProperty, Cursors.Hand);
+                        button2.SetBinding(Button.ContentProperty, new Binding()
+                        {
+                            Path = new PropertyPath(zMultiCheckAttribute.ContentProperty),
+                            Mode = BindingMode.TwoWay,
+                            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                        });
+                        button2.SetBinding(Button.IsEnabledProperty, new Binding()
+                        {
+                            Path = new PropertyPath(zMultiCheckAttribute.MemberPath),
+                            Mode = BindingMode.TwoWay,
+                            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                        });
+                        dockPanel.AppendChild(button2);
+                        frameworkElementFactory.AppendChild(dockPanel);
+                        Trigger trigger = new Trigger();
+                        trigger = new Trigger();
+                        trigger.SourceName = "buttonContentItem";
+                        trigger.Property = Button.IsEnabledProperty;
+                        trigger.Value = false;
+                        trigger.Setters.Add(new Setter(Button.VisibilityProperty, Visibility.Collapsed, "borderContentItem"));
+                        dataTemplateItemsControl.Triggers.Add(trigger);
+                        dataTemplateItemsControl.VisualTree = frameworkElementFactory;
+                        itemsControl.SetValue(ItemsControl.ItemTemplateProperty, dataTemplateItemsControl);
+                        cellFactory.AppendChild(itemsControl);
+                        dataTemplate.VisualTree = cellFactory;
+                        dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGrid.Columns.Add(dataGridTemplateColumn);
+                    }
                 }
             }
             if (sortButtonColumnDic.Count > 0)
@@ -715,6 +753,8 @@ namespace Zhy.Components.Wpf._View._UserControl
                 dataGrid.Columns.Add(dataGridTemplateColumn);
             }
             dockPanelTop.Children.Clear();
+            dockPanelBottom.Children.Clear();
+            List<Button> bottomButtonList = new List<Button>();
             foreach (var item in sortButtonTopDic)
             {
                 MethodInfo methodInfo = item.Value;
@@ -733,9 +773,21 @@ namespace Zhy.Components.Wpf._View._UserControl
                             throw new ZDataGridException("特性 `ZOperateTopButtonAttribute` 标注方法必须为静态方法！");
                         methodInfo.Invoke(null, new object[] { dataGrid.ItemsSource });
                     };
-                    dockPanelTop.Children.Add(button);
+                    if (zButtonAttribute.Location == ButtonLocation.Top)
+                    {
+                        dockPanelTop.Children.Add(button);
+                    }
+                    else if(zButtonAttribute.Location == ButtonLocation.Bottom)
+                    {
+                        button.SetValue(Button.FontSizeProperty, 11.0);
+                        button.SetValue(DockPanel.DockProperty, zButtonAttribute.Dock);
+                        bottomButtonList.Insert(0, button);
+                    }
                 }
             }
+            foreach (var item in bottomButtonList)
+                dockPanelBottom.Children.Add(item);
+
             UpdateSearchTextMark();
         }
 

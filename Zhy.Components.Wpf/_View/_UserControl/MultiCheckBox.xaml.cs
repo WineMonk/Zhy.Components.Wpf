@@ -25,46 +25,53 @@ namespace Zhy.Components.Wpf._View._UserControl
     /// </summary>
     public partial class MultiCheckBox : UserControl
     {
+        /// <summary>
+        /// 多项选择下拉框
+        /// </summary>
         public MultiCheckBox()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// 数据项源
+        /// </summary>
         public IList ItemsSource
         {
             get { return (IList)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
-
+        /// <summary>
+        /// 数据项源依赖性
+        /// </summary>
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IList), typeof(MultiCheckBox), new PropertyMetadata(null, OnItemsSourceChanged));
-
+        /// <summary>
+        /// 选择属性名称
+        /// </summary>
         public string CheckPropertyName
         {
             get { return (string)GetValue(CheckPropertyNameProperty); }
             set { SetValue(CheckPropertyNameProperty, value); }
         }
+        /// <summary>
+        /// 选择属性依赖项
+        /// </summary>
         public static readonly DependencyProperty CheckPropertyNameProperty =
-            DependencyProperty.Register("CheckPropertyName", typeof(string), typeof(MultiCheckBox), new PropertyMetadata("IsCheck", new PropertyChangedCallback(OnCheckPropertyNameChanged)));
-        public static void OnCheckPropertyNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            MultiCheckBox multiCheckBox = (MultiCheckBox)d;
-            object v = multiCheckBox.FindName("listBoxTotalItems");
-            if (v == null)
-                return;
-            ListBox listBox = (ListBox)v;
-            listBox.ItemTemplate = multiCheckBox.GetTotalItemsDataTemplate();
-        }
-
-
+            DependencyProperty.Register("CheckPropertyName", typeof(string), typeof(MultiCheckBox), new PropertyMetadata(string.Empty, new PropertyChangedCallback(OnContentOrCheckPropertyNameChanged)));
+        /// <summary>
+        /// 内容属性名称
+        /// </summary>
         public string ContentPropertyName
         {
             get { return (string)GetValue(ContentPropertyNameProperty); }
             set { SetValue(ContentPropertyNameProperty, value); }
         }
+        /// <summary>
+        /// 内容属性依赖项
+        /// </summary>
         public static readonly DependencyProperty ContentPropertyNameProperty =
-            DependencyProperty.Register("ContentPropertyName", typeof(string), typeof(MultiCheckBox), new PropertyMetadata("Content", new PropertyChangedCallback(OnContentPropertyNameChanged)));
-        public static void OnContentPropertyNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+            DependencyProperty.Register("ContentPropertyName", typeof(string), typeof(MultiCheckBox), new PropertyMetadata(string.Empty, new PropertyChangedCallback(OnContentOrCheckPropertyNameChanged)));
+        private static void OnContentOrCheckPropertyNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             MultiCheckBox multiCheckBox = (MultiCheckBox)d;
             object v = multiCheckBox.FindName("itemsControlChecked");
@@ -91,7 +98,7 @@ namespace Zhy.Components.Wpf._View._UserControl
         internal static readonly DependencyProperty CheckedItemsSourceProperty =
             DependencyProperty.Register("CheckedItemsSource", typeof(IList), typeof(MultiCheckBox), new PropertyMetadata(null));
 
-        public void InitializeView()
+        private void InitializeView()
         {
             if (ItemsSource == null || ItemsSource.Count < 1)
                 return;
@@ -213,7 +220,7 @@ namespace Zhy.Components.Wpf._View._UserControl
         {
             DataTemplate dataTemplate = new DataTemplate();
             FrameworkElementFactory factory = new FrameworkElementFactory(typeof(DockPanel));
-            FrameworkElementFactory checkBox = new FrameworkElementFactory(typeof(CheckBox));
+            FrameworkElementFactory checkBox = new FrameworkElementFactory(typeof(CheckBox), "checkBox");
             checkBox.SetBinding(CheckBox.IsCheckedProperty, new Binding()
             {
                 Path = new PropertyPath(multiCheckBox.CheckPropertyName),

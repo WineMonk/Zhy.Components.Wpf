@@ -46,7 +46,7 @@ namespace Zhy.Demo._ViewModel
                 accountInfo.Phone = CommonUtils.GenerateRandomPhoneNumber();
                 accountInfo.Username = CommonUtils.GenerateRandomName();
                 accountInfo.ArchivesPath = "D:\\admin\\admin.ad";
-                accountInfo.Role = accountInfo.Roles.FirstOrDefault(r => r == "员工");
+                accountInfo.Role = accountInfo.Roles.FirstOrDefault(r => r == "角色1");
                 accountInfo.Permission.ForEach(permission => permission.IsChecked = new Random().Next(0,2)==1);
                 TestItems.Add(accountInfo);
             }

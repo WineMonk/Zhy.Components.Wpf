@@ -26,6 +26,10 @@ ZDataGrid-ZFormComboColumn
 
 ![ZDataGrid-ZFormComboColumn](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202309011410307.png)
 
+ZDataGrid-ZFormMultiCheckColumn
+
+![image-20230914160713526](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202309141607659.png)
+
 ZDataGrid-Search
 
 ![ZDataGrid-Search](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202309011410775.png)

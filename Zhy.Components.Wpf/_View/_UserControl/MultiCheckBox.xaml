@@ -10,21 +10,19 @@
     d:DesignHeight="30"
     d:DesignWidth="200"
     mc:Ignorable="d">
-    <UserControl.Resources>
-        <!--<_datatemplateselector:MultiCheckBoxCheckedListDataTemplateSelector x:Key="multiCheckBoxCheckedListDataTemplateSelector" />-->
-    </UserControl.Resources>
-    <Grid x:Name="gridMain">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
-        <ItemsControl x:Name="itemsControlChecked">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <!--<ItemsControl.Template>
+    <Border BorderBrush="{Binding ElementName=multiCheckBox, Path=BorderBrush}" BorderThickness="{Binding ElementName=multiCheckBox, Path=BorderThickness}">
+        <Grid x:Name="gridMain">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <ItemsControl x:Name="itemsControlChecked">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <!--<ItemsControl.Template>
                 <ControlTemplate TargetType="ItemsControl">
                     <ScrollViewer
                         x:Name="ScrollViewer"
@@ -44,7 +42,7 @@
                     </ScrollViewer>
                 </ControlTemplate>
             </ItemsControl.Template>-->
-            <!--<ItemsControl.ItemTemplate>
+                <!--<ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border
                         Height="24"
@@ -69,41 +67,42 @@
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>-->
-        </ItemsControl>
-        <Popup
-            x:Name="popup"
-            MinWidth="{Binding ActualWidth, ElementName=gridMain}"
-            MinHeight="300"
-            AllowsTransparency="True"
-            Focusable="False"
-            IsOpen="{Binding IsChecked, ElementName=toggleButton}"
-            Placement="Bottom"
-            PopupAnimation="Slide"
-            StaysOpen="False">
-            <Border
-                x:Name="DropDown"
-                CornerRadius="1"
-                SnapsToDevicePixels="True">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="2"
-                        Opacity="0.5"
-                        ShadowDepth="0"
-                        Color="Black" />
-                </Border.Effect>
-                <ScrollViewer
-                    Margin="4,6,4,6"
-                    CanContentScroll="True"
-                    HorizontalScrollBarVisibility="Auto"
-                    SnapsToDevicePixels="True"
-                    VerticalScrollBarVisibility="Auto">
-                    <ListBox
-                        x:Name="listBoxTotalItems"
-                        Background="White"
-                        BorderBrush="#eaeaea"
-                        BorderThickness="1,0,1,1"
-                        SelectionMode="Multiple">
-                        <!--<ListBox.ItemContainerStyle>
+            </ItemsControl>
+            <Popup
+                x:Name="popup"
+                MinWidth="{Binding ActualWidth, ElementName=gridMain}"
+                MinHeight="100"
+                MaxHeight="200"
+                AllowsTransparency="True"
+                Focusable="False"
+                IsOpen="{Binding IsChecked, ElementName=toggleButton}"
+                Placement="Bottom"
+                PopupAnimation="Slide"
+                StaysOpen="False">
+                <Border
+                    x:Name="DropDown"
+                    CornerRadius="1"
+                    SnapsToDevicePixels="True">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            BlurRadius="2"
+                            Opacity="0.5"
+                            ShadowDepth="0"
+                            Color="Black" />
+                    </Border.Effect>
+                    <ScrollViewer
+                        Margin="4,6,4,6"
+                        CanContentScroll="True"
+                        HorizontalScrollBarVisibility="Auto"
+                        SnapsToDevicePixels="True"
+                        VerticalScrollBarVisibility="Auto">
+                        <ListBox
+                            x:Name="listBoxTotalItems"
+                            Background="White"
+                            BorderBrush="#eaeaea"
+                            BorderThickness="1,0,1,1"
+                            SelectionMode="Multiple">
+                            <!--<ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="IsSelected" Value="{Binding IsChecked}" />
                                 <Setter Property="Template">
@@ -140,7 +139,7 @@
                                 </Setter>
                             </Style>
                         </ListBox.ItemContainerStyle>-->
-                        <!--<ListBox.ItemTemplate>
+                            <!--<ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <CheckBox
@@ -164,78 +163,79 @@
                                 </DataTemplate.Triggers>
                             </DataTemplate>
                         </ListBox.ItemTemplate>-->
-                    </ListBox>
-                </ScrollViewer>
-            </Border>
-        </Popup>
-        <ToggleButton
-            x:Name="toggleButton"
-            Grid.Column="1"
-            ClickMode="Press"
-            Cursor="Hand"
-            Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-            LostFocus="toggleButton_LostFocus">
-            <ToggleButton.Style>
-                <Style TargetType="ToggleButton">
-                    <Setter Property="Background" Value="White" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ToggleButton">
-                                <Border
-                                    Background="#20bbbbbb"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="3">
-                                    <Grid>
-                                        <TextBlock
-                                            x:Name="arrow_tb"
-                                            Margin="10,0"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center"
-                                            FontSize="15"
-                                            Foreground="{TemplateBinding Foreground}"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Text="△">
-                                            <TextBlock.RenderTransform>
-                                                <TransformGroup>
-                                                    <ScaleTransform />
-                                                    <SkewTransform />
-                                                    <RotateTransform />
-                                                    <TranslateTransform />
-                                                </TransformGroup>
-                                            </TextBlock.RenderTransform>
-                                        </TextBlock>
-                                    </Grid>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsChecked" Value="True" />
-                                    <EventTrigger RoutedEvent="Checked">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="arrow_tb" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                                                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-                                                    <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="180" />
-                                                </DoubleAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
+                        </ListBox>
+                    </ScrollViewer>
+                </Border>
+            </Popup>
+            <ToggleButton
+                x:Name="toggleButton"
+                Grid.Column="1"
+                ClickMode="Press"
+                Cursor="Hand"
+                Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                LostFocus="toggleButton_LostFocus">
+                <ToggleButton.Style>
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border
+                                        Background="#20bbbbbb"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="3">
+                                        <Grid>
+                                            <TextBlock
+                                                x:Name="arrow_tb"
+                                                Margin="10,0"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                FontSize="15"
+                                                Foreground="{TemplateBinding Foreground}"
+                                                RenderTransformOrigin="0.5,0.5"
+                                                Text="△">
+                                                <TextBlock.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform />
+                                                    </TransformGroup>
+                                                </TextBlock.RenderTransform>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True" />
+                                        <EventTrigger RoutedEvent="Checked">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="arrow_tb" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                        <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+                                                        <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="180" />
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
 
-                                    <EventTrigger RoutedEvent="Unchecked">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="arrow_tb" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                                                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="180" />
-                                                    <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0" />
-                                                </DoubleAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
+                                        <EventTrigger RoutedEvent="Unchecked">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="arrow_tb" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                                                        <EasingDoubleKeyFrame KeyTime="00:00:00" Value="180" />
+                                                        <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0" />
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
 
-                </Style>
-            </ToggleButton.Style>
-        </ToggleButton>
-    </Grid>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+        </Grid>
+    </Border>
 </UserControl>
