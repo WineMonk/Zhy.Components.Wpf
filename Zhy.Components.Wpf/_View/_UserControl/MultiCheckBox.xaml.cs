@@ -194,7 +194,20 @@ namespace Zhy.Components.Wpf._View._UserControl
             button1.SetValue(Button.PaddingProperty, new Thickness(2, 0, 4, 0));
             button1.SetValue(Button.BackgroundProperty, new SolidColorBrush(Colors.Transparent));
             button1.SetValue(Button.BorderThicknessProperty, new Thickness(0));
-            button1.SetValue(Button.ContentProperty, "X");
+
+            FrameworkElementFactory image = new FrameworkElementFactory(typeof(Image));
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = new Uri("pack://application:,,,/Zhy.Components.Wpf;component\\_Resource\\_Image\\remove.png");
+            bitmapImage.EndInit();
+            image.SetValue(Image.SourceProperty, bitmapImage);
+            image.SetValue(Image.StretchProperty, Stretch.Fill);
+            image.SetValue(Image.VerticalAlignmentProperty, VerticalAlignment.Center);
+            image.SetValue(Image.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+            image.SetValue(Image.HeightProperty, 9.0);
+            image.SetValue(Image.WidthProperty, 9.0);
+            button1.AppendChild(image);
+            //button1.SetValue(Button.ContentProperty, "X");
             button1.SetValue(Button.CursorProperty, Cursors.Hand);
             button1.SetValue(DockPanel.DockProperty, Dock.Right);
             button1.AddHandler(Button.ClickEvent, new RoutedEventHandler(OnCheckedItemRemoveClick));

@@ -16,12 +16,46 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="_Resource\_Icon\logo.ico" />
+    <None Remove="_Resource\_Icon\logo_light.ico" />
+    <None Remove="_Resource\_Image\blank.png" />
+    <None Remove="_Resource\_Image\logo%4016.png" />
+    <None Remove="_Resource\_Image\logo%40180.png" />
+    <None Remove="_Resource\_Image\logo%40192.png" />
+    <None Remove="_Resource\_Image\logo%4032.png" />
+    <None Remove="_Resource\_Image\logo%40512.png" />
+    <None Remove="_Resource\_Image\logo_light%4016.png" />
+    <None Remove="_Resource\_Image\logo_light%40180.png" />
+    <None Remove="_Resource\_Image\logo_light%40192.png" />
+    <None Remove="_Resource\_Image\logo_light%4032.png" />
+    <None Remove="_Resource\_Image\logo_light%40512.png" />
+    <None Remove="_Resource\_Image\remove.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="_View\_Model\" />
     <Folder Include="_View\_Theme\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="_Resource\_Icon\logo.ico" />
+    <Resource Include="_Resource\_Icon\logo_light.ico" />
+    <Resource Include="_Resource\_Image\blank.png" />
+    <Resource Include="_Resource\_Image\logo@16.png" />
+    <Resource Include="_Resource\_Image\logo@180.png" />
+    <Resource Include="_Resource\_Image\logo@192.png" />
+    <Resource Include="_Resource\_Image\logo@32.png" />
+    <Resource Include="_Resource\_Image\logo@512.png" />
+    <Resource Include="_Resource\_Image\logo_light@16.png" />
+    <Resource Include="_Resource\_Image\logo_light@180.png" />
+    <Resource Include="_Resource\_Image\logo_light@192.png" />
+    <Resource Include="_Resource\_Image\logo_light@32.png" />
+    <Resource Include="_Resource\_Image\logo_light@512.png" />
+    <Resource Include="_Resource\_Image\remove.png" />
   </ItemGroup>
 
 </Project>

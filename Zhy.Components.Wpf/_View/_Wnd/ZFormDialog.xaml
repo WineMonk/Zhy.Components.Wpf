@@ -5,9 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Zhy.Components.Wpf._View._Window"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="ZFormDialog"
+    Title="测试"
     Width="800"
     Height="450"
+    Icon="pack://application:,,,/Zhy.Components.Wpf;component\_Resource\_Icon\logo_light.ico"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.Resources>
