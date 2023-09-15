@@ -317,6 +317,30 @@ namespace Zhy.Components.Wpf._View._UserControl
                     if (vval.ToString().ToLower().Contains(searchText.ToLower()))
                         return true;
                 }
+                else if (attribute is ZFormMultiCheckColumnAttribute && !string.IsNullOrEmpty(((ZFormMultiCheckColumnAttribute)attribute).MemberPath))
+                {
+                    ZFormMultiCheckColumnAttribute zFormMultiCheck = attribute as ZFormMultiCheckColumnAttribute;
+                    IEnumerable objects = val as IEnumerable;
+                    if (objects == null)
+                        continue;
+                    foreach (var obj in objects)
+                    {
+                        PropertyInfo? propertyInfoMember = obj.GetType().GetProperty(zFormMultiCheck.MemberPath);
+                        PropertyInfo? propertyInfoContent = obj.GetType().GetProperty(zFormMultiCheck.ContentProperty);
+                        if (propertyInfoMember == null || propertyInfoContent == null)
+                            continue;
+                        object member = propertyInfoMember.GetValue(obj, null);
+                        object content = propertyInfoContent.GetValue(obj, null);
+                        if (member == null || content == null)
+                            continue;
+                        bool check = false;
+                        bool.TryParse(member.ToString(), out check);
+                        if (!check)
+                            continue;
+                        if(content.ToString().ToLower().Contains(searchText.ToLower()))
+                            return true;
+                    }
+                }
                 else
                 {
                     if (val.ToString().ToLower().Contains(searchText.ToLower()))

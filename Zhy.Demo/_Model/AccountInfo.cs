@@ -67,7 +67,7 @@ namespace Zhy.Demo._Model
         public string Phone { get => _phone; set => SetProperty(ref _phone, value); }
         [ZFormTextButtonColumn("档案路径", Index = 5, ButtonContent = "更 改",RelayCommandName = nameof(CommandModifyArchivesPath), WidthUnit = DataGridLengthUnitType.Star)]
         public string ArchivesPath { get => _archivesPath; set => SetProperty(ref _archivesPath, value); }
-        [ZFormMultiCheckColumn("权 限", "IsChecked", "Name", WidthUnit = DataGridLengthUnitType.Auto)]
+        [ZFormMultiCheckColumn("权 限", "IsChecked", "Name", IsSearchProperty = true, WidthUnit = DataGridLengthUnitType.Auto)]
         public List<Permission> Permission { get => _permission; set => SetProperty(ref _permission, value); }
 
         [ZFormFuncButton(ButtonContent = "查看信息", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
