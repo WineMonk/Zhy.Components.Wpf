@@ -48,4 +48,4 @@ Demo
 
 ## Doc
 
-[API帮助文档](http://zhy.shaoshao.net.cn:3729/)
+[API帮助文档](http://81.70.35.77:3729/)
