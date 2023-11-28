@@ -10,6 +10,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +28,13 @@ namespace Zhy.Components.Wpf._Common._Utils
                 return null;
             Type sourceItemType = list.GetType().GetGenericArguments()[0];
             return sourceItemType;
+        }
+
+        public static bool IsAsyncMethod(MethodInfo method)
+        {
+            Type attType = typeof(AsyncStateMachineAttribute);
+            var attrib = method.GetCustomAttribute(attType) as AsyncStateMachineAttribute;
+            return (attrib != null);
         }
     }
 }

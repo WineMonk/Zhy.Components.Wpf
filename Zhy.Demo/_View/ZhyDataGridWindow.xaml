@@ -31,12 +31,24 @@
                 Command="{Binding CommandChangeSearchButtonStyle}"
                 Content="改变查询按钮样式"
                 Style="{DynamicResource DefaultButton}" />
+            <Button
+                Margin="1"
+                Command="{Binding CommandViewSelectedItem}"
+                Content="查看选择项"
+                Style="{DynamicResource DefaultButton}" />
+            <Button
+                x:Name="buttonViewSelectedItem"
+                Margin="1"
+                Click="buttonViewSelectedItem_Click"
+                Content="查看选择项"
+                Style="{DynamicResource DefaultButton}" />
         </StackPanel>
         <_usercontrol:ZDataGrid
             x:Name="zDataGrid"
             Grid.Row="1"
             IsReadOnly="{Binding PropertyIsReadOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             ItemsSource="{Binding TestItems}"
-            SearchButtonStyle="{Binding ButtonStyle}" />
+            SearchButtonStyle="{Binding ButtonStyle}"
+            SelectedItem="{Binding TestItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>

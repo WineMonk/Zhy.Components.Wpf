@@ -1,10 +1,16 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.VisualBasic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Globalization;
+using System.Printing;
 using System.Reflection;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -52,6 +58,14 @@ namespace Zhy.Components.Wpf._View._UserControl
             set { SetValue(SearchButtonStyleProperty, value); }
         }
         /// <summary>
+        /// 选择项
+        /// </summary>
+        public object SelectedItem
+        {
+            get { return (object)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
+        }
+        /// <summary>
         /// ZDataGrid 表单控件
         /// </summary>
         public ZDataGrid()
@@ -67,7 +81,6 @@ namespace Zhy.Components.Wpf._View._UserControl
         {
             InitDataGridColumn();
         }
-
         /// <summary>
         /// 查询按钮样式依赖属性
         /// </summary>
@@ -108,7 +121,21 @@ namespace Zhy.Components.Wpf._View._UserControl
             if (textBlockCount == null)
                 return;
             textBlockCount.DataContext = e.NewValue;
+            //EventInfo collectionChangedEvent = e.NewValue.GetType().GetEvent("CollectionChanged");
+            //if (collectionChangedEvent != null)
+            //{
+            //    NotifyCollectionChangedEventHandler handler = (sender, ee) =>
+            //    {
+            //        WeakReferenceMessenger.Default.Send(e.NewValue);
+            //    };
+            //    collectionChangedEvent.AddEventHandler(e.NewValue, handler);
+            //}
         }
+        /// <summary>
+        /// 选择项依赖属性
+        /// </summary>
+        public static readonly DependencyProperty SelectedItemProperty =
+            DependencyProperty.Register("SelectedItem", typeof(object), typeof(ZDataGrid), new PropertyMetadata(null));
 
         internal void RefreshSearchComponent()
         {
@@ -116,6 +143,37 @@ namespace Zhy.Components.Wpf._View._UserControl
         }
         
         #region 查询
+        public void SearchAll()
+        {
+            TextBox textBoxSearch = null;
+            Button buttonCancelSearch = null;
+            foreach (var item in dockPanelSearch.Children)
+            {
+                if (item is TextBox)
+                {
+                    TextBox textBoxItem = (TextBox)item;
+                    if (textBoxItem.Name == "textBoxSearch")
+                        textBoxSearch = textBoxItem;
+                }
+                else if (item is Button)
+                {
+                    Button buttonItem = (Button)item;
+                    if (buttonItem.Name == "buttonCancelSearch")
+                        buttonCancelSearch = buttonItem;
+                }
+            }
+            textBoxSearch.Text = string.Empty;
+            if (_totalObservableObjects == null ||
+                _totalObservableObjects.Count < 1 ||
+                textBoxSearch == null ||
+                buttonCancelSearch == null)
+                return;
+            ItemsSource.Clear();
+            foreach (var item in _totalObservableObjects)
+                ItemsSource.Add(item);
+            _totalObservableObjects = null;
+            buttonCancelSearch.Visibility = Visibility.Collapsed;
+        }
         private IList _totalObservableObjects;
         private IList _searchObservableObjects;
         private void InitSearchComponent()
@@ -410,8 +468,8 @@ namespace Zhy.Components.Wpf._View._UserControl
                 new SortedDictionary<IZFormColumn, PropertyInfo>(new ZFormSortItemComparer());
             SortedDictionary<IZFormFuncButton, PropertyInfo> sortButtonColumnDic =
                 new SortedDictionary<IZFormFuncButton, PropertyInfo>(new ZFormSortItemComparer());
-            SortedDictionary<IZFormFuncButton, MethodInfo> sortButtonTopDic =
-                new SortedDictionary<IZFormFuncButton, MethodInfo>(new ZFormSortItemComparer(true));
+            SortedDictionary<IZFormFuncButton, PropertyInfo> sortButtonTopDic =
+                new SortedDictionary<IZFormFuncButton, PropertyInfo>(new ZFormSortItemComparer(true));
             foreach (PropertyInfo propertyInfo in propertyInfos)
             {
                 Attribute? attributeColumn = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute), true);
@@ -424,18 +482,21 @@ namespace Zhy.Components.Wpf._View._UserControl
                 if (attributeButton != null)
                 {
                     IZFormFuncButton zFormFuncButtonAttribute = (IZFormFuncButton)attributeButton;
-                    sortButtonColumnDic.Add(zFormFuncButtonAttribute, propertyInfo);
+                    if (attributeButton is ZFormOperColumnButtonAttribute)
+                        sortButtonColumnDic.Add(zFormFuncButtonAttribute, propertyInfo);
+                    else if(attributeButton is ZFormToolButtonAttribute)
+                        sortButtonTopDic.Add(zFormFuncButtonAttribute, propertyInfo);
                 }
             }
-            foreach (MethodInfo methodInfo in methodInfos)
-            {
-                Attribute? attribute = methodInfo.GetCustomAttribute(typeof(ZFormFuncButtonAttribute), true);
-                if (attribute != null)
-                {
-                    IZFormFuncButton zFormFuncButtonAttribute = (IZFormFuncButton)attribute;
-                    sortButtonTopDic.Add(zFormFuncButtonAttribute, methodInfo);
-                }
-            }
+            //foreach (MethodInfo methodInfo in methodInfos)
+            //{
+            //    Attribute? attribute = methodInfo.GetCustomAttribute(typeof(ZFormFuncButtonAttribute), true);
+            //    if (attribute != null)
+            //    {
+            //        IZFormFuncButton zFormFuncButtonAttribute = (IZFormFuncButton)attribute;
+            //        sortButtonTopDic.Add(zFormFuncButtonAttribute, methodInfo);
+            //    }
+            //}
             dataGrid.Columns.Clear();
             foreach (var item in sortColumnTempDic)
             {
@@ -509,18 +570,41 @@ namespace Zhy.Components.Wpf._View._UserControl
                     else if (attribute is ZFormCheckColumnAttribute)
                     {
                         ZFormCheckColumnAttribute zCheckAttribute = (ZFormCheckColumnAttribute)attribute;
-                        Style elementStyle = new Style(typeof(CheckBox));
-                        elementStyle.Setters.Add(new Setter(VerticalAlignmentProperty, VerticalAlignment.Center));
-                        elementStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
-                        DataGridCheckBoxColumn dataGridCheckBoxColumn = new DataGridCheckBoxColumn()
+                        DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
                         {
                             Header = zCheckAttribute.Title,
-                            //IsReadOnly = zCheckAttribute.IsReadOnly,
-                            Binding = GetBinding(zCheckAttribute, propertyInfo.Name),
-                            Width = new DataGridLength(zCheckAttribute.Width, zCheckAttribute.WidthUnit),
-                            ElementStyle = elementStyle
+                            Width = new DataGridLength(zCheckAttribute.Width, zCheckAttribute.WidthUnit)
                         };
-                        dataGrid.Columns.Add(dataGridCheckBoxColumn);
+                        DataTemplate dataTemplate = new DataTemplate();
+                        FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
+                        FrameworkElementFactory checkBox = new FrameworkElementFactory(typeof(CheckBox));
+                        checkBox.SetValue(CheckBox.IsEnabledProperty, !zCheckAttribute.IsReadOnlyColumn);
+                        checkBox.SetValue(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center);
+                        checkBox.SetValue(CheckBox.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+                        checkBox.SetBinding(CheckBox.IsCheckedProperty, GetBinding(zCheckAttribute, propertyInfo.Name));
+                        cellFactory.AppendChild(checkBox);
+                        dataTemplate.VisualTree = cellFactory;
+
+                        dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGridTemplateColumn.SortMemberPath = propertyInfo.Name +
+                            (string.IsNullOrEmpty(zCheckAttribute.MemberPath) ? "" : ".") +
+                            zCheckAttribute.MemberPath;
+                        dataGrid.Columns.Add(dataGridTemplateColumn);
+
+                        
+                        //ZFormCheckColumnAttribute zCheckAttribute = (ZFormCheckColumnAttribute)attribute;
+                        //Style elementStyle = new Style(typeof(CheckBox));
+                        //elementStyle.Setters.Add(new Setter(VerticalAlignmentProperty, VerticalAlignment.Center));
+                        //elementStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
+                        //DataGridCheckBoxColumn dataGridCheckBoxColumn = new DataGridCheckBoxColumn()
+                        //{
+                        //    Header = zCheckAttribute.Title,
+                        //    IsReadOnly = zCheckAttribute.IsReadOnlyColumn,
+                        //    Binding = GetBinding(zCheckAttribute, propertyInfo.Name),
+                        //    Width = new DataGridLength(zCheckAttribute.Width, zCheckAttribute.WidthUnit),
+                        //    ElementStyle = elementStyle
+                        //};
+                        //dataGrid.Columns.Add(dataGridCheckBoxColumn);
                     }
                     else if (attribute is ZFormComboColumnAttribute)
                     {
@@ -584,6 +668,10 @@ namespace Zhy.Components.Wpf._View._UserControl
                         dataGridTemplateColumn.CellTemplate = dataTemplate;
                         dataGrid.Columns.Add(dataGridTemplateColumn);
                     }
+                    else if (attribute is ZFormDateColumnAttribute)
+                    {
+
+                    }
                 }
                 else
                 {
@@ -640,18 +728,30 @@ namespace Zhy.Components.Wpf._View._UserControl
                     else if (attribute is ZFormCheckColumnAttribute)
                     {
                         ZFormCheckColumnAttribute zCheckAttribute = (ZFormCheckColumnAttribute)attribute;
+                        DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
+                        {
+                            Header = zCheckAttribute.Title,
+                            Width = new DataGridLength(zCheckAttribute.Width, zCheckAttribute.WidthUnit)
+                        };
+                        DataTemplate dataTemplate = new DataTemplate();
+                        FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
+                        FrameworkElementFactory checkBox = new FrameworkElementFactory(typeof(CheckBox));
+                        checkBox.SetValue(CheckBox.IsEnabledProperty, false);
+                        checkBox.SetValue(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center);
+                        checkBox.SetValue(CheckBox.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+                        checkBox.SetBinding(CheckBox.IsCheckedProperty, GetBinding(zCheckAttribute, propertyInfo.Name));
+                        cellFactory.AppendChild(checkBox);
+
+                        dataTemplate.VisualTree = cellFactory;
+                        dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGridTemplateColumn.SortMemberPath = propertyInfo.Name +
+                            (string.IsNullOrEmpty(zCheckAttribute.MemberPath) ? "" : ".") +
+                            zCheckAttribute.MemberPath;
+                        dataGrid.Columns.Add(dataGridTemplateColumn);
+                        
                         Style elementStyle = new Style(typeof(CheckBox));
                         elementStyle.Setters.Add(new Setter(VerticalAlignmentProperty, VerticalAlignment.Center));
                         elementStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
-                        DataGridCheckBoxColumn dataGridCheckBoxColumn = new DataGridCheckBoxColumn()
-                        {
-                            Header = zCheckAttribute.Title,
-                            //IsReadOnly = zCheckAttribute.IsReadOnly,
-                            Binding = GetBinding(zCheckAttribute, propertyInfo.Name),
-                            Width = new DataGridLength(zCheckAttribute.Width, zCheckAttribute.WidthUnit),
-                            ElementStyle = elementStyle
-                        };
-                        dataGrid.Columns.Add(dataGridCheckBoxColumn);
                     }
                     else if (attribute is ZFormComboColumnAttribute)
                     {
@@ -781,22 +881,30 @@ namespace Zhy.Components.Wpf._View._UserControl
             List<Button> bottomButtonList = new List<Button>();
             foreach (var item in sortButtonTopDic)
             {
-                MethodInfo methodInfo = item.Value;
+                PropertyInfo propertyInfo = item.Value;
                 IZFormFuncButton attribute = item.Key;
                 if (attribute is ZFormFuncButtonAttribute)
                 {
-                    ZFormFuncButtonAttribute zButtonAttribute = (ZFormFuncButtonAttribute)attribute;
+                    ZFormToolButtonAttribute zButtonAttribute = (ZFormToolButtonAttribute)attribute;
                     Button button = new Button();
+                    button.DataContext = Activator.CreateInstance(sourceItemType);
                     button.SetValue(MarginProperty, new Thickness(1, 2, 1, 2));
                     button.SetValue(Button.StyleProperty, this.FindResource(zButtonAttribute.ButtonStyle.ToString()));
                     button.Content = zButtonAttribute.ButtonContent;
                     button.SetValue(DockPanel.DockProperty, Dock.Right);
-                    button.Click += (sd, e) =>
-                    {
-                        if (!methodInfo.IsStatic)
-                            throw new ZDataGridException("特性 `ZOperateTopButtonAttribute` 标注方法必须为静态方法！");
-                        methodInfo.Invoke(null, new object[] { dataGrid.ItemsSource });
-                    };
+                    button.SetBinding(Button.CommandProperty, new Binding() { Path = new PropertyPath(propertyInfo.Name) });
+                    MultiBinding multiBinding = new MultiBinding();
+                    multiBinding.Converter = new ColumnButtonConverter();
+                    multiBinding.Bindings.Add(new Binding() { Path = new PropertyPath("ItemsSource"), ElementName = "dataGrid" });
+                    button.SetBinding(Button.CommandParameterProperty, multiBinding);
+                    //button.Click += async (sd, e) =>
+                    //{
+                    //    if (!methodInfo.IsStatic)
+                    //        throw new ZDataGridException("特性 `ZOperateTopButtonAttribute` 标注方法必须为静态方法！");
+                    //    Task task = methodInfo.Invoke(null, new object[] { dataGrid.ItemsSource }) as Task;
+                    //    if (TypeUtils.IsAsyncMethod(methodInfo))
+                    //        await task;
+                    //};
                     if (zButtonAttribute.Location == ButtonLocation.Top)
                     {
                         dockPanelTop.Children.Add(button);
@@ -813,6 +921,15 @@ namespace Zhy.Components.Wpf._View._UserControl
                 dockPanelBottom.Children.Add(item);
 
             UpdateSearchTextMark();
+        }
+
+        private void HandleDataContext(object sender, object itemsSource)
+        {
+            if(sender is FrameworkElement)
+            {
+                var element = (FrameworkElement)sender;
+                element.DataContext = itemsSource;
+            }
         }
 
         private Binding GetBinding(IZFormColumn zFormColumn, string propertyName)
@@ -841,12 +958,17 @@ namespace Zhy.Components.Wpf._View._UserControl
         {
             public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
             {
-                return new object[] { values[0], values[1] };
+                return new object[] { values[0], values.Length > 1 ? values[1] : null };
             }
             public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
             {
                 throw new NotImplementedException();
             }
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedItem = dataGrid.SelectedItem;
         }
     }
 }

@@ -32,6 +32,8 @@
                 x:Name="dataGrid"
                 Background="Transparent"
                 ItemsSource="{Binding ItemsSource, Mode=TwoWay, ElementName=userControlZDataGrid, UpdateSourceTrigger=PropertyChanged}"
+                SelectionChanged="dataGrid_SelectionChanged"
+                SelectionMode="Single"
                 Style="{DynamicResource InfoGrid}" />
         </DockPanel>
         <DockPanel Grid.Row="2">

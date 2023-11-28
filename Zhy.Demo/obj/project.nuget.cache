@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "igU6b1q0RP4UWqlek/OXNydezx772hQCrzn+D68AzXs5OI9IKdUxQjYaXyZYeeFLR3XZcg6kd0vHhrdzAm9WCg==",
+  "dgSpecHash": "xqeRi60R2Rzn61jHZi9neAeoQ0Tm/H8xgH9dd3+zD+61Msma9NjD8T3Hlko4b0ffTMKyXU/FwRnEi/dU0rh0Ow==",
   "success": true,
   "projectFilePath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\admin\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.1\\communitytoolkit.mvvm.8.2.1.nupkg.sha512"
+    "C:\\Users\\admin\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.1\\communitytoolkit.mvvm.8.2.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

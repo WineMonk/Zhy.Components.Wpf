@@ -232,7 +232,6 @@
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-
                     </Style>
                 </ToggleButton.Style>
             </ToggleButton>

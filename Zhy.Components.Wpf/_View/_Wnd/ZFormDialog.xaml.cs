@@ -125,6 +125,7 @@ namespace Zhy.Components.Wpf._View._Window
                         TextBox textBox = new TextBox();
                         textBox.SetValue(TextBox.MinHeightProperty, 30.0);
                         textBox.SetValue(TextBox.VerticalContentAlignmentProperty, VerticalAlignment.Center);
+                        textBox.SetValue(TextBox.IsReadOnlyProperty, zFormText.IsReadOnlyItem);
                         textBox.SetBinding(TextBox.TextProperty, GetBinding(zFormText, propertyInfo.Name));
                         dockPanel.Children.Add(textBox);
                         stackPanel.Children.Add(dockPanel);

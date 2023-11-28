@@ -32,6 +32,10 @@ namespace Zhy.Components.Wpf._Common._Utils
         public static string Print(object obj)
         {
             string msg = string.Empty;
+            if(obj == null)
+            {
+                return "{}";
+            }
             PropertyInfo[] propertyInfos = obj.GetType().GetProperties();
             foreach (var propertyInfo in propertyInfos)
             {

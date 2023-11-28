@@ -16,7 +16,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Zhy.Components.Wpf._Attribute;
+using Zhy.Components.Wpf._Common._Utils;
 using Zhy.Components.Wpf._Enum;
 using Zhy.Demo._Common;
 using Zhy.Demo._Model;
@@ -47,9 +49,16 @@ namespace Zhy.Demo._ViewModel
                 accountInfo.Username = CommonUtils.GenerateRandomName();
                 accountInfo.ArchivesPath = "D:\\admin\\admin.ad";
                 accountInfo.Role = accountInfo.Roles.FirstOrDefault(r => r == "角色1");
-                accountInfo.Permission.ForEach(permission => permission.IsChecked = new Random().Next(0,2)==1);
+                accountInfo.Permission.ForEach(permission => permission.IsChecked = new Random().Next(0, 2) == 1);
                 TestItems.Add(accountInfo);
             }
+        }
+
+        private AccountInfo _testItem;
+        public AccountInfo TestItem
+        {
+            get { return _testItem; }
+            set { SetProperty(ref _testItem, value); }
         }
 
         private IList _testItems;
@@ -58,6 +67,7 @@ namespace Zhy.Demo._ViewModel
             get { return _testItems; }
             set { SetProperty(ref _testItems, value); }
         }
+
         private bool _isReadOnly = false;
         public bool PropertyIsReadOnly
         {
@@ -124,6 +134,12 @@ namespace Zhy.Demo._ViewModel
                 accountInfo.Permission.ForEach(permission => permission.IsChecked = true);
                 TestItems.Add(accountInfo);
             }
+        }
+        public RelayCommand CommandViewSelectedItem => new RelayCommand(ViewSelectedItem);
+        private void ViewSelectedItem()
+        {
+            string msg = FormItemUtils.Print(TestItem);
+            MessageBox.Show(msg, "属性信息", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

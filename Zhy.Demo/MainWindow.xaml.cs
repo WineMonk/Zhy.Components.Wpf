@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zhy.Components.Wpf._Model;
 using Zhy.Components.Wpf._View._Window;
 using Zhy.Demo._Common;
 using Zhy.Demo._Model;
@@ -36,6 +38,42 @@ namespace Zhy.Demo
         }
 
         private void buttonZhyFormGrid_Click(object sender, RoutedEventArgs e)
+        {
+            List<ZFormItem> zFormItems = new List<ZFormItem>()
+            {
+                new ZFormItem()
+                {
+                    Name = "Name",
+                    Value = "Value",
+                    IsReadOnly = true
+                },
+                new ZFormItem()
+                {
+                    Name = "Name1",
+                    Value = "Value1"
+                },
+                new ZFormItem()
+                {
+                    Name = "Name2",
+                    Value = "Value2"
+                }
+            };
+            ZFormItem zFormItem = new ZFormItem()
+            {
+                Name = "Name3",
+                Value = ""
+            };
+            zFormItem.SetVerify((i) => 
+                {
+                    return !string.IsNullOrEmpty(i.Value);
+                }, "值不能为空！");
+            zFormItems.Add(zFormItem);
+
+            ZFormGrid zFormGrid = new ZFormGrid(zFormItems);
+            zFormGrid.ShowDialog();
+        }
+
+        private void buttonZhyFormDialog_Click(object sender, RoutedEventArgs e)
         {
             AccountInfo accountInfo = new AccountInfo();
             accountInfo = new AccountInfo();
