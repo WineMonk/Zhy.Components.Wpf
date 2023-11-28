@@ -18,12 +18,12 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
-    <OutputPath>.\Help\</OutputPath>
+    <OutputPath>Help\Markdown\</OutputPath>
     <HtmlHelpName>Zhy.Components.Wpf.Documentation</HtmlHelpName>
     <Language>zh-CN</Language>
-    <HelpFileFormat>Website</HelpFileFormat>
+    <HelpFileFormat>Markdown</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
-    <PresentationStyle>Default2022</PresentationStyle>
+    <PresentationStyle>Markdown</PresentationStyle>
     <BuildLogFile>Build\Log\build-log.log</BuildLogFile>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>
@@ -60,6 +60,8 @@
     </HeaderText>
     <FooterText>
     </FooterText>
+    <HtmlHelp1xCompilerPath>..\..\..\..\..\..\software\HTML Help Workshop\</HtmlHelp1xCompilerPath>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
