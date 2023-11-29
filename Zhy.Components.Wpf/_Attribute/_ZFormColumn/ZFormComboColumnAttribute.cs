@@ -6,11 +6,6 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
 
@@ -19,7 +14,7 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 下拉列表框表单列
     /// </summary>
-    public class ZFormComboColumnAttribute:ZFormComboItemAttribute,IZFormColumn
+    public class ZFormComboColumnAttribute : ZFormComboItemAttribute, IZFormColumn
     {
         /// <summary>
         /// 下拉列表框表单列

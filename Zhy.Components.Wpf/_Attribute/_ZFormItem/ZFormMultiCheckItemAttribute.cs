@@ -6,11 +6,6 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zhy.Components.Wpf._Attribute._Base;
 
 namespace Zhy.Components.Wpf._Attribute._ZFormItem
@@ -18,7 +13,7 @@ namespace Zhy.Components.Wpf._Attribute._ZFormItem
     /// <summary>
     /// 多项选择框表单项
     /// </summary>
-    public class ZFormMultiCheckItemAttribute: ZFormItemAttribute
+    public class ZFormMultiCheckItemAttribute : ZFormItemAttribute
     {
         /// <summary>
         /// 多项选择框表单项

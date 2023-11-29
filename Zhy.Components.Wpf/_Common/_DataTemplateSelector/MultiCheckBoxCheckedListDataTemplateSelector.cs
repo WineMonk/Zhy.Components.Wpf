@@ -6,24 +6,14 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Media3D;
-using Zhy.Components.Wpf._View._UserControl;
 
 namespace Zhy.Components.Wpf._Common._DataTemplateSelector
 {
-	/// <summary>
+    /// <summary>
     /// 
     /// </summary>
     internal class MultiCheckBoxCheckedListDataTemplateSelector : DataTemplateSelector
@@ -37,7 +27,7 @@ namespace Zhy.Components.Wpf._Common._DataTemplateSelector
             //    frameworkElement = (FrameworkElement)frameworkElement.Parent;
             //}
             //if(frameworkElement.Parent == null)
-                //return base.SelectTemplate(item, container);
+            //return base.SelectTemplate(item, container);
             //multiCheckBox = (MultiCheckBox)frameworkElement.Parent;
             DataTemplate dataTemplate = new DataTemplate();
             FrameworkElementFactory frameworkElementFactory = new FrameworkElementFactory(typeof(Border));

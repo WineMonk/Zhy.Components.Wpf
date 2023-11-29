@@ -1,18 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Zhy.Components.Wpf._Model;
 using Zhy.Components.Wpf._View._Window;
 using Zhy.Demo._Common;
@@ -63,7 +51,7 @@ namespace Zhy.Demo
                 Name = "Name3",
                 Value = ""
             };
-            zFormItem.SetVerify((i) => 
+            zFormItem.SetVerify((i) =>
                 {
                     return !string.IsNullOrEmpty(i.Value);
                 }, "值不能为空！");

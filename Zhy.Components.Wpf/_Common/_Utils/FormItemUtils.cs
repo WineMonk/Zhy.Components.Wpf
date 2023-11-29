@@ -6,13 +6,8 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Zhy.Components.Wpf._Attribute._Base;
 using Zhy.Components.Wpf._Attribute._ZFormColumn;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
@@ -32,7 +27,7 @@ namespace Zhy.Components.Wpf._Common._Utils
         public static string Print(object obj)
         {
             string msg = string.Empty;
-            if(obj == null)
+            if (obj == null)
             {
                 return "{}";
             }

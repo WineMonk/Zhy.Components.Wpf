@@ -12,27 +12,20 @@ using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using Zhy.Components.Wpf._Attribute._Base;
 using Zhy.Components.Wpf._Attribute._ZFormColumn;
-using Zhy.Components.Wpf._Attribute._ZFormItem;
 using Zhy.Components.Wpf._Common._Utils;
 using Zhy.Components.Wpf._Enum;
 using Zhy.Components.Wpf._View._Window;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Zhy.Demo._Model
 {
     /// <summary>
     /// 
     /// </summary>
-    public class AccountInfo:ObservableObject
+    public class AccountInfo : ObservableObject
     {
         private int _no;
         private bool _isChecked;
@@ -69,7 +62,7 @@ namespace Zhy.Demo._Model
         public bool Enable { get => _enable; set => SetProperty(ref _enable, value); }
         [ZFormTextColumn("联系电话", Index = 4, IsSearchProperty = true, WidthUnit = DataGridLengthUnitType.Auto)]
         public string Phone { get => _phone; set => SetProperty(ref _phone, value); }
-        [ZFormTextButtonColumn("档案路径", Index = 5, ButtonContent = "更 改",RelayCommandName = nameof(CommandModifyArchivesPath), WidthUnit = DataGridLengthUnitType.Star)]
+        [ZFormTextButtonColumn("档案路径", Index = 5, ButtonContent = "更 改", RelayCommandName = nameof(CommandModifyArchivesPath), WidthUnit = DataGridLengthUnitType.Star)]
         public string ArchivesPath { get => _archivesPath; set => SetProperty(ref _archivesPath, value); }
         [ZFormMultiCheckColumn("权 限", "IsChecked", "Name", IsSearchProperty = true, WidthUnit = DataGridLengthUnitType.Auto)]
         public List<Permission> Permission { get => _permission; set => SetProperty(ref _permission, value); }
@@ -121,7 +114,7 @@ namespace Zhy.Demo._Model
             IList<AccountInfo> accountInfos = items[0] as IList<AccountInfo>;
             accountInfos.Add(accountInfo);
             accountInfo.NO = accountInfos.IndexOf(accountInfo) + 1;
-            
+
         }
         [ZFormToolButton("批量删除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
         public RelayCommand<object[]> CommandBatchDeleteItem => new RelayCommand<object[]>(BatchDeleteItem);

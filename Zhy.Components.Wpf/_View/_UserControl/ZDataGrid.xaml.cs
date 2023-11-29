@@ -1,19 +1,10 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Globalization;
-using System.Printing;
 using System.Reflection;
-using System.Reflection.PortableExecutable;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -21,10 +12,7 @@ using Zhy.Components.Wpf._Attribute;
 using Zhy.Components.Wpf._Attribute._Base;
 using Zhy.Components.Wpf._Attribute._ZFormColumn;
 using Zhy.Components.Wpf._Common._Comparer;
-using Zhy.Components.Wpf._Common._Converter;
-using Zhy.Components.Wpf._Common._Utils;
 using Zhy.Components.Wpf._Enum;
-using Zhy.Components.Wpf._Exception;
 
 namespace Zhy.Components.Wpf._View._UserControl
 {
@@ -141,7 +129,7 @@ namespace Zhy.Components.Wpf._View._UserControl
         {
             InitSearchComponent();
         }
-        
+
         #region 查询
         public void SearchAll()
         {
@@ -395,7 +383,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                         bool.TryParse(member.ToString(), out check);
                         if (!check)
                             continue;
-                        if(content.ToString().ToLower().Contains(searchText.ToLower()))
+                        if (content.ToString().ToLower().Contains(searchText.ToLower()))
                             return true;
                     }
                 }
@@ -487,7 +475,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                     IZFormFuncButton zFormFuncButtonAttribute = (IZFormFuncButton)attributeButton;
                     if (attributeButton is ZFormOperColumnButtonAttribute)
                         sortButtonColumnDic.Add(zFormFuncButtonAttribute, propertyInfo);
-                    else if(attributeButton is ZFormToolButtonAttribute)
+                    else if (attributeButton is ZFormToolButtonAttribute)
                         sortButtonTopDic.Add(zFormFuncButtonAttribute, propertyInfo);
                 }
             }
@@ -594,7 +582,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                             zCheckAttribute.MemberPath;
                         dataGrid.Columns.Add(dataGridTemplateColumn);
 
-                        
+
                         //ZFormCheckColumnAttribute zCheckAttribute = (ZFormCheckColumnAttribute)attribute;
                         //Style elementStyle = new Style(typeof(CheckBox));
                         //elementStyle.Setters.Add(new Setter(VerticalAlignmentProperty, VerticalAlignment.Center));
@@ -772,7 +760,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                             (string.IsNullOrEmpty(zCheckAttribute.MemberPath) ? "" : ".") +
                             zCheckAttribute.MemberPath;
                         dataGrid.Columns.Add(dataGridTemplateColumn);
-                        
+
                         Style elementStyle = new Style(typeof(CheckBox));
                         elementStyle.Setters.Add(new Setter(VerticalAlignmentProperty, VerticalAlignment.Center));
                         elementStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
@@ -958,7 +946,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                     {
                         dockPanelTop.Children.Add(button);
                     }
-                    else if(zButtonAttribute.Location == ButtonLocation.Bottom)
+                    else if (zButtonAttribute.Location == ButtonLocation.Bottom)
                     {
                         button.SetValue(Button.FontSizeProperty, 11.0);
                         button.SetValue(DockPanel.DockProperty, zButtonAttribute.Dock);
@@ -974,7 +962,7 @@ namespace Zhy.Components.Wpf._View._UserControl
 
         private void HandleDataContext(object sender, object itemsSource)
         {
-            if(sender is FrameworkElement)
+            if (sender is FrameworkElement)
             {
                 var element = (FrameworkElement)sender;
                 element.DataContext = itemsSource;

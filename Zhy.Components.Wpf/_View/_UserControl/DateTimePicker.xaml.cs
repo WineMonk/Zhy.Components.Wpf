@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Zhy.Components.Wpf._View._UserControl
 {
@@ -21,12 +10,17 @@ namespace Zhy.Components.Wpf._View._UserControl
     /// </summary>
     public partial class DateTimePicker : UserControl
     {
+        /// <summary>
+        /// 选择的日期
+        /// </summary>
         public DateTime SelectDate
         {
             get { return (DateTime)GetValue(SelectDateProperty); }
             set { SetValue(SelectDateProperty, value); PropertyDateChanged(); }
         }
-
+        /// <summary>
+        /// 选择的日期依赖配置
+        /// </summary>
         public static readonly DependencyProperty SelectDateProperty =
             DependencyProperty.Register("SelectDate", typeof(DateTime),
                 typeof(DateTimePicker), new PropertyMetadata(DateTime.Now, SelectDatePropertyChanged));
@@ -36,25 +30,33 @@ namespace Zhy.Components.Wpf._View._UserControl
             dateTimePicker.PropertyDateChanged();
         }
 
-
+        /// <summary>
+        /// 日期文本显示格式
+        /// </summary>
         public string DisplayFormat
         {
             get { return (string)GetValue(DisplayFormatProperty); }
             set { SetValue(DisplayFormatProperty, value); }
         }
-
+        /// <summary>
+        /// 日期文本显示格式依赖配置
+        /// </summary>
         public static readonly DependencyProperty DisplayFormatProperty =
-            DependencyProperty.Register("DisplayFormat", typeof(string), 
+            DependencyProperty.Register("DisplayFormat", typeof(string),
                 typeof(DateTimePicker), new PropertyMetadata("yyyy-MM-dd HH:mm:ss"));
-        
+        /// <summary>
+        /// 日期文本
+        /// </summary>
         public string DisplayDate
         {
             get { return (string)GetValue(DisplayDateProperty); }
             set { SetValue(DisplayDateProperty, value); PropertyDisplayDateChanged(); }
         }
-
+        /// <summary>
+        /// 日期文本依赖配置
+        /// </summary>
         public static readonly DependencyProperty DisplayDateProperty =
-            DependencyProperty.Register("DisplayDate", typeof(string), 
+            DependencyProperty.Register("DisplayDate", typeof(string),
                 typeof(DateTimePicker), new PropertyMetadata(
                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), DisplayDatePropertyChanged));
         private static void DisplayDatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -76,11 +78,14 @@ namespace Zhy.Components.Wpf._View._UserControl
         //    set { _selectDate = value; PropertyDateChanged(); }
         //}
 
+        /// <summary>
+        /// DateTimePicker构造函数
+        /// </summary>
         public DateTimePicker()
         {
             InitializeComponent();
             calendar.SelectedDate = SelectDate;
-            textBoxHour.Text = SelectDate.Hour.ToString().PadLeft(2,'0');
+            textBoxHour.Text = SelectDate.Hour.ToString().PadLeft(2, '0');
             textBoxMinute.Text = SelectDate.Minute.ToString().PadLeft(2, '0');
             textBoxSecond.Text = SelectDate.Second.ToString().PadLeft(2, '0');
             textBoxHour.TextChanged += textBoxTime_TextChanged;
@@ -108,9 +113,9 @@ namespace Zhy.Components.Wpf._View._UserControl
 
         private void textBoxInt_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if(!((e.Key>=Key.D0 && e.Key<=Key.D9) ||
-                (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || 
-                e.Key == Key.Back || e.Key == Key.Delete || 
+            if (!((e.Key >= Key.D0 && e.Key <= Key.D9) ||
+                (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ||
+                e.Key == Key.Back || e.Key == Key.Delete ||
                 e.Key == Key.Right || e.Key == Key.Left))
             {
                 e.Handled = true;
@@ -125,12 +130,12 @@ namespace Zhy.Components.Wpf._View._UserControl
             {
                 return;
             }
-            if(textBox.Text.Length >= 2)
+            if (textBox.Text.Length >= 2)
             {
-                if(selectionStart == 0)
+                if (selectionStart == 0)
                 {
                     string newText = e.Text + textBox.Text[1];
-                    if(int.Parse(newText)<=24)
+                    if (int.Parse(newText) <= 24)
                     {
                         textBox.Text = newText;
                     }
@@ -139,7 +144,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                 {
                     textBox.Text = textBox.Text[0] + e.Text;
                 }
-                e.Handled= true;
+                e.Handled = true;
             }
         }
 

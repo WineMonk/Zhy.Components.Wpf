@@ -51,3 +51,5 @@ Demo
 [API帮助文档](http://81.70.35.77:3729/)
 
 [API帮助文档](./Doc/Help/Markdown/Home.md)
+
+[主页](https://shaoshao.net.cn)

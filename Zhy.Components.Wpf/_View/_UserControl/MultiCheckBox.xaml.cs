@@ -1,22 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Zhy.Components.Wpf._View._UserControl
 {
@@ -110,7 +100,7 @@ namespace Zhy.Components.Wpf._View._UserControl
                 if (propertyInfo == null)
                     continue;
                 object? val = propertyInfo.GetValue(item);
-                if(val == null)
+                if (val == null)
                     continue;
                 bool check = false;
                 bool.TryParse(val.ToString(), out check);
@@ -146,7 +136,7 @@ namespace Zhy.Components.Wpf._View._UserControl
             }));
             ControlTemplate controlTemplate = new ControlTemplate(typeof(ListBoxItem));
             FrameworkElementFactory frameworkElementFactory = new FrameworkElementFactory(typeof(Grid));
-            FrameworkElementFactory border1 = new FrameworkElementFactory(typeof(Border),"bg");
+            FrameworkElementFactory border1 = new FrameworkElementFactory(typeof(Border), "bg");
             border1.SetValue(Border.BorderThicknessProperty, new Thickness(0));
             border1.SetValue(Border.CornerRadiusProperty, new CornerRadius(3));
             frameworkElementFactory.AppendChild(border1);
@@ -173,7 +163,7 @@ namespace Zhy.Components.Wpf._View._UserControl
             MultiTrigger multiTrigger = new MultiTrigger();
             multiTrigger.Conditions.Add(new Condition(ListBoxItem.IsMouseOverProperty, true));
             multiTrigger.Conditions.Add(new Condition(ListBoxItem.IsSelectedProperty, false));
-            multiTrigger.Setters.Add(new Setter(Border.BackgroundProperty,new SolidColorBrush(Color.FromRgb(0, 155, 219)), "bg"));
+            multiTrigger.Setters.Add(new Setter(Border.BackgroundProperty, new SolidColorBrush(Color.FromRgb(0, 155, 219)), "bg"));
             multiTrigger.Setters.Add(new Setter(Border.OpacityProperty, 0.7, "bg"));
             multiTrigger.Setters.Add(new Setter(ListBoxItem.ForegroundProperty, new SolidColorBrush(Colors.White)));
             controlTemplate.Triggers.Add(multiTrigger);

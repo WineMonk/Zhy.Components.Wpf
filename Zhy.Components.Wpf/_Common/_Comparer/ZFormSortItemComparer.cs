@@ -6,11 +6,7 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zhy.Components.Wpf._Attribute;
 
 namespace Zhy.Components.Wpf._Common._Comparer
@@ -21,7 +17,7 @@ namespace Zhy.Components.Wpf._Common._Comparer
     internal class ZFormSortItemComparer : IComparer<IZFormSortItem>
     {
         private bool _isInverted;
-        public ZFormSortItemComparer(bool isInverted = false) 
+        public ZFormSortItemComparer(bool isInverted = false)
         {
             _isInverted = isInverted;
         }

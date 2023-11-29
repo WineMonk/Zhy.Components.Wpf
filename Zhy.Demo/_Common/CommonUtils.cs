@@ -7,10 +7,7 @@
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Zhy.Demo._Common
 {
@@ -90,11 +87,11 @@ namespace Zhy.Demo._Common
                 "公西", "巫马", "端木", "颛孙", "子车", "督", "仉", "司寇", "亓官", "鲜于", "锺离", "盖", "逯",
                 "库", "郏", "逢", "阴", "薄", "厉", "稽", "闾丘", "公良", "段干", "开", "光", "操", "瑞", "眭",
                 "泥", "运", "摩", "伟", "铁", "迮" };
-        
+
         public static string GenerateRandomName()
         {
             Random random = new Random();
-            int numberOfCharacters = random.Next(1,3);
+            int numberOfCharacters = random.Next(1, 3);
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < numberOfCharacters; i++)
             {

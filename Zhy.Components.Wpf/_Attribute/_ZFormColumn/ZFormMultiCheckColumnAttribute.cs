@@ -6,11 +6,6 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
 
@@ -27,8 +22,9 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// <param name="title">标题</param>
         /// <param name="memberPath">成员路径</param>
         /// <param name="contentProperty">显示内容属性名</param>
-        public ZFormMultiCheckColumnAttribute(string title, string memberPath, string contentProperty) : 
-            base(title, memberPath, contentProperty) { }
+        public ZFormMultiCheckColumnAttribute(string title, string memberPath, string contentProperty) :
+            base(title, memberPath, contentProperty)
+        { }
         /// <summary>
         /// 列宽度
         /// </summary>
