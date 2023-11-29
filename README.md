@@ -48,8 +48,9 @@ Demo
 
 ## Doc
 
-[API帮助文档](http://81.70.35.77:3729/)
+[API帮助文档 - CHM](./Doc/Help/CHM)
 
-[API帮助文档](./Doc/Help/Markdown/Home.md)
+[API帮助文档 - Markdown](./Doc/Help/Markdown/Home.md)
 
-[主页](https://shaoshao.net.cn)
+[主 页](https://shaoshao.net.cn)
+
