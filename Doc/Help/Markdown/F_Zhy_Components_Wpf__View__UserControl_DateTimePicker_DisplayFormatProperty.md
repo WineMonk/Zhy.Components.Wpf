@@ -1,7 +1,7 @@
 # DisplayFormatProperty 字段
 
 
-\[缺少 "F:Zhy.Components.Wpf._View._UserControl.DateTimePicker.DisplayFormatProperty" 的 &lt;summary&gt; 文档\]
+日期文本显示格式依赖配置
 
 
 

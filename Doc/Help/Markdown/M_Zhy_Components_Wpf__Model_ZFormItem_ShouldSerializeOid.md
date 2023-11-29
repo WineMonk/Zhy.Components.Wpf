@@ -1,7 +1,7 @@
 # ShouldSerializeOid 方法
 
 
-\[缺少 "M:Zhy.Components.Wpf._Model.ZFormItem.ShouldSerializeOid" 的 &lt;summary&gt; 文档\]
+序列化时是否忽略序号
 
 
 
@@ -11,14 +11,14 @@
 
 **C#**
 ``` C#
-public bool ShouldSerializeOid()
+public virtual bool ShouldSerializeOid()
 ```
 
 
 
 #### 返回值
 <a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a>  
-\[缺少 "M:Zhy.Components.Wpf._Model.ZFormItem.ShouldSerializeOid" 的 &lt;returns&gt; 文档\]
+忽略 -&gt; true，否则 -&gt; false。
 
 ## 参见
 

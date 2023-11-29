@@ -1,7 +1,7 @@
 # DisplayDate 属性
 
 
-\[缺少 "P:Zhy.Components.Wpf._View._UserControl.DateTimePicker.DisplayDate" 的 &lt;summary&gt; 文档\]
+日期文本
 
 
 

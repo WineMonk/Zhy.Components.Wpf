@@ -25,20 +25,20 @@ public class DateTimePicker : UserControl,
 <table>
 <tr>
 <td><a href="M_Zhy_Components_Wpf__View__UserControl_DateTimePicker__ctor.md">DateTimePicker</a></td>
-<td>初始化 DateTimePicker 类的一个新实例</td></tr>
+<td>DateTimePicker构造函数</td></tr>
 </table>
 
 ## 属性
 <table>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__View__UserControl_DateTimePicker_DisplayDate.md">DisplayDate</a></td>
-<td> </td></tr>
+<td>日期文本</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__View__UserControl_DateTimePicker_DisplayFormat.md">DisplayFormat</a></td>
-<td> </td></tr>
+<td>日期文本显示格式</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__View__UserControl_DateTimePicker_SelectDate.md">SelectDate</a></td>
-<td> </td></tr>
+<td>选择的日期</td></tr>
 </table>
 
 ## 方法
@@ -52,13 +52,13 @@ public class DateTimePicker : UserControl,
 <table>
 <tr>
 <td><a href="F_Zhy_Components_Wpf__View__UserControl_DateTimePicker_DisplayDateProperty.md">DisplayDateProperty</a></td>
-<td> </td></tr>
+<td>日期文本依赖配置</td></tr>
 <tr>
 <td><a href="F_Zhy_Components_Wpf__View__UserControl_DateTimePicker_DisplayFormatProperty.md">DisplayFormatProperty</a></td>
-<td> </td></tr>
+<td>日期文本显示格式依赖配置</td></tr>
 <tr>
 <td><a href="F_Zhy_Components_Wpf__View__UserControl_DateTimePicker_SelectDateProperty.md">SelectDateProperty</a></td>
-<td> </td></tr>
+<td>选择的日期依赖配置</td></tr>
 </table>
 
 ## 参见

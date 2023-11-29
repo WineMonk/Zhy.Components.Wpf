@@ -1,7 +1,7 @@
 # DateTimePicker 构造函数
 
 
-初始化 <a href="T_Zhy_Components_Wpf__View__UserControl_DateTimePicker.md">DateTimePicker</a> 类的一个新实例
+DateTimePicker构造函数
 
 
 

@@ -24,7 +24,7 @@ public class ZFormGrid : Window, IComponentConnector
 <table>
 <tr>
 <td><a href="M_Zhy_Components_Wpf__View__Window_ZFormGrid__ctor.md">ZFormGrid</a></td>
-<td>ZFormGrid</td></tr>
+<td>ZFormGrid构造函数</td></tr>
 </table>
 
 ## 方法

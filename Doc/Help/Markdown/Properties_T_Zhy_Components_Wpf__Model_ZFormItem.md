@@ -7,19 +7,19 @@
 <table>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Model_ZFormItem_IsReadOnly.md">IsReadOnly</a></td>
-<td> </td></tr>
+<td>是否只读</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Model_ZFormItem_Key.md">Key</a></td>
-<td> </td></tr>
+<td>表单项键</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Model_ZFormItem_Name.md">Name</a></td>
-<td> </td></tr>
+<td>表单项名称</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Model_ZFormItem_Oid.md">Oid</a></td>
-<td> </td></tr>
+<td>序号</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Model_ZFormItem_Value.md">Value</a></td>
-<td> </td></tr>
+<td>表单项值</td></tr>
 </table>
 
 ## 参见

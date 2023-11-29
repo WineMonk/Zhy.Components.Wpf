@@ -12,7 +12,7 @@ using System;
 namespace Zhy.Components.Wpf._Model
 {
     /// <summary>
-    /// 
+    /// 表单项
     /// </summary>
     public class ZFormItem : ObservableObject
     {

@@ -1,7 +1,7 @@
 # Name 属性
 
 
-\[缺少 "P:Zhy.Components.Wpf._Model.ZFormItem.Name" 的 &lt;summary&gt; 文档\]
+表单项名称
 
 
 

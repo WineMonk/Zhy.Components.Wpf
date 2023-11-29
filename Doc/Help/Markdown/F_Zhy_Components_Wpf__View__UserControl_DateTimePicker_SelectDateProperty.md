@@ -1,7 +1,7 @@
 # SelectDateProperty 字段
 
 
-\[缺少 "F:Zhy.Components.Wpf._View._UserControl.DateTimePicker.SelectDateProperty" 的 &lt;summary&gt; 文档\]
+选择的日期依赖配置
 
 
 

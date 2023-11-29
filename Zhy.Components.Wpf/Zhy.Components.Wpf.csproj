@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <Folder Include="_View\_Theme\" />
-    <Folder Include="_View\_Model\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,7 @@
 # ZFormGrid 构造函数
 
 
-ZFormGrid
+ZFormGrid构造函数
 
 
 
@@ -19,7 +19,7 @@ public ZFormGrid(
 
 
 #### 参数
-<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1" target="_blank" rel="noopener noreferrer">List</a>(<a href="T_Zhy_Components_Wpf__Model_ZFormItem.md">ZFormItem</a>)</dt><dd>\[缺少 "M:Zhy.Components.Wpf._View._Window.ZFormGrid.#ctor(System.Collections.Generic.List{Zhy.Components.Wpf._Model.ZFormItem})" 的 &lt;param name="zFormItems"/&gt; 文档\]</dd></dl>
+<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1" target="_blank" rel="noopener noreferrer">List</a>(<a href="T_Zhy_Components_Wpf__Model_ZFormItem.md">ZFormItem</a>)</dt><dd>表单项</dd></dl>
 
 ## 参见
 

@@ -7,10 +7,10 @@
 <table>
 <tr>
 <td><a href="M_Zhy_Components_Wpf__Model_ZFormItem_SetVerify.md">SetVerify</a></td>
-<td> </td></tr>
+<td>设置表单项验证函数</td></tr>
 <tr>
 <td><a href="M_Zhy_Components_Wpf__Model_ZFormItem_ShouldSerializeOid.md">ShouldSerializeOid</a></td>
-<td> </td></tr>
+<td>序列化时是否忽略序号</td></tr>
 </table>
 
 ## 参见

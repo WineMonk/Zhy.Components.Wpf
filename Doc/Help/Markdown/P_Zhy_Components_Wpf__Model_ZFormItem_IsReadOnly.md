@@ -1,7 +1,7 @@
 # IsReadOnly 属性
 
 
-\[缺少 "P:Zhy.Components.Wpf._Model.ZFormItem.IsReadOnly" 的 &lt;summary&gt; 文档\]
+是否只读
 
 
 
