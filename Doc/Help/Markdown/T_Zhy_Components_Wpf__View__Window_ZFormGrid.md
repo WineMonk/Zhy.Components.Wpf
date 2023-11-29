@@ -6,7 +6,7 @@ ZFormGrid.xaml 的交互逻辑
 
 
 ## Definition
-**命名空间：** <a href="N_Zhy_Components_Wpf__View__Window">Zhy.Components.Wpf._View._Window</a>  
+**命名空间：** <a href="N_Zhy_Components_Wpf__View__Window.md">Zhy.Components.Wpf._View._Window</a>  
 **程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0
 
 **C#**
@@ -23,14 +23,14 @@ public class ZFormGrid : Window, IComponentConnector
 ## 构造函数
 <table>
 <tr>
-<td><a href="M_Zhy_Components_Wpf__View__Window_ZFormGrid__ctor">ZFormGrid</a></td>
+<td><a href="M_Zhy_Components_Wpf__View__Window_ZFormGrid__ctor.md">ZFormGrid</a></td>
 <td>ZFormGrid</td></tr>
 </table>
 
 ## 方法
 <table>
 <tr>
-<td><a href="M_Zhy_Components_Wpf__View__Window_ZFormGrid_InitializeComponent">InitializeComponent</a></td>
+<td><a href="M_Zhy_Components_Wpf__View__Window_ZFormGrid_InitializeComponent.md">InitializeComponent</a></td>
 <td>InitializeComponent</td></tr>
 </table>
 
@@ -38,4 +38,4 @@ public class ZFormGrid : Window, IComponentConnector
 
 
 #### 引用
-<a href="N_Zhy_Components_Wpf__View__Window">Zhy.Components.Wpf._View._Window 命名空间</a>  
+<a href="N_Zhy_Components_Wpf__View__Window.md">Zhy.Components.Wpf._View._Window 命名空间</a>  

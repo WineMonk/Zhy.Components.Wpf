@@ -8,9 +8,9 @@
 ## 类
 <table>
 <tr>
-<td><a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormFuncButtonAttribute">ZFormFuncButtonAttribute</a></td>
+<td><a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormFuncButtonAttribute.md">ZFormFuncButtonAttribute</a></td>
 <td>表单功能按钮特性</td></tr>
 <tr>
-<td><a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute">ZFormItemAttribute</a></td>
+<td><a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a></td>
 <td>表单项特性</td></tr>
 </table>

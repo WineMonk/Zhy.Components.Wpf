@@ -54,7 +54,7 @@
     <BinaryTOC>True</BinaryTOC>
     <IncludeFavorites>True</IncludeFavorites>
     <WebsiteSdkLinkType>Msdn</WebsiteSdkLinkType>
-    <AppendMarkdownFileExtensionsToUrls>False</AppendMarkdownFileExtensionsToUrls>
+    <AppendMarkdownFileExtensionsToUrls>True</AppendMarkdownFileExtensionsToUrls>
     <RootNamespaceTitle>Zhy.Components.Wpf</RootNamespaceTitle>
     <HeaderText>
     </HeaderText>

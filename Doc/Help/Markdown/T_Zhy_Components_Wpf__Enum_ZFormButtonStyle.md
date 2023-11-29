@@ -6,7 +6,7 @@
 
 
 ## Definition
-**命名空间：** <a href="N_Zhy_Components_Wpf__Enum">Zhy.Components.Wpf._Enum</a>  
+**命名空间：** <a href="N_Zhy_Components_Wpf__Enum.md">Zhy.Components.Wpf._Enum</a>  
 **程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0
 
 **C#**
@@ -44,4 +44,4 @@ public enum ZFormButtonStyle
 
 
 #### 引用
-<a href="N_Zhy_Components_Wpf__Enum">Zhy.Components.Wpf._Enum 命名空间</a>  
+<a href="N_Zhy_Components_Wpf__Enum.md">Zhy.Components.Wpf._Enum 命名空间</a>  

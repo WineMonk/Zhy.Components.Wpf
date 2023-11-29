@@ -6,7 +6,7 @@
 
 
 ## Definition
-**命名空间：** <a href="N_Zhy_Components_Wpf__Common__Utils">Zhy.Components.Wpf._Common._Utils</a>  
+**命名空间：** <a href="N_Zhy_Components_Wpf__Common__Utils.md">Zhy.Components.Wpf._Common._Utils</a>  
 **程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0
 
 **C#**
@@ -22,14 +22,14 @@ public class FormItemUtils
 ## 构造函数
 <table>
 <tr>
-<td><a href="M_Zhy_Components_Wpf__Common__Utils_FormItemUtils__ctor">FormItemUtils</a></td>
+<td><a href="M_Zhy_Components_Wpf__Common__Utils_FormItemUtils__ctor.md">FormItemUtils</a></td>
 <td>初始化 FormItemUtils 类的一个新实例</td></tr>
 </table>
 
 ## 方法
 <table>
 <tr>
-<td><a href="M_Zhy_Components_Wpf__Common__Utils_FormItemUtils_Print">Print</a></td>
+<td><a href="M_Zhy_Components_Wpf__Common__Utils_FormItemUtils_Print.md">Print</a></td>
 <td>打印表单项</td></tr>
 </table>
 
@@ -37,4 +37,4 @@ public class FormItemUtils
 
 
 #### 引用
-<a href="N_Zhy_Components_Wpf__Common__Utils">Zhy.Components.Wpf._Common._Utils 命名空间</a>  
+<a href="N_Zhy_Components_Wpf__Common__Utils.md">Zhy.Components.Wpf._Common._Utils 命名空间</a>  
