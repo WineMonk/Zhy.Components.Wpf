@@ -47,5 +47,9 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// 作为表单项时是否隐藏此项
         /// </summary>
         public bool IsHideFormItem { get; set; }
+        /// <summary>
+        /// 作为表单列时是否隐藏此项
+        /// </summary>
+        public bool IsHideFormColumn { get; set; }
     }
 }

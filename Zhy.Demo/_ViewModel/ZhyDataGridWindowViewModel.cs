@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Zhy.Components.Wpf._Attribute;
+using Zhy.Components.Wpf._Attribute._ZFormColumn;
 using Zhy.Components.Wpf._Common._Utils;
 using Zhy.Components.Wpf._Enum;
 using Zhy.Demo._Common;
@@ -114,8 +115,8 @@ namespace Zhy.Demo._ViewModel
         public RelayCommand CommandChangeItemsSource => new RelayCommand(ChangeItemsSource);
         private void ChangeItemsSource()
         {
-            TestItems = new ObservableCollection<AccountInfo>();
-            AccountInfo accountInfo = new AccountInfo();
+            TestItems = new ObservableCollection<AccountInfoExt>();
+            AccountInfoExt accountInfo = new AccountInfoExt();
             accountInfo.NO = 1;
             accountInfo.Phone = "12345678901";
             accountInfo.Username = "管理员账号";
@@ -125,7 +126,7 @@ namespace Zhy.Demo._ViewModel
             TestItems.Add(accountInfo);
             for (int i = 0; i < 10000; i++)
             {
-                accountInfo = new AccountInfo();
+                accountInfo = new AccountInfoExt();
                 accountInfo.NO = i + 2;
                 accountInfo.Phone = CommonUtils.GenerateRandomPhoneNumber();
                 accountInfo.Username = CommonUtils.GenerateRandomName();

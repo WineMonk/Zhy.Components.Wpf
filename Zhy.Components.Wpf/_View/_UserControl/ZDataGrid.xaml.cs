@@ -477,7 +477,10 @@ namespace Zhy.Components.Wpf._View._UserControl
                 if (attributeColumn != null && attributeColumn is IZFormColumn)
                 {
                     IZFormColumn? zFormItemAttribute = (IZFormColumn)attributeColumn;
-                    sortColumnTempDic.Add(zFormItemAttribute, propertyInfo);
+                    if (!zFormItemAttribute.IsHideFormColumn)
+                    {
+                        sortColumnTempDic.Add(zFormItemAttribute, propertyInfo);
+                    }
                 }
                 if (attributeButton != null)
                 {
@@ -670,7 +673,28 @@ namespace Zhy.Components.Wpf._View._UserControl
                     }
                     else if (attribute is ZFormDateColumnAttribute)
                     {
+                        ZFormDateColumnAttribute zDateAttribute = (ZFormDateColumnAttribute)attribute;
+                        DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
+                        { Header = zDateAttribute.Title, Width = new DataGridLength(zDateAttribute.Width, zDateAttribute.WidthUnit) };
+                        DataTemplate dataTemplate = new DataTemplate();
+                        FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
 
+                        FrameworkElementFactory dateTimePicker = new FrameworkElementFactory(typeof(DateTimePicker));
+                        dateTimePicker.SetValue(DateTimePicker.PaddingProperty, new Thickness(5, 0, 5, 0));
+                        dateTimePicker.SetValue(VerticalContentAlignmentProperty, VerticalAlignment.Center);
+                        dateTimePicker.SetValue(DateTimePicker.BorderThicknessProperty, new Thickness(0));
+                        dateTimePicker.SetValue(DateTimePicker.DisplayFormatProperty, zDateAttribute.DateFormat);
+                        dateTimePicker.SetBinding(DateTimePicker.ForegroundProperty, new Binding());
+                        dateTimePicker.SetBinding(DateTimePicker.ForegroundProperty, new Binding());
+                        dateTimePicker.SetBinding(DateTimePicker.DisplayDateProperty, GetBinding(zDateAttribute, propertyInfo.Name));
+                        cellFactory.AppendChild(dateTimePicker);
+
+                        dataTemplate.VisualTree = cellFactory;
+                        dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGridTemplateColumn.SortMemberPath = propertyInfo.Name +
+                            (string.IsNullOrEmpty(zDateAttribute.MemberPath) ? "" : ".") +
+                            zDateAttribute.MemberPath;
+                        dataGrid.Columns.Add(dataGridTemplateColumn);
                     }
                 }
                 else
@@ -838,6 +862,31 @@ namespace Zhy.Components.Wpf._View._UserControl
                         cellFactory.AppendChild(itemsControl);
                         dataTemplate.VisualTree = cellFactory;
                         dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGrid.Columns.Add(dataGridTemplateColumn);
+                    }
+                    else if (attribute is ZFormDateColumnAttribute)
+                    {
+                        ZFormDateColumnAttribute zDateAttribute = (ZFormDateColumnAttribute)attribute;
+                        DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
+                        { Header = zDateAttribute.Title, Width = new DataGridLength(zDateAttribute.Width, zDateAttribute.WidthUnit) };
+                        DataTemplate dataTemplate = new DataTemplate();
+                        FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
+
+                        FrameworkElementFactory textBox = new FrameworkElementFactory(typeof(TextBox));
+                        textBox.SetValue(TextBox.IsReadOnlyProperty, true);
+                        textBox.SetValue(TextBox.PaddingProperty, new Thickness(5, 0, 5, 0));
+                        textBox.SetValue(VerticalContentAlignmentProperty, VerticalAlignment.Center);
+                        textBox.SetValue(TextBox.BorderThicknessProperty, new Thickness(0));
+                        textBox.SetValue(TextBox.StyleProperty, this.FindResource("DataGridTextBox"));
+                        textBox.SetBinding(TextBox.ForegroundProperty, new Binding());
+                        textBox.SetBinding(TextBox.TextProperty, GetBinding(zDateAttribute, propertyInfo.Name));
+                        cellFactory.AppendChild(textBox);
+
+                        dataTemplate.VisualTree = cellFactory;
+                        dataGridTemplateColumn.CellTemplate = dataTemplate;
+                        dataGridTemplateColumn.SortMemberPath = propertyInfo.Name +
+                            (string.IsNullOrEmpty(zDateAttribute.MemberPath) ? "" : ".") +
+                            zDateAttribute.MemberPath;
                         dataGrid.Columns.Add(dataGridTemplateColumn);
                     }
                 }

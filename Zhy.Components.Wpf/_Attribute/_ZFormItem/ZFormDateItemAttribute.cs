@@ -16,7 +16,7 @@ using Zhy.Components.Wpf._Attribute._Base;
 namespace Zhy.Components.Wpf._Attribute._ZFormItem
 {
     /// <summary>
-    /// 
+    /// 日期表单项
     /// </summary>
     public class ZFormDateItemAttribute : ZFormItemAttribute
     {

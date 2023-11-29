@@ -5,10 +5,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Zhy.Components.Wpf._View._UserControl"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="dateTimePicker"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Border BorderBrush="{Binding ElementName=multiCheckBox, Path=BorderBrush}" BorderThickness="{Binding ElementName=multiCheckBox, Path=BorderThickness}">
+    <Border>
         <Grid x:Name="gridMain">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -17,6 +18,7 @@
             <TextBox
                 x:Name="textBoxDateTime"
                 VerticalContentAlignment="Center"
+                BorderThickness="0"
                 IsReadOnly="True">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -33,7 +35,7 @@
                 Focusable="False"
                 IsOpen="{Binding IsChecked, ElementName=toggleButton}"
                 Placement="Bottom"
-                PopupAnimation="Slide"
+                PopupAnimation="Fade"
                 StaysOpen="False">
                 <Border
                     x:Name="DropDown"
@@ -129,6 +131,7 @@
             <ToggleButton
                 x:Name="toggleButton"
                 Grid.Column="1"
+                Margin="0,0,2,0"
                 ClickMode="Press"
                 Cursor="Hand"
                 Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"

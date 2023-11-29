@@ -77,7 +77,7 @@
                 Focusable="False"
                 IsOpen="{Binding IsChecked, ElementName=toggleButton}"
                 Placement="Bottom"
-                PopupAnimation="Slide"
+                PopupAnimation="Fade"
                 StaysOpen="False">
                 <Border
                     x:Name="DropDown"

@@ -18,10 +18,18 @@ using Zhy.Components.Wpf._Enum;
 namespace Zhy.Components.Wpf._Attribute._ZFormColumn
 {
     /// <summary>
-    /// 
+    /// 表单操作列功能按钮
     /// </summary>
     public class ZFormToolButtonAttribute : ZFormFuncButtonAttribute
     {
+        /// <summary>
+        /// 表单操作列功能按钮
+        /// </summary>
+        /// <param name="buttonContent">按钮标题</param>
+        public ZFormToolButtonAttribute(string buttonContent) : base(buttonContent)
+        {
+        }
+
         /// <summary>
         /// 停靠位置，默认左侧
         /// </summary>

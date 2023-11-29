@@ -204,6 +204,26 @@ namespace Zhy.Components.Wpf._View._Window
                     border.Child = multiCheckBox;
                     stackPanel.Children.Add(border);
                 }
+                else if (zFormItem is ZFormDateItemAttribute)
+                {
+                    ZFormDateItemAttribute zFormDate = (ZFormDateItemAttribute)zFormItem;
+                    TextBlock textBlock = new TextBlock();
+                    textBlock.SetValue(TextBlock.ForegroundProperty, this.FindResource("InfoBrush"));
+                    textBlock.SetValue(TextBlock.FontSizeProperty, 15.0);
+                    textBlock.SetValue(TextBlock.TextProperty, $"{currentCount++}. {zFormDate.Title}");
+                    stackPanel.Children.Add(textBlock);
+                    DockPanel dockPanel = new DockPanel();
+                    dockPanel.SetValue(DockPanel.MarginProperty, new Thickness(0, 0, 0, 10));
+                    DateTimePicker dateTimePicker = new DateTimePicker();
+                    dateTimePicker.SetValue(Border.BorderBrushProperty, new SolidColorBrush(Color.FromRgb(150, 150, 150)));
+                    dateTimePicker.SetValue(Border.BorderThicknessProperty, new Thickness(0.8));
+                    dateTimePicker.SetValue(DateTimePicker.MinHeightProperty, 30.0);
+                    dateTimePicker.SetValue(DateTimePicker.VerticalContentAlignmentProperty, VerticalAlignment.Center);
+                    //dateTimePicker.SetValue(DateTimePicker.IsReadOnlyProperty, zFormText.IsReadOnlyItem);
+                    dateTimePicker.SetBinding(DateTimePicker.DisplayDateProperty, GetBinding(zFormDate, propertyInfo.Name));
+                    dockPanel.Children.Add(dateTimePicker);
+                    stackPanel.Children.Add(dockPanel);
+                }
             }
             gridContent.Children.Add(stackPanel);
         }

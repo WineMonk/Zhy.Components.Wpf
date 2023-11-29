@@ -27,5 +27,6 @@ namespace Zhy.Components.Wpf._Attribute
         bool IsReadOnlyColumn { get; set; }
         bool IsSearchProperty { get; set; }
         bool IsHideFormItem { get; set; }
+        bool IsHideFormColumn { get; set; }
     }
 }

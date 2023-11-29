@@ -60,8 +60,8 @@ namespace Zhy.Demo._Model
         [ZFormCheckColumn("选 择", Index = 0, IsHideFormItem = true, WidthUnit = DataGridLengthUnitType.Auto)]
         public bool IsChecked { get => _isChecked; set => SetProperty(ref _isChecked, value); }
         [ZFormTextColumn("姓 名", Index = 1, WidthUnit = DataGridLengthUnitType.Auto, IsSearchProperty = true)]
-        public string Username { get => _username; set => SetProperty(ref _username, value); }
-        [ZFormTextColumn("创建日期", Index = 2, IsReadOnlyColumn =true, WidthUnit = DataGridLengthUnitType.Auto)]
+        public virtual string Username { get => _username; set => SetProperty(ref _username, value); }
+        [ZFormDateColumn("创建日期", Index = 2, WidthUnit = DataGridLengthUnitType.Auto)]
         public string CreateDate { get => _createDate; set => SetProperty(ref _createDate, value); }
         [ZFormComboColumn("角 色", Index = 3, IsSearchProperty = true, ItemsSourceProperty = nameof(Roles), WidthUnit = DataGridLengthUnitType.Auto)]
         public string Role { get => _role; set => SetProperty(ref _role, value); }
@@ -74,15 +74,15 @@ namespace Zhy.Demo._Model
         [ZFormMultiCheckColumn("权 限", "IsChecked", "Name", IsSearchProperty = true, WidthUnit = DataGridLengthUnitType.Auto)]
         public List<Permission> Permission { get => _permission; set => SetProperty(ref _permission, value); }
 
-        [ZFormOperColumnButton(ButtonContent = "查看信息", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
+        [ZFormOperColumnButton("查看信息", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
         public RelayCommand<object[]> CommandViewItem => new RelayCommand<object[]>(ViewItem);
-        [ZFormOperColumnButton(ButtonContent = "删 除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
+        [ZFormOperColumnButton("删 除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
         public RelayCommand<object[]> CommandDeleteItem => new RelayCommand<object[]>(DeleteItem);
 
         public RelayCommand<AccountInfo> CommandModifyArchivesPath => new RelayCommand<AccountInfo>(ModifyArchivesPath);
         public List<string> Roles { get => _roles; set => _roles = value; }
 
-        [ZFormToolButton(ButtonContent = "全 选", Index = 0, Location = ButtonLocation.Bottom)]
+        [ZFormToolButton("全 选", Index = 0, Location = ButtonLocation.Bottom)]
         public RelayCommand<object[]> CommandCheckTotalItem => new RelayCommand<object[]>(CheckTotalItem);
         public void CheckTotalItem(object[] items)
         {
@@ -92,9 +92,9 @@ namespace Zhy.Demo._Model
                 item.IsChecked = true;
             }
         }
-        [ZFormToolButton(ButtonContent = "全不选", Index = 1, Location = ButtonLocation.Bottom)]
+        [ZFormToolButton("全不选", Index = 1, Location = ButtonLocation.Bottom)]
         public RelayCommand<object[]> CommandUncheckTotalItem => new RelayCommand<object[]>(UncheckTotalItem);
-        public void UncheckTotalItem(object[] items)
+        private void UncheckTotalItem(object[] items)
         {
             IList<AccountInfo> accountInfos = items[0] as IList<AccountInfo>;
             foreach (var item in accountInfos)
@@ -102,9 +102,9 @@ namespace Zhy.Demo._Model
                 item.IsChecked = false;
             }
         }
-        [ZFormToolButton(ButtonContent = "添 加", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
+        [ZFormToolButton("添 加", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
         public RelayCommand<object[]> CommandAddItem => new RelayCommand<object[]>(AddItem);
-        public async void AddItem(object[] items)
+        private async void AddItem(object[] items)
         {
             AccountInfo accountInfo = new AccountInfo();
             await Task.Run(() =>
@@ -123,9 +123,9 @@ namespace Zhy.Demo._Model
             accountInfo.NO = accountInfos.IndexOf(accountInfo) + 1;
             
         }
-        [ZFormToolButton(ButtonContent = "批量删除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
+        [ZFormToolButton("批量删除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
         public RelayCommand<object[]> CommandBatchDeleteItem => new RelayCommand<object[]>(BatchDeleteItem);
-        public void BatchDeleteItem(object[] items)
+        private void BatchDeleteItem(object[] items)
         {
             List<AccountInfo> rm = new List<AccountInfo>();
             foreach (AccountInfo accountInfo in items[0] as IEnumerable)

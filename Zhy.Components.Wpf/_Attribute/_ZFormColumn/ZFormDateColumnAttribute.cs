@@ -17,14 +17,21 @@ using Zhy.Components.Wpf._Attribute._ZFormItem;
 namespace Zhy.Components.Wpf._Attribute._ZFormColumn
 {
     /// <summary>
-    /// 
+    /// 日期表单列
     /// </summary>
     public class ZFormDateColumnAttribute : ZFormDateItemAttribute, IZFormColumn
     {
+        /// <summary>
+        /// 日期表单列
+        /// </summary>
+        /// <param name="title">列标题</param>
         public ZFormDateColumnAttribute(string title) : base(title)
         {
         }
 
+        /// <summary>
+        /// 列宽度
+        /// </summary>
         public double Width { get; set; } = 1;
         /// <summary>
         /// 列宽度单位
@@ -43,5 +50,9 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// 作为表单项时是否隐藏此项
         /// </summary>
         public bool IsHideFormItem { get; set; }
+        /// <summary>
+        /// 作为表单列时是否隐藏此项
+        /// </summary>
+        public bool IsHideFormColumn { get; set; }
     }
 }

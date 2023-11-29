@@ -33,6 +33,13 @@ namespace Zhy.Components.Wpf._Attribute._Base
         /// 按钮样式
         /// </summary>
         public ZFormButtonStyle ButtonStyle { get; set; } = ZFormButtonStyle.DefaultButton;
-        
+        /// <summary>
+        /// 表单功能按钮特性
+        /// </summary>
+        /// <param name="buttonContent">按钮标题</param>
+        public ZFormFuncButtonAttribute(string buttonContent)
+        {
+            ButtonContent = buttonContent;
+        }
     }
 }
