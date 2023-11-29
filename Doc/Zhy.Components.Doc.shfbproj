@@ -32,8 +32,8 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>Zhy.Components.Wpf.Documentation</HelpTitle>
-    <HelpFileVersion>1.1.0.0</HelpFileVersion>
-    <NamingMethod>Guid</NamingMethod>
+    <HelpFileVersion>1.1.0.1</HelpFileVersion>
+    <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <NamespaceGrouping>True</NamespaceGrouping>
@@ -41,8 +41,8 @@
     <Preliminary>False</Preliminary>
     <CopyrightHref>https://shaoshao.net.cn/</CopyrightHref>
     <CopyrightText>&amp;#169%3b2020 - 2023 By shaozhy</CopyrightText>
-    <FeedbackEMailAddress>shaozhy4869%40gmail.com</FeedbackEMailAddress>
-    <FeedbackEMailLinkText>shaozhy4869%40gmail.com</FeedbackEMailLinkText>
+    <FeedbackEMailAddress>shaoshao4869%40gmail.com</FeedbackEMailAddress>
+    <FeedbackEMailLinkText>shaoshao4869%40gmail.com</FeedbackEMailLinkText>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\Zhy.Components.Wpf\bin\Debug\net6.0-windows\Zhy.Components.Wpf.dll" />

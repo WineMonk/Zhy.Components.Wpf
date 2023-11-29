@@ -1,0 +1,33 @@
+# Print 方法
+
+
+打印表单项
+
+
+
+## Definition
+**命名空间：** <a href="N_Zhy_Components_Wpf__Common__Utils">Zhy.Components.Wpf._Common._Utils</a>  
+**程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0
+
+**C#**
+``` C#
+public static string Print(
+	Object obj
+)
+```
+
+
+
+#### 参数
+<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a></dt><dd>表单项</dd></dl>
+
+#### 返回值
+<a href="https://learn.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a>  
+表单项信息
+
+## 参见
+
+
+#### 引用
+<a href="T_Zhy_Components_Wpf__Common__Utils_FormItemUtils">FormItemUtils 类</a>  
+<a href="N_Zhy_Components_Wpf__Common__Utils">Zhy.Components.Wpf._Common._Utils 命名空间</a>  
