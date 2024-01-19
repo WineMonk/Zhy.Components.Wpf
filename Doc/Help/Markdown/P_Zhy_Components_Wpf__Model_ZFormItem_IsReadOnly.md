@@ -17,7 +17,7 @@ public bool IsReadOnly { get; set; }
 
 
 #### 属性值
-<a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a>
+Boolean
 
 ## 参见
 

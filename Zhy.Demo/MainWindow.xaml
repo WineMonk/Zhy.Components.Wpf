@@ -32,9 +32,12 @@
                 Click="buttonZhyFormDialog_Click"
                 Content="ZhyFormDialog"
                 Style="{DynamicResource SuccessButton}" />
-            <StackPanel>
-                <_usercontrol:DateTimePicker />
-            </StackPanel>
+            <Button
+                x:Name="buttonZhyFormGroupGrid"
+                Margin="10"
+                Click="buttonZhyFormGroupGrid_Click"
+                Content="ZhyFormGroupGrid"
+                Style="{DynamicResource SuccessButton}" />
         </UniformGrid>
     </Grid>
 </Window>

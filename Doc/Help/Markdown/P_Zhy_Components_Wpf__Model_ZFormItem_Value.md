@@ -17,7 +17,7 @@ public string Value { get; set; }
 
 
 #### 属性值
-<a href="https://learn.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a>
+String
 
 ## 参见
 

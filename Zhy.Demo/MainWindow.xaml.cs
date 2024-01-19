@@ -75,5 +75,37 @@ namespace Zhy.Demo
             if (!dr)
                 return;
         }
+
+        private void buttonZhyFormGroupGrid_Click(object sender, RoutedEventArgs e)
+        {
+            ZFormItemGroup zFormItemGroup = new ZFormItemGroup();
+            zFormItemGroup.Name = "第一组";
+            zFormItemGroup.ZFormItems = Enumerable.Range(0, 6).Select(index => new ZFormItem()
+            {
+                Name = "Name" + index,
+                Value = "Value" + index,
+                IsReadOnly = index % 3 == 0
+            }).ToList();
+            ZFormItemGroup zFormItemGroup1 = new ZFormItemGroup();
+            zFormItemGroup1.Name = "第二组";
+            zFormItemGroup1.ZFormItems = Enumerable.Range(0, 6).Select(index => new ZFormItem()
+            {
+                Name = "Name" + index,
+                Value = "Value" + index,
+                IsReadOnly = index % 3 == 0
+            }).ToList();
+            ZFormItemGroup zFormItemGroup2 = new ZFormItemGroup();
+            zFormItemGroup2.Name = "第三组";
+            zFormItemGroup2.ZFormItems = Enumerable.Range(0, 100).Select(index => new ZFormItem()
+            {
+                Name = "Name" + index,
+                Value = "Value" + index,
+                IsReadOnly = index % 3 == 0
+            }).ToList();
+            ZFormGroupGrid zFormGroupGrid = new ZFormGroupGrid(
+                new List<ZFormItemGroup>() { zFormItemGroup, zFormItemGroup1, zFormItemGroup2});
+            zFormGroupGrid.IsReadOnly = false;
+            zFormGroupGrid.ShowDialog();
+        }
     }
 }

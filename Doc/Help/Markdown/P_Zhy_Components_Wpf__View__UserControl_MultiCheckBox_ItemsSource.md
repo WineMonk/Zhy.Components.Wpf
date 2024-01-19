@@ -17,7 +17,7 @@ public IList ItemsSource { get; set; }
 
 
 #### 属性值
-<a href="https://learn.microsoft.com/dotnet/api/system.collections.ilist" target="_blank" rel="noopener noreferrer">IList</a>
+IList
 
 ## 参见
 

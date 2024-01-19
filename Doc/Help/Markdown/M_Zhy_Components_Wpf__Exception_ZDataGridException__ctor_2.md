@@ -20,7 +20,7 @@ public ZDataGridException(
 
 
 #### 参数
-<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a></dt><dd>错误信息</dd><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.exception" target="_blank" rel="noopener noreferrer">Exception</a></dt><dd>内部异常</dd></dl>
+<dl><dt>  String</dt><dd>错误信息</dd><dt>  Exception</dt><dd>内部异常</dd></dl>
 
 ## 参见
 

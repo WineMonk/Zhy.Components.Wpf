@@ -11,7 +11,7 @@
 
 **C#**
 ``` C#
-public string MemberPath { get; set; }
+public string? MemberPath { get; set; }
 ```
 
 

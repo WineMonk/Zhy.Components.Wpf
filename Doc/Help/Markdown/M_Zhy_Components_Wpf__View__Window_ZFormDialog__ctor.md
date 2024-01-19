@@ -20,7 +20,7 @@ public ZFormDialog(
 
 
 #### 参数
-<dl><dt>  ObservableObject</dt><dd>表单项实例</dd><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.func-2" target="_blank" rel="noopener noreferrer">Func</a>(ObservableObject, <a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a>)  (Optional)</dt><dd>属性验证方法，输入为当前编辑的表单项实例，如验证各项属性符合要求则返回true，否则返回false</dd></dl>
+<dl><dt>  ObservableObject</dt><dd>表单项实例</dd><dt>  Func(ObservableObject, Boolean)  (Optional)</dt><dd>属性验证方法，输入为当前编辑的表单项实例，如验证各项属性符合要求则返回true，否则返回false</dd></dl>
 
 ## 参见
 

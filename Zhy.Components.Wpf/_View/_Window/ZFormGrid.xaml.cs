@@ -29,7 +29,7 @@ namespace Zhy.Components.Wpf._View._Window
     internal class ZFormGridViewModel : ObservableObject
     {
         private List<ZFormItem> zFormItems = new List<ZFormItem>();
-        internal List<ZFormItem> ZFormItems
+        public List<ZFormItem> ZFormItems
         {
             get { return zFormItems; }
             set { SetProperty(ref zFormItems, value); }
@@ -47,8 +47,8 @@ namespace Zhy.Components.Wpf._View._Window
             _actionDr = actionDr;
         }
 
-        internal RelayCommand OKCommand => new RelayCommand(OK);
-        internal RelayCommand CancelCommand => new RelayCommand(Cancel);
+        public RelayCommand OKCommand => new RelayCommand(OK);
+        public RelayCommand CancelCommand => new RelayCommand(Cancel);
         private void OK()
         {
             foreach (var item in zFormItems)
@@ -59,7 +59,7 @@ namespace Zhy.Components.Wpf._View._Window
                     {
                         continue;
                     }
-                    MessageBox.Show(item.Tip, $"第 {item.Oid} 项值异常！", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //MessageBox.Show(item.Tip, $"第 {item.Oid} 项值异常！", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
             }

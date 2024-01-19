@@ -68,37 +68,40 @@ namespace Zhy.Demo._Model
         public List<Permission> Permission { get => _permission; set => SetProperty(ref _permission, value); }
 
         [ZFormOperColumnButton("查看信息", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
-        public RelayCommand<object[]> CommandViewItem => new RelayCommand<object[]>(ViewItem);
+        public RelayCommand<Tuple<object?, IList?>> CommandViewItem => new RelayCommand<Tuple<object?, IList?>>(ViewItem);
         [ZFormOperColumnButton("删 除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
-        public RelayCommand<object[]> CommandDeleteItem => new RelayCommand<object[]>(DeleteItem);
+        public RelayCommand<Tuple<object?, IList?>> CommandDeleteItem => new RelayCommand<Tuple<object?, IList?>>(DeleteItem);
 
         public RelayCommand<AccountInfo> CommandModifyArchivesPath => new RelayCommand<AccountInfo>(ModifyArchivesPath);
         public List<string> Roles { get => _roles; set => _roles = value; }
 
         [ZFormToolButton("全 选", Index = 0, Location = ButtonLocation.Bottom)]
-        public RelayCommand<object[]> CommandCheckTotalItem => new RelayCommand<object[]>(CheckTotalItem);
-        public void CheckTotalItem(object[] items)
+        public RelayCommand<IList?> CommandCheckTotalItem => new RelayCommand<IList?>(CheckTotalItem);
+        public void CheckTotalItem(IList? items)
         {
-            IList<AccountInfo> accountInfos = items[0] as IList<AccountInfo>;
-            foreach (var item in accountInfos)
+            if (items == null) return;
+            foreach (AccountInfo? item in items)
             {
+                if (item == null) continue;
                 item.IsChecked = true;
             }
         }
         [ZFormToolButton("全不选", Index = 1, Location = ButtonLocation.Bottom)]
-        public RelayCommand<object[]> CommandUncheckTotalItem => new RelayCommand<object[]>(UncheckTotalItem);
-        private void UncheckTotalItem(object[] items)
+        public RelayCommand<IList?> CommandUncheckTotalItem => new RelayCommand<IList?>(UncheckTotalItem);
+        private void UncheckTotalItem(IList? items)
         {
-            IList<AccountInfo> accountInfos = items[0] as IList<AccountInfo>;
-            foreach (var item in accountInfos)
+            if (items == null) return;
+            foreach (AccountInfo? item in items)
             {
+                if (item == null) continue;
                 item.IsChecked = false;
             }
         }
         [ZFormToolButton("添 加", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
-        public RelayCommand<object[]> CommandAddItem => new RelayCommand<object[]>(AddItem);
-        private async void AddItem(object[] items)
+        public RelayCommand<IList?> CommandAddItem => new RelayCommand<IList?>(AddItem);
+        private async void AddItem(IList? items)
         {
+            if (items == null) return;
             AccountInfo accountInfo = new AccountInfo();
             await Task.Run(() =>
             {
@@ -111,41 +114,39 @@ namespace Zhy.Demo._Model
                         return;
                 });
             });
-            IList<AccountInfo> accountInfos = items[0] as IList<AccountInfo>;
-            accountInfos.Add(accountInfo);
-            accountInfo.NO = accountInfos.IndexOf(accountInfo) + 1;
-
+            items.Add(accountInfo);
+            accountInfo.NO = items.IndexOf(accountInfo) + 1;
         }
         [ZFormToolButton("批量删除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
-        public RelayCommand<object[]> CommandBatchDeleteItem => new RelayCommand<object[]>(BatchDeleteItem);
-        private void BatchDeleteItem(object[] items)
+        public RelayCommand<IList?> CommandBatchDeleteItem => new RelayCommand<IList?>(BatchDeleteItem);
+        private void BatchDeleteItem(IList? items)
         {
+            if (items == null) return;
             List<AccountInfo> rm = new List<AccountInfo>();
-            foreach (AccountInfo accountInfo in items[0] as IEnumerable)
-                if (accountInfo.IsChecked)
+            foreach (AccountInfo accountInfo in items)
+                if (accountInfo?.IsChecked == true)
                     rm.Add(accountInfo);
             if (rm.Count < 1)
                 return;
             MessageBoxResult messageBoxResult = MessageBox.Show("确认删除？！", "提示", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (messageBoxResult != MessageBoxResult.Yes)
                 return;
-            IList<AccountInfo> accountInfos = items[0] as IList<AccountInfo>;
             foreach (var item in rm)
-                accountInfos.Remove(item);
+                items.Remove(item);
         }
 
-        private void DeleteItem(object[] param)
+        private void DeleteItem(Tuple<object?, IList?> param)
         {
-            AccountInfo accountInfo = param[0] as AccountInfo;
-            IList<AccountInfo> accountInfos = param[1] as IList<AccountInfo>;
+            AccountInfo accountInfo = param.Item1 as AccountInfo;
+            IList? accountInfos = param.Item2 as IList;
             MessageBoxResult messageBoxResult = MessageBox.Show("确认删除？！", "提示", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (messageBoxResult != MessageBoxResult.Yes)
                 return;
-            accountInfos.Remove(accountInfo);
+            accountInfos?.Remove(accountInfo);
         }
-        private void ViewItem(object[] param)
+        private void ViewItem(Tuple<object?, IList?> param)
         {
-            AccountInfo accountInfo = param[0] as AccountInfo;
+            AccountInfo accountInfo = param.Item1 as AccountInfo;
             if (accountInfo == null)
                 return;
             string msg = FormItemUtils.Print(accountInfo);

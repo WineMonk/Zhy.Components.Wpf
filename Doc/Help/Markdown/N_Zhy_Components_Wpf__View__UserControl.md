@@ -15,5 +15,5 @@
 <td>MultiCheckBox.xaml 的交互逻辑</td></tr>
 <tr>
 <td><a href="T_Zhy_Components_Wpf__View__UserControl_ZDataGrid.md">ZDataGrid</a></td>
-<td>ZDataGrid.xaml 的交互逻辑</td></tr>
+<td>数据表</td></tr>
 </table>

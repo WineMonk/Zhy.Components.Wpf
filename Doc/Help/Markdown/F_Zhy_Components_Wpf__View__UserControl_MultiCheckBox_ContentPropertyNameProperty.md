@@ -17,7 +17,7 @@ public static readonly DependencyProperty ContentPropertyNameProperty
 
 
 #### 字段值
-<a href="https://learn.microsoft.com/dotnet/api/system.windows.dependencyproperty" target="_blank" rel="noopener noreferrer">DependencyProperty</a>
+DependencyProperty
 
 ## 参见
 

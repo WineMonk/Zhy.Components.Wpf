@@ -13,6 +13,7 @@
     <Compile Remove="_Attribute\ZOperateButtonAttribute.cs" />
     <Compile Remove="_Attribute\_Base\ZFormColumnAttribute.cs" />
     <Compile Remove="_View\_UserControl\MultiComboBox.cs" />
+    <Compile Remove="_View\_UserControl\ZDataGrid - 复制.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,11 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="_View\_Theme\" />
+    <Page Remove="_View\_Theme\AppDictionary - 复制.xaml" />
+    <Page Remove="_View\_UserControl\ZDataGrid - 复制.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
   </ItemGroup>
 
   <ItemGroup>

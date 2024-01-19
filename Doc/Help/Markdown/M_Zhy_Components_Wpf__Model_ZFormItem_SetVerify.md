@@ -20,7 +20,7 @@ public void SetVerify(
 
 
 #### 参数
-<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.func-2" target="_blank" rel="noopener noreferrer">Func</a>(<a href="T_Zhy_Components_Wpf__Model_ZFormItem.md">ZFormItem</a>, <a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a>)</dt><dd>验证函数</dd><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a></dt><dd>提示信息</dd></dl>
+<dl><dt>  Func(<a href="T_Zhy_Components_Wpf__Model_ZFormItem.md">ZFormItem</a>, Boolean)</dt><dd>验证函数</dd><dt>  String</dt><dd>提示信息</dd></dl>
 
 ## 参见
 

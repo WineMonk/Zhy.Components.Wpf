@@ -15,7 +15,7 @@ ZDataGrid控件错误
 public class ZDataGridException : Exception
 ```
 
-<table><tr><td><strong>Inheritance</strong></td><td><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.exception" target="_blank" rel="noopener noreferrer">Exception</a>  →  ZDataGridException</td></tr>
+<table><tr><td><strong>Inheritance</strong></td><td>Object  →  Exception  →  ZDataGridException</td></tr>
 </table>
 
 

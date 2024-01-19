@@ -10,6 +10,9 @@
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/Zhy.Components.Wpf;component\_View\_Theme\AppDictionary.xaml" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -48,7 +51,6 @@
             Grid.Row="1"
             IsReadOnly="{Binding PropertyIsReadOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             ItemsSource="{Binding TestItems}"
-            SearchButtonStyle="{Binding ButtonStyle}"
             SelectedItem="{Binding TestItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>

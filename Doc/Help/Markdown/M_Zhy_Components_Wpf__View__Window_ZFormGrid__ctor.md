@@ -19,7 +19,7 @@ public ZFormGrid(
 
 
 #### 参数
-<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1" target="_blank" rel="noopener noreferrer">List</a>(<a href="T_Zhy_Components_Wpf__Model_ZFormItem.md">ZFormItem</a>)</dt><dd>表单项</dd></dl>
+<dl><dt>  List(<a href="T_Zhy_Components_Wpf__Model_ZFormItem.md">ZFormItem</a>)</dt><dd>表单项</dd></dl>
 
 ## 参见
 

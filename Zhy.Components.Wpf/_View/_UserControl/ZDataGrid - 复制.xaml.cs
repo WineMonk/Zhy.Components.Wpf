@@ -179,6 +179,7 @@ namespace Zhy.Components.Wpf._View._UserControl
             textBoxSearch.Margin = new Thickness(1, 2, 1, 2);
             textBoxSearch.SetValue(_Common._Utils.TextBoxHelper.TextMarkProperty, "输入查询内容");
             textBoxSearch.VerticalContentAlignment = VerticalAlignment.Center;
+            textBoxSearch.MinWidth = 200.0;
             textBoxSearch.Style = this.FindResource("InfoTextBox") as Style;
             Button buttonCancelSearch = new Button();
             buttonCancelSearch.Name = "buttonCancelSearch";

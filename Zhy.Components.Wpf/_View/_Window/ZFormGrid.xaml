@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="800"
     Height="450"
-    Icon="pack://application:,,,/Zhy.Components.Wpf;component\_Resource\_Icon\logo_light.ico"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <!--  Icon="pack://application:,,,/Zhy.Components.Wpf;component\_Resource\_Icon\logo_light.ico"  -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />

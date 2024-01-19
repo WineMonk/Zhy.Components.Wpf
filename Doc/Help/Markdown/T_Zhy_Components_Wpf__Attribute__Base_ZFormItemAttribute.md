@@ -11,6 +11,8 @@
 
 **C#**
 ``` C#
+[AttributeUsageAttribute(AttributeTargets.Property, AllowMultiple = false, 
+	Inherited = true)]
 public class ZFormItemAttribute : Attribute
 ```
 

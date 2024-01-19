@@ -19,7 +19,7 @@ public ZDataGridException(
 
 
 #### 参数
-<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a></dt><dd>错误信息</dd></dl>
+<dl><dt>  String</dt><dd>错误信息</dd></dl>
 
 ## 参见
 

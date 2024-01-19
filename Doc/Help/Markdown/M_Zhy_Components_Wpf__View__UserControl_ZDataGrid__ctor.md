@@ -1,7 +1,7 @@
 # ZDataGrid 构造函数
 
 
-ZDataGrid 表单控件
+数据表
 
 
 

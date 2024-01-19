@@ -17,7 +17,7 @@ public DateTime SelectDate { get; set; }
 
 
 #### 属性值
-<a href="https://learn.microsoft.com/dotnet/api/system.datetime" target="_blank" rel="noopener noreferrer">DateTime</a>
+DateTime
 
 ## 参见
 

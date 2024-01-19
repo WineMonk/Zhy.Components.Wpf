@@ -15,8 +15,8 @@ public class ZFormDialog : Window,
 	IComponentConnector
 ```
 
-<table><tr><td><strong>Inheritance</strong></td><td><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject" target="_blank" rel="noopener noreferrer">DispatcherObject</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.dependencyobject" target="_blank" rel="noopener noreferrer">DependencyObject</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.media.visual" target="_blank" rel="noopener noreferrer">Visual</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.uielement" target="_blank" rel="noopener noreferrer">UIElement</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.frameworkelement" target="_blank" rel="noopener noreferrer">FrameworkElement</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.controls.control" target="_blank" rel="noopener noreferrer">Control</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.controls.contentcontrol" target="_blank" rel="noopener noreferrer">ContentControl</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.windows.window" target="_blank" rel="noopener noreferrer">Window</a>  →  ZFormDialog</td></tr>
-<tr><td><strong>Implements</strong></td><td><a href="https://learn.microsoft.com/dotnet/api/system.windows.markup.icomponentconnector" target="_blank" rel="noopener noreferrer">IComponentConnector</a></td></tr>
+<table><tr><td><strong>Inheritance</strong></td><td>Object  →  DispatcherObject  →  DependencyObject  →  Visual  →  UIElement  →  FrameworkElement  →  Control  →  ContentControl  →  Window  →  ZFormDialog</td></tr>
+<tr><td><strong>Implements</strong></td><td>IComponentConnector</td></tr>
 </table>
 
 

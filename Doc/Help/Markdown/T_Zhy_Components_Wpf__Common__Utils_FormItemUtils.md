@@ -14,7 +14,7 @@
 public class FormItemUtils
 ```
 
-<table><tr><td><strong>Inheritance</strong></td><td><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  →  FormItemUtils</td></tr>
+<table><tr><td><strong>Inheritance</strong></td><td>Object  →  FormItemUtils</td></tr>
 </table>
 
 

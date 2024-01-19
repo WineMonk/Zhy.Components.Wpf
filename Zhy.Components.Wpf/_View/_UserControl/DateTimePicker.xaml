@@ -18,6 +18,7 @@
             <TextBox
                 x:Name="textBoxDateTime"
                 VerticalContentAlignment="Center"
+                Background="Transparent"
                 BorderThickness="0"
                 IsReadOnly="True">
                 <TextBox.Resources>

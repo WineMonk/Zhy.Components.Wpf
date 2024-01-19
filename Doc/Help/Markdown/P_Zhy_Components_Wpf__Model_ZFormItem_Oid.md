@@ -17,7 +17,7 @@ public int Oid { get; }
 
 
 #### 属性值
-<a href="https://learn.microsoft.com/dotnet/api/system.int32" target="_blank" rel="noopener noreferrer">Int32</a>
+Int32
 
 ## 参见
 

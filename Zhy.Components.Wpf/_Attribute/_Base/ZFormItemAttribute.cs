@@ -13,6 +13,7 @@ namespace Zhy.Components.Wpf._Attribute._Base
     /// <summary>
     /// 表单项特性
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class ZFormItemAttribute : Attribute, IZFormItem
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Zhy.Components.Wpf._Attribute._Base
         /// 成员路径
         /// 如为基础类型，则保持为空；如为引用类型，设置为相应成员属性名。
         /// </summary>
-        public string MemberPath { get; set; }
+        public string? MemberPath { get; set; }
         /// <summary>
         /// 是否为只读项
         /// </summary>

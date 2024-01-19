@@ -17,7 +17,7 @@ public void InitializeComponent()
 
 
 #### 实现
-<a href="https://learn.microsoft.com/dotnet/api/system.windows.markup.icomponentconnector.initializecomponent#system-windows-markup-icomponentconnector-initializecomponent" target="_blank" rel="noopener noreferrer">IComponentConnector.InitializeComponent()</a>  
+IComponentConnector.InitializeComponent()  
 
 
 ## 参见

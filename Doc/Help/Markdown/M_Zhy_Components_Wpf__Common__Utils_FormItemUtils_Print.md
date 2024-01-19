@@ -19,10 +19,10 @@ public static string Print(
 
 
 #### 参数
-<dl><dt>  <a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a></dt><dd>表单项</dd></dl>
+<dl><dt>  Object</dt><dd>表单项</dd></dl>
 
 #### 返回值
-<a href="https://learn.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a>  
+String  
 表单项信息
 
 ## 参见

@@ -13,4 +13,7 @@
 <tr>
 <td><a href="T_Zhy_Components_Wpf__View__Window_ZFormGrid.md">ZFormGrid</a></td>
 <td>ZFormGrid.xaml 的交互逻辑</td></tr>
+<tr>
+<td><a href="T_Zhy_Components_Wpf__View__Window_ZFormGroupGrid.md">ZFormGroupGrid</a></td>
+<td>ZFormGroupGrid.xaml 的交互逻辑</td></tr>
 </table>
