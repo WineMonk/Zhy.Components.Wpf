@@ -13,6 +13,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormItem
     /// <summary>
     /// 按钮选择框表单项
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormTextButtonItem("查看")]
+    /// public RelayCommand&lt;Tuple&lt;object?, IList?&gt;&gt; CommandViewItem =&gt; new RelayCommand&lt;Tuple&lt;object?, IList?&gt;&gt;(ViewItem);
+    /// </code>
+    /// </example>
     public class ZFormTextButtonItemAttribute : ZFormTextItemAttribute
     {
         /// <summary>

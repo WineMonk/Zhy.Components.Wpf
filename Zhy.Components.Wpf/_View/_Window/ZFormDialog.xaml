@@ -21,6 +21,7 @@
         <ScrollViewer
             Margin="10"
             HorizontalScrollBarVisibility="Disabled"
+            Style="{DynamicResource CustomScrollViewerStyle}"
             VerticalScrollBarVisibility="Auto">
             <Grid x:Name="gridContent" Margin="3" />
         </ScrollViewer>

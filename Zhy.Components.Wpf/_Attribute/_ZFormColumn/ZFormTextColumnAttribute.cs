@@ -14,6 +14,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 输入框表单列
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormTextColumn("姓 名", Index = 1, IsHideFormColumn = false, IsReadOnlyColumn = false, IsHideFormItem = false, IsReadOnlyItem = false,IsSearchProperty = true, MemberPath = null, Width = 100, WidthUnit = DataGridLengthUnitType.Pixel)]
+    /// public string Username { get => _username; set => SetProperty(ref _username, value); }
+    /// </code>
+    /// </example>
     public class ZFormTextColumnAttribute : ZFormTextItemAttribute, IZFormColumn
     {
         /// <summary>
@@ -35,15 +41,15 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// </summary>
         public bool IsSearchProperty { get; set; }
         /// <summary>
-        /// 是否为只读列
+        /// 是否为只读列，默认false
         /// </summary>
         public bool IsReadOnlyColumn { get; set; }
         /// <summary>
-        /// 作为表单项时是否隐藏此项
+        /// 作为表单项时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormItem { get; set; }
         /// <summary>
-        /// 作为表单列时是否隐藏此项
+        /// 作为表单列时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormColumn { get; set; }
     }

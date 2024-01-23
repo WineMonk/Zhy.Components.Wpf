@@ -10,7 +10,7 @@
 <td>索引，用于排序</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute_IsReadOnlyItem.md">IsReadOnlyItem</a></td>
-<td>是否为只读项</td></tr>
+<td>是否为只读项，默认false</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute_MemberPath.md">MemberPath</a></td>
 <td>成员路径 如为基础类型，则保持为空；如为引用类型，设置为相应成员属性名。</td></tr>

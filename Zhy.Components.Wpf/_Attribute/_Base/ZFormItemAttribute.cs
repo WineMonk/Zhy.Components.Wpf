@@ -30,7 +30,7 @@ namespace Zhy.Components.Wpf._Attribute._Base
         /// </summary>
         public string? MemberPath { get; set; }
         /// <summary>
-        /// 是否为只读项
+        /// 是否为只读项，默认false
         /// </summary>
         public bool IsReadOnlyItem { get; set; }
         /// <summary>

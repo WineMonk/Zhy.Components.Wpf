@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Zhy.Components.Wpf._Model;
@@ -27,36 +28,54 @@ namespace Zhy.Demo
 
         private void buttonZhyFormGrid_Click(object sender, RoutedEventArgs e)
         {
-            List<ZFormItem> zFormItems = new List<ZFormItem>()
+            List<ZFormItem> zFormItems = Enumerable.Range(0, 100).Select(idx =>
             {
-                new ZFormItem()
+                ZFormItem zFormItem = new ZFormItem()
                 {
-                    Name = "Name",
-                    Value = "Value",
-                    IsReadOnly = true
-                },
-                new ZFormItem()
+                    Name = "Name" + idx,
+                    Value = "Value" + idx,
+                    IsReadOnly = idx % 5 == 0
+                };
+                if (idx % 3 == 0)
                 {
-                    Name = "Name1",
-                    Value = "Value1"
-                },
-                new ZFormItem()
-                {
-                    Name = "Name2",
-                    Value = "Value2"
+                    zFormItem.IsReadOnly = false;
+                    zFormItem.SetVerify((i) =>
+                    {
+                        return !string.IsNullOrEmpty(i.Value);
+                    }, "值不能为空！");
                 }
-            };
-            ZFormItem zFormItem = new ZFormItem()
-            {
-                Name = "Name3",
-                Value = ""
-            };
-            zFormItem.SetVerify((i) =>
+                if(idx == 1)
                 {
-                    return !string.IsNullOrEmpty(i.Value);
-                }, "值不能为空！");
-            zFormItems.Add(zFormItem);
-
+                    zFormItem.OnValueChanging += (sender, e) =>
+                    {
+                        e.NewValue = e.OldValue;
+                    };
+                }
+                if(idx == 2)
+                {
+                    zFormItem.OnValueChanging += (sender, e) =>
+                    {
+                        bool rst = DateTime.TryParse(e.NewValue?.ToString(), out DateTime dt);
+                        if (rst)
+                        {
+                            e.NewValue = dt.ToString("yyyy-MM-dd HH:mm:ss");
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
+                    };
+                }
+                if(idx == 3)
+                {
+                    zFormItem.OnValueChanging += (sender, e) =>
+                    {
+                        e.NewValue = "hhh";
+                    };
+                }
+                return zFormItem;
+            }).ToList();
+            zFormItems[2].Value = DateTime.Now.ToString();
             ZFormGrid zFormGrid = new ZFormGrid(zFormItems);
             zFormGrid.ShowDialog();
         }

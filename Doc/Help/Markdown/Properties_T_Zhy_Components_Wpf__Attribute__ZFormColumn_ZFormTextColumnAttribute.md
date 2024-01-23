@@ -10,16 +10,16 @@
 <td>索引，用于排序<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__ZFormColumn_ZFormTextColumnAttribute_IsHideFormColumn.md">IsHideFormColumn</a></td>
-<td>作为表单列时是否隐藏此项</td></tr>
+<td>作为表单列时是否隐藏此项，默认false</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__ZFormColumn_ZFormTextColumnAttribute_IsHideFormItem.md">IsHideFormItem</a></td>
-<td>作为表单项时是否隐藏此项</td></tr>
+<td>作为表单项时是否隐藏此项，默认false</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__ZFormColumn_ZFormTextColumnAttribute_IsReadOnlyColumn.md">IsReadOnlyColumn</a></td>
-<td>是否为只读列</td></tr>
+<td>是否为只读列，默认false</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute_IsReadOnlyItem.md">IsReadOnlyItem</a></td>
-<td>是否为只读项<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
+<td>是否为只读项，默认false<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__ZFormColumn_ZFormTextColumnAttribute_IsSearchProperty.md">IsSearchProperty</a></td>
 <td>是否为查询列 查询时查询该列的值，则为true，否则为false。</td></tr>

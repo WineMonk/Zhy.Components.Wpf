@@ -10,9 +10,9 @@
 namespace Zhy.Components.Wpf._Attribute
 {
     /// <summary>
-    /// 
+    /// 表单项接口
     /// </summary>
-    internal interface IZFormItem : IZFormSortItem
+    internal interface IZFormItem : IZFormItemSortable
     {
         string Title { get; set; }
         string MemberPath { get; set; }

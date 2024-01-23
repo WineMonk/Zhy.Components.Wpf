@@ -7,7 +7,7 @@
 
 ## Definition
 **命名空间：** <a href="N_Zhy_Components_Wpf__Attribute__ZFormColumn.md">Zhy.Components.Wpf._Attribute._ZFormColumn</a>  
-**程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0
+**程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0+3f7c1d1c11b95806e5b31f9f35d89bb6bf59c47e
 
 **C#**
 ``` C#
@@ -17,6 +17,16 @@ public class ZFormOperColumnButtonAttribute : ZFormFuncButtonAttribute
 <table><tr><td><strong>Inheritance</strong></td><td><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  →  <a href="https://learn.microsoft.com/dotnet/api/system.attribute" target="_blank" rel="noopener noreferrer">Attribute</a>  →  <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormFuncButtonAttribute.md">ZFormFuncButtonAttribute</a>  →  ZFormOperColumnButtonAttribute</td></tr>
 </table>
 
+
+
+## 示例
+
+
+**C#**  
+``` C#
+[ZFormTextButtonColumn("档案路径", Index = 5, ButtonContent = "更 改", RelayCommandName = nameof(CommandModifyArchivesPath), Width = 200, WidthUnit = DataGridLengthUnitType.Pixel)]
+public string ArchivesPath { get => _archivesPath; set => SetProperty(ref _archivesPath, value); }
+```
 
 
 ## 构造函数

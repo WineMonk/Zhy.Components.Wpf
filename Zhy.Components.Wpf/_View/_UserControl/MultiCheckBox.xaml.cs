@@ -154,6 +154,11 @@ namespace Zhy.Components.Wpf._View._UserControl
             trigger.Value = true;
             trigger.Setters.Add(new Setter(Border.BackgroundProperty, new SolidColorBrush(Color.FromRgb(173, 214, 255)), "bg"));
             controlTemplate.Triggers.Add(trigger);
+            //trigger = new Trigger();
+            //trigger.Property = ListBoxItem.IsMouseOverProperty;
+            //trigger.Value = true;
+            //trigger.Setters.Add(new Setter(Border.BackgroundProperty, new SolidColorBrush(Color.FromRgb(236, 255, 255)), "bg"));
+            //controlTemplate.Triggers.Add(trigger);
             trigger = new Trigger();
             trigger.Property = ListBoxItem.IsEnabledProperty;
             trigger.Value = false;

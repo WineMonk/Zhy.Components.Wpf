@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using Zhy.Components.Wpf._Common._Utils;
 using Zhy.Components.Wpf._Model;
 
 namespace Zhy.Components.Wpf._View._Window
@@ -35,7 +36,7 @@ namespace Zhy.Components.Wpf._View._Window
             set { SetProperty(ref zFormItems, value); }
         }
 
-        private Action<bool> _actionDr = null;
+        private Action<bool> _actionDr;
 
         internal ZFormGridViewModel(List<ZFormItem> zFormItems, Action<bool> actionDr)
         {
@@ -59,7 +60,10 @@ namespace Zhy.Components.Wpf._View._Window
                     {
                         continue;
                     }
-                    //MessageBox.Show(item.Tip, $"第 {item.Oid} 项值异常！", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    if (!string.IsNullOrEmpty(item.Tip))
+                    {
+                        MessageBox.Show(item.Tip, $"第 {item.Oid} 项值异常！", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
                     return;
                 }
             }

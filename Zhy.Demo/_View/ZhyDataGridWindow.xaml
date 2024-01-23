@@ -31,18 +31,7 @@
                 Style="{DynamicResource DefaultButton}" />
             <Button
                 Margin="1"
-                Command="{Binding CommandChangeSearchButtonStyle}"
-                Content="改变查询按钮样式"
-                Style="{DynamicResource DefaultButton}" />
-            <Button
-                Margin="1"
                 Command="{Binding CommandViewSelectedItem}"
-                Content="查看选择项"
-                Style="{DynamicResource DefaultButton}" />
-            <Button
-                x:Name="buttonViewSelectedItem"
-                Margin="1"
-                Click="buttonViewSelectedItem_Click"
                 Content="查看选择项"
                 Style="{DynamicResource DefaultButton}" />
         </StackPanel>

@@ -11,9 +11,9 @@ using System.Windows.Controls;
 namespace Zhy.Components.Wpf._Attribute
 {
     /// <summary>
-    /// 
+    /// 表单列接口
     /// </summary>
-    internal interface IZFormColumn : IZFormSortItem
+    internal interface IZFormColumn : IZFormItemSortable
     {
         string Title { get; set; }
         string MemberPath { get; set; }

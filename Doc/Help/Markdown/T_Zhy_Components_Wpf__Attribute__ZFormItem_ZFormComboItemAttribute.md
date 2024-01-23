@@ -7,7 +7,7 @@
 
 ## Definition
 **命名空间：** <a href="N_Zhy_Components_Wpf__Attribute__ZFormItem.md">Zhy.Components.Wpf._Attribute._ZFormItem</a>  
-**程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0
+**程序集：** Zhy.Components.Wpf (在 Zhy.Components.Wpf.dll 中) 版本：1.0.0+3f7c1d1c11b95806e5b31f9f35d89bb6bf59c47e
 
 **C#**
 ``` C#
@@ -18,6 +18,17 @@ public class ZFormComboItemAttribute : ZFormItemAttribute
 <tr><td><strong>Derived</strong></td><td><a href="T_Zhy_Components_Wpf__Attribute__ZFormColumn_ZFormComboColumnAttribute.md">Zhy.Components.Wpf._Attribute._ZFormColumn.ZFormComboColumnAttribute</a></td></tr>
 </table>
 
+
+
+## 示例
+
+
+**C#**  
+``` C#
+[ZFormComboItem("角 色", ItemsSourceProperty = nameof(Roles))]
+public string Role { get => _role; set => SetProperty(ref _role, value); }
+public List<string> Roles { get => _roles; set => _roles = value; }
+```
 
 
 ## 构造函数
@@ -34,7 +45,7 @@ public class ZFormComboItemAttribute : ZFormItemAttribute
 <td>索引，用于排序<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute_IsReadOnlyItem.md">IsReadOnlyItem</a></td>
-<td>是否为只读项<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
+<td>是否为只读项，默认false<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__ZFormItem_ZFormComboItemAttribute_ItemsSourceProperty.md">ItemsSourceProperty</a></td>
 <td>数据项源属性名</td></tr>

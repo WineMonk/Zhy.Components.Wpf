@@ -14,7 +14,7 @@ namespace Zhy.Components.Wpf._Common._Comparer
     /// <summary>
     /// IZFormSortItem 排序比较器
     /// </summary>
-    internal class ZFormSortItemComparer : IComparer<IZFormSortItem>
+    internal class ZFormSortItemComparer : IComparer<IZFormItemSortable>
     {
         private bool _isInverted;
         public ZFormSortItemComparer(bool isInverted = false)
@@ -22,7 +22,7 @@ namespace Zhy.Components.Wpf._Common._Comparer
             _isInverted = isInverted;
         }
 
-        public int Compare(IZFormSortItem? x, IZFormSortItem? y)
+        public int Compare(IZFormItemSortable? x, IZFormItemSortable? y)
         {
             if (x == null && y == null) return _isInverted ? -1 : 1;
             else if (x == null && y != null) return _isInverted ? -1 : 1;

@@ -10,18 +10,22 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <!--  Icon="pack://application:,,,/Zhy.Components.Wpf;component\_Resource\_Icon\logo_light.ico"  -->
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/Zhy.Components.Wpf;component\_View\_Theme\AppDictionary.xaml" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <DataGrid
+            x:Name="dg"
             VerticalContentAlignment="Center"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
             CanUserSortColumns="True"
             ItemsSource="{Binding ZFormItems}"
-            Style="{DynamicResource InfoGrid}">
+            Style="{StaticResource InfoGrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="auto"
@@ -42,7 +46,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
-                                Background="{Binding}"
+                                Background="Transparent"
                                 BorderThickness="0"
                                 IsReadOnly="True"
                                 Text="{Binding Name}" />
@@ -56,10 +60,21 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
-                                Background="{Binding}"
+                                Background="Transparent"
                                 BorderThickness="0"
                                 IsReadOnly="{Binding IsReadOnly}"
-                                Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" />
+                                Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsReadOnly}" Value="True">
+                                                <Setter Property="IsReadOnly" Value="True" />
+                                                <Setter Property="Foreground" Value="#888" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

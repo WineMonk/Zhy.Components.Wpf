@@ -8,6 +8,8 @@
  ****************************************/
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.ComponentModel;
+using Zhy.Components.Wpf._Event;
 
 namespace Zhy.Components.Wpf._Model
 {
@@ -43,10 +45,19 @@ namespace Zhy.Components.Wpf._Model
         /// <summary>
         /// 表单项值
         /// </summary>
-        public string Value
+        public string? Value
         {
             get { return _value; }
-            set { SetProperty(ref _value, value); }
+            set 
+            {
+                PropertyValueChangingEventArgs e = new (nameof(Value), value, _value);
+                OnValueChanging?.Invoke(this, e);
+                if (e.Cancel)
+                {
+                    return;
+                }
+                SetProperty(ref _value, e.NewValue?.ToString()); 
+            }
         }
         /// <summary>
         /// 是否只读
@@ -56,6 +67,17 @@ namespace Zhy.Components.Wpf._Model
             get { return _isReadOnly; }
             set { SetProperty(ref _isReadOnly, value); }
         }
+        /// <summary>
+        /// 值变更委托
+        /// </summary>
+        /// <param name="sender">调用者</param>
+        /// <param name="e">属性值变更事件参数</param>
+        public delegate void OnValueChangingHandler(object sender, PropertyValueChangingEventArgs e);
+        /// <summary>
+        /// 值变更事件
+        /// </summary>
+        public event OnValueChangingHandler? OnValueChanging;
+
         /// <summary>
         /// 设置表单项验证函数
         /// </summary>
@@ -75,19 +97,19 @@ namespace Zhy.Components.Wpf._Model
             return false;
         }
 
-        private string _key;
-        private string _name;
-        private string _value;
+        private string? _key;
+        private string? _name;
+        private string? _value;
         private bool _isReadOnly;
-        private Func<ZFormItem, bool> _verifyFunc;
-        private string _tip;
+        private Func<ZFormItem, bool>? _verifyFunc;
+        private string? _tip;
         private int _oid;
 
-        internal Func<ZFormItem, bool> VerifyFunc
+        internal Func<ZFormItem, bool>? VerifyFunc
         {
             get { return _verifyFunc; }
         }
-        internal string Tip
+        internal string? Tip
         {
             get { return _tip; }
         }

@@ -6,6 +6,8 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
+using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Windows.Controls;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
 
@@ -14,6 +16,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 按钮选择框表单列
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormOperColumnButton("查看", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
+    /// public RelayCommand&lt;Tuple&lt;object?, IList?&gt;&gt; CommandViewItem =&gt; new RelayCommand&lt;Tuple&lt;object?, IList?&gt;&gt;(ViewItem);
+    /// </code>
+    /// </example>
     public class ZFormTextButtonColumnAttribute : ZFormTextButtonItemAttribute, IZFormColumn
     {
         /// <summary>
@@ -35,15 +43,15 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// </summary>
         public bool IsSearchProperty { get; set; }
         /// <summary>
-        /// 是否为只读列
+        /// 是否为只读列，默认false
         /// </summary>
         public bool IsReadOnlyColumn { get; set; }
         /// <summary>
-        /// 作为表单项时是否隐藏此项
+        /// 作为表单项时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormItem { get; set; }
         /// <summary>
-        /// 作为表单列时是否隐藏此项
+        /// 作为表单列时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormColumn { get; set; }
     }

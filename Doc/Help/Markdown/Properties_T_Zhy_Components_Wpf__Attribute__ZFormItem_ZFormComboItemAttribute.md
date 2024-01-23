@@ -10,7 +10,7 @@
 <td>索引，用于排序<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute_IsReadOnlyItem.md">IsReadOnlyItem</a></td>
-<td>是否为只读项<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
+<td>是否为只读项，默认false<br />(继承自 <a href="T_Zhy_Components_Wpf__Attribute__Base_ZFormItemAttribute.md">ZFormItemAttribute</a>。)</td></tr>
 <tr>
 <td><a href="P_Zhy_Components_Wpf__Attribute__ZFormItem_ZFormComboItemAttribute_ItemsSourceProperty.md">ItemsSourceProperty</a></td>
 <td>数据项源属性名</td></tr>

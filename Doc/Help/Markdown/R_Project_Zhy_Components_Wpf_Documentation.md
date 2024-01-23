@@ -12,7 +12,13 @@
 <td><a href="G_Zhy_Components_Wpf__Common.md">Zhy.Components.Wpf._Common</a></td>
 <td></td></tr>
 <tr>
+<td><a href="N_Zhy_Components_Wpf__Demo.md">Zhy.Components.Wpf._Demo</a></td>
+<td></td></tr>
+<tr>
 <td><a href="N_Zhy_Components_Wpf__Enum.md">Zhy.Components.Wpf._Enum</a></td>
+<td></td></tr>
+<tr>
+<td><a href="N_Zhy_Components_Wpf__Event.md">Zhy.Components.Wpf._Event</a></td>
 <td></td></tr>
 <tr>
 <td><a href="N_Zhy_Components_Wpf__Exception.md">Zhy.Components.Wpf._Exception</a></td>

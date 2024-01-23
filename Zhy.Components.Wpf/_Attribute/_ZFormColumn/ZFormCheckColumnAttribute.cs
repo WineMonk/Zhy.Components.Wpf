@@ -14,6 +14,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 选择框表单列
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormCheckColumn("选 择", Index = 0, IsHideFormItem = true)]
+    /// public bool IsChecked { get => _isChecked; set => SetProperty(ref _isChecked, value); }
+    /// </code>
+    /// </example>
     public class ZFormCheckColumnAttribute : ZFormCheckItemAttribute, IZFormColumn
     {
         /// <summary>
@@ -35,15 +41,15 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// </summary>
         public bool IsSearchProperty { get; set; }
         /// <summary>
-        /// 是否为只读列
+        /// 是否为只读列，默认false
         /// </summary>
         public bool IsReadOnlyColumn { get; set; }
         /// <summary>
-        /// 作为表单项时是否隐藏此项
+        /// 作为表单项时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormItem { get; set; }
         /// <summary>
-        /// 作为表单列时是否隐藏此项
+        /// 作为表单列时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormColumn { get; set; }
     }

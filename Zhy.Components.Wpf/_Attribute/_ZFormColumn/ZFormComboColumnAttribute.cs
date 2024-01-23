@@ -6,6 +6,7 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
+using System.Data;
 using System.Windows.Controls;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
 
@@ -14,6 +15,13 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 下拉列表框表单列
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormComboColumn("角 色", ItemsSourceProperty = nameof(Roles))]
+    /// public string Role { get => _role; set => SetProperty(ref _role, value); }
+    /// public List&lt;string&gt; Roles { get => _roles; set => _roles = value; }
+    /// </code>
+    /// </example>
     public class ZFormComboColumnAttribute : ZFormComboItemAttribute, IZFormColumn
     {
         /// <summary>
@@ -35,15 +43,15 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// </summary>
         public bool IsSearchProperty { get; set; }
         /// <summary>
-        /// 是否为只读列
+        /// 是否为只读列，默认false
         /// </summary>
         public bool IsReadOnlyColumn { get; set; }
         /// <summary>
-        /// 作为表单项时是否隐藏此项
+        /// 作为表单项时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormItem { get; set; }
         /// <summary>
-        /// 作为表单列时是否隐藏此项
+        /// 作为表单列时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormColumn { get; set; }
     }

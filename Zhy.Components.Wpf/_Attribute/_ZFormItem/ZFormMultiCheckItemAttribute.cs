@@ -13,6 +13,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormItem
     /// <summary>
     /// 多项选择框表单项
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormMultiCheckItem("权 限", "IsChecked", "Name")]
+    /// public List&lt;Permission&gt; Permission { get => _permission; set => SetProperty(ref _permission, value); }
+    /// </code>
+    /// </example>
     public class ZFormMultiCheckItemAttribute : ZFormItemAttribute
     {
         /// <summary>

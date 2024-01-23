@@ -91,7 +91,7 @@
                             Color="Black" />
                     </Border.Effect>
                     <ScrollViewer
-                        Margin="4,6,4,6"
+                        Margin="1"
                         CanContentScroll="True"
                         HorizontalScrollBarVisibility="Auto"
                         SnapsToDevicePixels="True"

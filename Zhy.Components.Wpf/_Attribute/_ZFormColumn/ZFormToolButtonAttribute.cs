@@ -6,6 +6,7 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
+using CommunityToolkit.Mvvm.Input;
 using System.Windows.Controls;
 using Zhy.Components.Wpf._Attribute._Base;
 using Zhy.Components.Wpf._Enum;
@@ -15,6 +16,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 表单操作列功能按钮
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormToolButton("全 选", Index = 0, Dock = Dock.Right, ButtonStyle = ZFormButtonStyle.DefaultButton, Location = ButtonLocation.Bottom)]
+    /// public RelayCommand&lt;IList?&gt; CommandCheckTotalItem => new RelayCommand&lt;IList?&gt;(CheckTotalItem);
+    /// </code>
+    /// </example>
     public class ZFormToolButtonAttribute : ZFormFuncButtonAttribute
     {
         /// <summary>

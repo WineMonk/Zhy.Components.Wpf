@@ -13,6 +13,13 @@ namespace Zhy.Components.Wpf._Attribute._ZFormItem
     /// <summary>
     /// 下拉列表框表单项
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormComboItem("角 色", ItemsSourceProperty = nameof(Roles))]
+    /// public string Role { get => _role; set => SetProperty(ref _role, value); }
+    /// public List&lt;string&gt; Roles { get => _roles; set => _roles = value; }
+    /// </code>
+    /// </example>
     public class ZFormComboItemAttribute : ZFormItemAttribute
     {
         /// <summary>

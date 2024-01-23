@@ -6,6 +6,7 @@
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
+using System.Collections.Generic;
 using System.Windows.Controls;
 using Zhy.Components.Wpf._Attribute._ZFormItem;
 
@@ -14,6 +15,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 多项选择框表单列
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormMultiCheckColumn("权 限", "IsChecked", "Name")]
+    /// public List&lt;Permission&gt; Permission { get => _permission; set => SetProperty(ref _permission, value); }
+    /// </code>
+    /// </example>
     public class ZFormMultiCheckColumnAttribute : ZFormMultiCheckItemAttribute, IZFormColumn
     {
         /// <summary>
@@ -39,15 +46,15 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// </summary>
         public bool IsSearchProperty { get; set; }
         /// <summary>
-        /// 是否为只读列
+        /// 是否为只读列，默认false
         /// </summary>
         public bool IsReadOnlyColumn { get; set; }
         /// <summary>
-        /// 作为表单项时是否隐藏此项
+        /// 作为表单项时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormItem { get; set; }
         /// <summary>
-        /// 作为表单列时是否隐藏此项
+        /// 作为表单列时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormColumn { get; set; }
     }

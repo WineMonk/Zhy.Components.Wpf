@@ -10,9 +10,9 @@
 namespace Zhy.Components.Wpf._Attribute
 {
     /// <summary>
-    /// 
+    /// 可排序表单项接口
     /// </summary>
-    internal interface IZFormSortItem
+    internal interface IZFormItemSortable
     {
         int Index { get; set; }
     }

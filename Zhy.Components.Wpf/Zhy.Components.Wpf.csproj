@@ -13,6 +13,7 @@
     <Compile Remove="_Attribute\ZOperateButtonAttribute.cs" />
     <Compile Remove="_Attribute\_Base\ZFormColumnAttribute.cs" />
     <Compile Remove="_View\_UserControl\MultiComboBox.cs" />
+    <Compile Remove="_View\_UserControl\ZDataGrid - 复制.cs" />
     <Compile Remove="_View\_UserControl\ZDataGrid - 复制.xaml.cs" />
   </ItemGroup>
 

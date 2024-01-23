@@ -13,6 +13,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormItem
     /// <summary>
     /// 输入框表单项
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormTextColumn("姓 名", Index = 1, IsHideFormColumn = false, IsReadOnlyColumn = false, IsHideFormItem = false, IsReadOnlyItem = false,IsSearchProperty = true, MemberPath = null, Width = 100, WidthUnit = DataGridLengthUnitType.Pixel)]
+    /// public string Username { get => _username; set => SetProperty(ref _username, value); }
+    /// </code>
+    /// </example>
     public class ZFormTextItemAttribute : ZFormItemAttribute
     {
         /// <summary>

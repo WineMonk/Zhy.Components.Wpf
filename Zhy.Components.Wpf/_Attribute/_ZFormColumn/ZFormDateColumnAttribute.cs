@@ -14,6 +14,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
     /// <summary>
     /// 日期表单列
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormDateColumn("创建日期")]
+    /// public string CreateDate { get => _createDate; set => SetProperty(ref _createDate, value); }
+    /// </code>
+    /// </example>
     public class ZFormDateColumnAttribute : ZFormDateItemAttribute, IZFormColumn
     {
         /// <summary>
@@ -38,15 +44,15 @@ namespace Zhy.Components.Wpf._Attribute._ZFormColumn
         /// </summary>
         public bool IsSearchProperty { get; set; }
         /// <summary>
-        /// 是否为只读列
+        /// 是否为只读列，默认false
         /// </summary>
         public bool IsReadOnlyColumn { get; set; }
         /// <summary>
-        /// 作为表单项时是否隐藏此项
+        /// 作为表单项时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormItem { get; set; }
         /// <summary>
-        /// 作为表单列时是否隐藏此项
+        /// 作为表单列时是否隐藏此项，默认false
         /// </summary>
         public bool IsHideFormColumn { get; set; }
     }

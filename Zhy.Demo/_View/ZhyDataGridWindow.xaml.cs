@@ -12,12 +12,6 @@ namespace Zhy.Demo._View
         {
             InitializeComponent();
             this.DataContext = new ZhyDataGridWindowViewModel();
-
-        }
-
-        private void buttonViewSelectedItem_Click(object sender, RoutedEventArgs e)
-        {
-            object selectedItem = zDataGrid.SelectedItem;
         }
     }
 }

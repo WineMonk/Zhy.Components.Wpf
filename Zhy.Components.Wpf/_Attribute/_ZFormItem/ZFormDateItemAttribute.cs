@@ -13,6 +13,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormItem
     /// <summary>
     /// 日期表单项
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormDateItem("创建日期")]
+    /// public string CreateDate { get => _createDate; set => SetProperty(ref _createDate, value); }
+    /// </code>
+    /// </example>
     public class ZFormDateItemAttribute : ZFormItemAttribute
     {
         /// <summary>

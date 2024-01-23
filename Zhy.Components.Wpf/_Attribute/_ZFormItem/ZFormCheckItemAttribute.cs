@@ -13,6 +13,12 @@ namespace Zhy.Components.Wpf._Attribute._ZFormItem
     /// <summary>
     /// 选择框表单项
     /// </summary>
+    /// <example>
+    /// <code>
+    /// [ZFormCheckItem("选 择")]
+    /// public bool IsChecked { get => _isChecked; set => SetProperty(ref _isChecked, value); }
+    /// </code>
+    /// </example>
     public class ZFormCheckItemAttribute : ZFormItemAttribute
     {
         /// <summary>

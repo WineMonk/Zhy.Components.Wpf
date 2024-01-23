@@ -63,7 +63,7 @@ namespace Zhy.Demo._ViewModel
             set { SetProperty(ref _testItems, value); }
         }
 
-        private bool _isReadOnly = false;
+        private bool _isReadOnly = true;
         public bool PropertyIsReadOnly
         {
             get { return _isReadOnly; }
@@ -76,31 +76,6 @@ namespace Zhy.Demo._ViewModel
             set { SetProperty(ref _searchButtonStyle, value); }
         }
 
-        public RelayCommand CommandChangeSearchButtonStyle => new RelayCommand(ChangeSearchButtonStyle);
-        private void ChangeSearchButtonStyle()
-        {
-            Random random = new Random();
-            switch (random.Next(0, 5))
-            {
-                case 0:
-                    ButtonStyle = ZFormButtonStyle.DefaultButton;
-                    break;
-                case 1:
-                    ButtonStyle = ZFormButtonStyle.InfoButton;
-                    break;
-                case 2:
-                    ButtonStyle = ZFormButtonStyle.WarnButton;
-                    break;
-                case 3:
-                    ButtonStyle = ZFormButtonStyle.ErrorButton;
-                    break;
-                case 4:
-                    ButtonStyle = ZFormButtonStyle.SuccessButton;
-                    break;
-                default:
-                    break;
-            }
-        }
         public RelayCommand CommandChangeReadOnly => new RelayCommand(ChangeReadOnly);
         private void ChangeReadOnly()
         {
