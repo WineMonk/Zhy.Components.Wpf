@@ -1,12 +1,4 @@
-﻿/****************************************
- * FileName:	AccountInfoExt
- * Creater: 	shaozhy
- * Create Date:	2023/11/29 10:14:05
- * Version: 	v0.0.1
- * ======================================
- * Modify: —— Version: —— Date: —— Modifier: —— Content:
- ****************************************/
-using Zhy.Components.Wpf._Attribute._ZFormColumn;
+﻿using Zhy.Components.Wpf.Attributes.ZFormColumns;
 
 namespace Zhy.Demo._Model
 {

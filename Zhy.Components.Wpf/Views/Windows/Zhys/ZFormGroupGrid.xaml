@@ -1,0 +1,183 @@
+﻿<Window
+    x:Class="Zhy.Components.Wpf.Views.Windows.Zhys.ZFormGroupGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:_converter="clr-namespace:Zhy.Components.Wpf.Commons.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Zhy.Components.Wpf.Views.Windows.Zhys"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="zFormGroupGrid"
+    Width="800"
+    Height="450"
+    Icon="pack://application:,,,/Zhy.Components.Wpf;component\Resources\Icons\logo_light.ico"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <!--  Icon="pack://application:,,,/Zhy.Components.Wpf;component\_Resource\_Icon\logo_light.ico"  -->
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/Zhy.Components.Wpf;component\Views\Theme\AppDictionary.xaml" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer
+            x:Name="scrollViewer"
+            Margin="10,0,10,10"
+            CanContentScroll="True"
+            HorizontalScrollBarVisibility="Disabled"
+            Style="{DynamicResource CustomScrollViewerStyle}"
+            VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding ZFormItemGroups}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock
+                                Margin="0,10,0,3"
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                Foreground="{DynamicResource InfoBrush}"
+                                Text="{Binding Name}"
+                                TextWrapping="Wrap" />
+                            <DataGrid
+                                VerticalContentAlignment="Center"
+                                AutoGenerateColumns="False"
+                                CanUserAddRows="False"
+                                CanUserSortColumns="True"
+                                HeadersVisibility="None"
+                                IsReadOnly="{Binding DataContext.IsReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                ItemsSource="{Binding ZFormItems}"
+                                PreviewMouseWheel="DataGrid_PreviewMouseWheel"
+                                Style="{DynamicResource InfoGrid}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Width="auto"
+                                        Binding="{Binding Oid}"
+                                        Header=" "
+                                        IsReadOnly="True">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Right" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTemplateColumn
+                                        Width="2*"
+                                        Header="名称"
+                                        SortMemberPath="Name">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox
+                                                    Padding="3,0"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    VerticalContentAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Name}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <!--<DataGridTextColumn
+                                        Width="2*"
+                                        Binding="{Binding Name}"
+                                        Header="名称"
+                                        IsReadOnly="True"
+                                        SortMemberPath="Name">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                                <Setter Property="Padding" Value="3,0" />
+                                                <Setter Property="IsHitTestVisible" Value="{Binding IsReadOnly, Converter={StaticResource BooleanNegationConverter}}" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>-->
+                                    <DataGridTemplateColumn
+                                        x:Name="valueColumn"
+                                        Width="3*"
+                                        Header="值"
+                                        SortMemberPath="Value">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox
+                                                    Padding="3,0"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    VerticalContentAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Text="{Binding Value}">
+                                                    <TextBox.Style>
+                                                        <Style TargetType="TextBox">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsReadOnly}" Value="True">
+                                                                    <Setter Property="IsReadOnly" Value="True" />
+                                                                    <Setter Property="Foreground" Value="#888" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding DataContext.IsReadOnly, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}" Value="True">
+                                                                    <Setter Property="Foreground" Value="#000" />
+                                                                    <Setter Property="IsReadOnly" Value="True" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBox.Style>
+                                                </TextBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <!--<DataGridTextColumn
+                                        Width="3*"
+                                        Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                                        Header="值"
+                                        SortMemberPath="Value">
+                                        <DataGridTextColumn.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="Foreground" Value="Black" />
+                                                <Setter Property="Background" Value="{Binding}" />
+                                    -->
+                                    <!--<Setter Property="IsEnabled" Value="{Binding IsReadOnly, Converter={StaticResource BooleanNegationConverter}}" />-->
+                                    <!--
+                                            </Style>
+                                        </DataGridTextColumn.CellStyle>
+                                    -->
+                                    <!--<DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                                <Setter Property="Padding" Value="3,0" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>-->
+                                    <!--
+                                    </DataGridTextColumn>-->
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <DockPanel Grid.Row="1" LastChildFill="False">
+            <Button
+                Margin="10,10"
+                Command="{Binding CancelCommand}"
+                Content="取  消"
+                DockPanel.Dock="Right"
+                Style="{DynamicResource DefaultButton}" />
+            <Button
+                Margin="10,10"
+                Command="{Binding OKCommand}"
+                Content="确  定"
+                DockPanel.Dock="Right"
+                Style="{DynamicResource InfoButton}" />
+        </DockPanel>
+    </Grid>
+</Window>

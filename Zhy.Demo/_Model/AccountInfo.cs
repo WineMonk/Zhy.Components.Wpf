@@ -1,12 +1,4 @@
-﻿/****************************************
- * FileName:	AccountInfo
- * Creater: 	shaozhy
- * Create Date:	2023/8/30 17:21:29
- * Version: 	v0.0.1
- * ======================================
- * Modify: —— Version: —— Date: —— Modifier: —— Content:
- ****************************************/
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using System;
@@ -15,10 +7,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Zhy.Components.Wpf._Attribute._ZFormColumn;
-using Zhy.Components.Wpf._Common._Utils;
-using Zhy.Components.Wpf._Enum;
-using Zhy.Components.Wpf._View._Window;
+using Zhy.Components.Wpf.Attributes.ZFormColumns;
+using Zhy.Components.Wpf.Commons.Utils;
+using Zhy.Components.Wpf.Enums;
+using Zhy.Components.Wpf.Views.Windows.Zhys;
 
 namespace Zhy.Demo._Model
 {
@@ -86,7 +78,7 @@ namespace Zhy.Demo._Model
         /// <summary>
         /// 档案路径
         /// </summary>
-        [ZFormTextButtonColumn("档案路径", Index = 5, ButtonContent = "更 改", RelayCommandName = nameof(CommandModifyArchivesPath), Width = 200, WidthUnit = DataGridLengthUnitType.Pixel)]
+        [ZFormTextButtonColumn("档案路径", Index = 5, ButtonContent = "更 改", RelayCommandName = nameof(CommandModifyArchivesPath), Width = 180, WidthUnit = DataGridLengthUnitType.Pixel)]
         public string? ArchivesPath { get => _archivesPath; set => SetProperty(ref _archivesPath, value); }
         /// <summary>
         /// 更改档案路径命令
@@ -171,7 +163,7 @@ namespace Zhy.Demo._Model
         /// <summary>
         /// 全选命令
         /// </summary>
-        [ZFormToolButton("全 选", Index = 0, Dock = Dock.Right, ButtonStyle = ZFormButtonStyle.DefaultButton, Location = ButtonLocation.Bottom)]
+        [ZFormToolButton("全 选", Index = 0, ButtonStyle = ZFormButtonStyle.DefaultButton, Location = ButtonLocation.Bottom)]
         public RelayCommand<IList?> CommandCheckTotalItem => new RelayCommand<IList?>(CheckTotalItem);
         public void CheckTotalItem(IList? items)
         {

@@ -5,38 +5,67 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <ApplicationIcon>Resources\Icons\logo_light.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Zhy.Components.Wpf</Title>
+    <Authors>WineMonk</Authors>
+    <Description>一个简洁易使用的WPF组件库！</Description>
+    <Copyright>©2024 By WineMonk</Copyright>
+    <PackageProjectUrl>https://shaoshao.net.cn/2023/09/01/20230901144253688/</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/WineMonk/Zhy.Components.Wpf</RepositoryUrl>
+    <PackageTags>WPF;UI;</PackageTags>
+    <NeutralLanguage>zh-CN</NeutralLanguage>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+	<PackageIcon>Resources\Images\logo_light%40180.png</PackageIcon>
+	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	<PackageLicenseFile>License.txt</PackageLicenseFile>
+	<Version>1.0.0.3</Version>
+	<PackageReleaseNotes>1. 修改命名空间；
+2. 开放配置ZDataGrid按钮样式属性；</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="_Attribute\ZDataColumnAttribute.cs" />
-    <Compile Remove="_Attribute\ZFormDataGridAttribute.cs" />
-    <Compile Remove="_Attribute\ZOperateButtonAttribute.cs" />
-    <Compile Remove="_Attribute\_Base\ZFormColumnAttribute.cs" />
-    <Compile Remove="_View\_UserControl\MultiComboBox.cs" />
-    <Compile Remove="_View\_UserControl\ZDataGrid - 复制.cs" />
-    <Compile Remove="_View\_UserControl\ZDataGrid - 复制.xaml.cs" />
+    <Compile Remove="Attributes\ZDataColumnAttribute.cs" />
+    <Compile Remove="Attributes\ZFormDataGridAttribute.cs" />
+    <Compile Remove="Attributes\ZOperateButtonAttribute.cs" />
+    <Compile Remove="Attributes\Bases\ZFormColumnAttribute.cs" />
+    <Compile Remove="Views\Controls\MultiComboBox.cs" />
+    <Compile Remove="Views\Controls\ZDataGrid - 复制.cs" />
+    <Compile Remove="Views\Controls\ZDataGrid - 复制.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="_Resource\_Icon\logo.ico" />
-    <None Remove="_Resource\_Icon\logo_light.ico" />
-    <None Remove="_Resource\_Image\blank.png" />
-    <None Remove="_Resource\_Image\logo%4016.png" />
-    <None Remove="_Resource\_Image\logo%40180.png" />
-    <None Remove="_Resource\_Image\logo%40192.png" />
-    <None Remove="_Resource\_Image\logo%4032.png" />
-    <None Remove="_Resource\_Image\logo%40512.png" />
-    <None Remove="_Resource\_Image\logo_light%4016.png" />
-    <None Remove="_Resource\_Image\logo_light%40180.png" />
-    <None Remove="_Resource\_Image\logo_light%40192.png" />
-    <None Remove="_Resource\_Image\logo_light%4032.png" />
-    <None Remove="_Resource\_Image\logo_light%40512.png" />
-    <None Remove="_Resource\_Image\remove.png" />
+    <None Remove="Resources\Icons\logo.ico" />
+    <None Remove="Resources\Icons\logo_light.ico" />
+    <None Remove="Resources\Images\blank.png" />
+    <None Remove="Resources\Images\logo%4016.png" />
+    <None Remove="Resources\Images\logo%40180.png" />
+    <None Remove="Resources\Images\logo%40192.png" />
+    <None Remove="Resources\Images\logo%4032.png" />
+    <None Remove="Resources\Images\logo%40512.png" />
+    <None Remove="Resources\Images\logo_light%4016.png" />
+    <None Remove="Resources\Images\logo_light%40192.png" />
+    <None Remove="Resources\Images\logo_light%4032.png" />
+    <None Remove="Resources\Images\logo_light%40512.png" />
+    <None Remove="Resources\Images\remove.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="_View\_Theme\AppDictionary - 复制.xaml" />
-    <Page Remove="_View\_UserControl\ZDataGrid - 复制.xaml" />
+    <Page Remove="Views\Theme\AppDictionary - 复制.xaml" />
+    <Page Remove="Views\Controls\ZDataGrid - 复制.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\License.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -44,20 +73,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="_Resource\_Icon\logo.ico" />
-    <Resource Include="_Resource\_Icon\logo_light.ico" />
-    <Resource Include="_Resource\_Image\blank.png" />
-    <Resource Include="_Resource\_Image\logo@16.png" />
-    <Resource Include="_Resource\_Image\logo@180.png" />
-    <Resource Include="_Resource\_Image\logo@192.png" />
-    <Resource Include="_Resource\_Image\logo@32.png" />
-    <Resource Include="_Resource\_Image\logo@512.png" />
-    <Resource Include="_Resource\_Image\logo_light@16.png" />
-    <Resource Include="_Resource\_Image\logo_light@180.png" />
-    <Resource Include="_Resource\_Image\logo_light@192.png" />
-    <Resource Include="_Resource\_Image\logo_light@32.png" />
-    <Resource Include="_Resource\_Image\logo_light@512.png" />
-    <Resource Include="_Resource\_Image\remove.png" />
+    <Resource Include="Resources\Icons\logo.ico" />
+    <Resource Include="Resources\Icons\logo_light.ico" />
+    <Resource Include="Resources\Images\blank.png" />
+    <Resource Include="Resources\Images\logo@16.png" />
+    <Resource Include="Resources\Images\logo@180.png" />
+    <Resource Include="Resources\Images\logo@192.png" />
+    <Resource Include="Resources\Images\logo@32.png" />
+    <Resource Include="Resources\Images\logo@512.png" />
+    <Resource Include="Resources\Images\logo_light@16.png" />
+    <Resource Include="Resources\Images\logo_light@180.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\logo_light@192.png" />
+    <Resource Include="Resources\Images\logo_light@32.png" />
+    <Resource Include="Resources\Images\logo_light@512.png" />
+    <Resource Include="Resources\Images\remove.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Images\logo_light@180.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

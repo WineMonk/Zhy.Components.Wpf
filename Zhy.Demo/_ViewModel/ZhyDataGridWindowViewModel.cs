@@ -1,20 +1,12 @@
-﻿/****************************************
- * FileName:	ZhyDataGridWindowViewModel
- * Creater: 	shaozhy
- * Create Date:	2023/8/28 15:09:27
- * Version: 	v0.0.1
- * ======================================
- * Modify: —— Version: —— Date: —— Modifier: —— Content:
- ****************************************/
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using Zhy.Components.Wpf._Common._Utils;
-using Zhy.Components.Wpf._Enum;
+using Zhy.Components.Wpf.Commons.Utils;
+using Zhy.Components.Wpf.Enums;
 using Zhy.Demo._Common;
 using Zhy.Demo._Model;
 

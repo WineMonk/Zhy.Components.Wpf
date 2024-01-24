@@ -1,12 +1,4 @@
-﻿/****************************************
- * FileName:	CommonUtils
- * Creater: 	shaozhy
- * Create Date:	2023/8/31 16:05:18
- * Version: 	v0.0.1
- * ======================================
- * Modify: —— Version: —— Date: —— Modifier: —— Content:
- ****************************************/
-using System;
+﻿using System;
 using System.Text;
 
 namespace Zhy.Demo._Common

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using Zhy.Components.Wpf._Model;
-using Zhy.Components.Wpf._View._Window;
+using Zhy.Components.Wpf.Models;
+using Zhy.Components.Wpf.Views.Controls.Zhys;
+using Zhy.Components.Wpf.Views.Windows.Zhys;
 using Zhy.Demo._Common;
 using Zhy.Demo._Model;
 using Zhy.Demo._View;

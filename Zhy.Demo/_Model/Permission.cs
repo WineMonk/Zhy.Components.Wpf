@@ -1,12 +1,4 @@
-﻿/****************************************
- * FileName:	Permission
- * Creater: 	shaozhy
- * Create Date:	2023/8/30 17:25:36
- * Version: 	v0.0.1
- * ======================================
- * Modify: —— Version: —— Date: —— Modifier: —— Content:
- ****************************************/
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Zhy.Demo._Model
 {

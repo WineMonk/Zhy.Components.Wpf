@@ -18,12 +18,12 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
-    <OutputPath>Help\Markdown\</OutputPath>
+    <OutputPath>Help\CHM\</OutputPath>
     <HtmlHelpName>Zhy.Components.Wpf.Documentation</HtmlHelpName>
     <Language>zh-CN</Language>
-    <HelpFileFormat>Markdown</HelpFileFormat>
+    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
-    <PresentationStyle>Markdown</PresentationStyle>
+    <PresentationStyle>VS2013</PresentationStyle>
     <BuildLogFile>Build\Log\build-log.log</BuildLogFile>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>

@@ -1,25 +1,6 @@
-﻿/****************************************
- * FileName:	TestItem
- * Creater: 	shaozhy
- * Create Date:	2023/8/23 15:47:11
- * Version: 	v0.0.1
- * Description:	
- * ======================================
- * Modify: —— Version: —— Date: —— Modifier: —— Content:
- ****************************************/
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows;
-using System.Collections.ObjectModel;
-using System.Collections;
-using System.Reflection;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 
 namespace Zhy.Demo._Model
 {
@@ -57,6 +38,6 @@ namespace Zhy.Demo._Model
                 return;
             testItem.Path = fileDialog.FileName;
         }
-        
+
     }
 }
