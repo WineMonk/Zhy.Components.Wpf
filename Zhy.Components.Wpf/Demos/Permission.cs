@@ -1,11 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Zhy.Components.Wpf.Views.Windows.ViewModel;
 
 namespace Zhy.Components.Wpf.Demos
 {
     /// <summary>
     /// 权限类
     /// </summary>
-    public class Permission : ObservableObject
+    public class Permission : ViewModelBase
     {
         private bool _isChecked = false;
         /// <summary>

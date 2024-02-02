@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +8,7 @@ using System.Windows.Controls;
 using Zhy.Components.Wpf.Attributes.ZFormColumns;
 using Zhy.Components.Wpf.Commons.Utils;
 using Zhy.Components.Wpf.Enums;
+using Zhy.Components.Wpf.Views.Windows.ViewModel;
 using Zhy.Components.Wpf.Views.Windows.Zhys;
 
 namespace Zhy.Components.Wpf.Demos
@@ -17,7 +16,7 @@ namespace Zhy.Components.Wpf.Demos
     /// <summary>
     /// 账户信息
     /// </summary>
-    public class AccountInfo : ObservableObject
+    public class AccountInfo : ViewModelBase
     {
         private int _no;
         private bool _isChecked;
@@ -86,9 +85,10 @@ namespace Zhy.Components.Wpf.Demos
         /// <summary>
         /// 更改档案路径命令
         /// </summary>
-        public RelayCommand<AccountInfo> CommandModifyArchivesPath => new RelayCommand<AccountInfo>(ModifyArchivesPath);
-        private void ModifyArchivesPath(AccountInfo? accountInfo)
+        public RelayCommand CommandModifyArchivesPath => new RelayCommand(ModifyArchivesPath);
+        private void ModifyArchivesPath(object param)
         {
+            AccountInfo? accountInfo = param as AccountInfo;
             if (accountInfo == null)
             {
                 return;
@@ -110,14 +110,15 @@ namespace Zhy.Components.Wpf.Demos
         /// 查看信息命令
         /// </summary>
         [ZFormOperColumnButton("查看", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
-        public RelayCommand<Tuple<object?, IList?>> CommandViewItem => new RelayCommand<Tuple<object?, IList?>>(ViewItem);
-        private void ViewItem(Tuple<object?, IList?>? param)
+        public RelayCommand CommandViewItem => new RelayCommand(ViewItem);
+        private void ViewItem(object param)
         {
-            if (param == null)
+            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
+            if (tuple == null)
             {
                 return;
             }
-            AccountInfo? accountInfo = param.Item1 as AccountInfo;
+            AccountInfo? accountInfo = tuple.Item1 as AccountInfo;
             if (accountInfo == null)
             {
                 return;
@@ -129,33 +130,36 @@ namespace Zhy.Components.Wpf.Demos
         /// 更新命令
         /// </summary>
         [ZFormOperColumnButton("更新", Index = 0, ButtonStyle = ZFormButtonStyle.WarnButton)]
-        public RelayCommand<Tuple<object?, IList?>> CommandUpdateItem => new RelayCommand<Tuple<object?, IList?>>(UpdateItem);
-        private void UpdateItem(Tuple<object?, IList?>? param)
+        public RelayCommand CommandUpdateItem => new RelayCommand(UpdateItem);
+        private void UpdateItem(object param)
         {
+            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
             MessageBox.Show("更新");
         }
         /// <summary>
         /// 导出命令
         /// </summary>
         [ZFormOperColumnButton("导出", Index = 0, ButtonStyle = ZFormButtonStyle.SuccessButton)]
-        public RelayCommand<Tuple<object?, IList?>> CommandExportItem => new RelayCommand<Tuple<object?, IList?>>(ExportItem);
-        private void ExportItem(Tuple<object?, IList?>? param)
+        public RelayCommand CommandExportItem => new RelayCommand(ExportItem);
+        private void ExportItem(object param)
         {
+            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
             MessageBox.Show("导出");
         }
         /// <summary>
         /// 删除命令
         /// </summary>
         [ZFormOperColumnButton("删 除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
-        public RelayCommand<Tuple<object?, IList?>> CommandDeleteItem => new RelayCommand<Tuple<object?, IList?>>(DeleteItem);
-        private void DeleteItem(Tuple<object?, IList?>? param)
+        public RelayCommand CommandDeleteItem => new RelayCommand(DeleteItem);
+        private void DeleteItem(object param)
         {
-            if (param == null)
+            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
+            if (tuple == null)
             {
                 return;
             }
-            AccountInfo? accountInfo = param.Item1 as AccountInfo;
-            IList? accountInfos = param.Item2 as IList;
+            AccountInfo? accountInfo = tuple.Item1 as AccountInfo;
+            IList? accountInfos = tuple.Item2 as IList;
             MessageBoxResult messageBoxResult = MessageBox.Show("确认删除？！", "提示", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (messageBoxResult != MessageBoxResult.Yes)
             {
@@ -167,9 +171,10 @@ namespace Zhy.Components.Wpf.Demos
         /// 全选命令
         /// </summary>
         [ZFormToolButton("全 选", Index = 0, Dock = Dock.Right, ButtonStyle = ZFormButtonStyle.DefaultButton, Location = ButtonLocation.Bottom)]
-        public RelayCommand<IList?> CommandCheckTotalItem => new RelayCommand<IList?>(CheckTotalItem);
-        private void CheckTotalItem(IList? items)
+        public RelayCommand CommandCheckTotalItem => new RelayCommand(CheckTotalItem);
+        private void CheckTotalItem(object param)
         {
+            IList? items = param as IList;
             if (items == null) return;
             foreach (AccountInfo? item in items)
             {
@@ -181,9 +186,10 @@ namespace Zhy.Components.Wpf.Demos
         /// 全不选命令
         /// </summary>
         [ZFormToolButton("全不选", Index = 1, Location = ButtonLocation.Bottom)]
-        public RelayCommand<IList?> CommandUncheckTotalItem => new RelayCommand<IList?>(UncheckTotalItem);
-        private void UncheckTotalItem(IList? items)
+        public RelayCommand CommandUncheckTotalItem => new RelayCommand(UncheckTotalItem);
+        private void UncheckTotalItem(object param)
         {
+            IList? items = param as IList;
             if (items == null) return;
             foreach (AccountInfo? item in items)
             {
@@ -195,9 +201,10 @@ namespace Zhy.Components.Wpf.Demos
         /// 添加用户命令
         /// </summary>
         [ZFormToolButton("添 加", Index = 0, ButtonStyle = ZFormButtonStyle.InfoButton)]
-        public RelayCommand<IList?> CommandAddItem => new RelayCommand<IList?>(AddItem);
-        private async void AddItem(IList? items)
+        public RelayCommand CommandAddItem => new RelayCommand(AddItem);
+        private async void AddItem(object param)
         {
+            IList? items = param as IList;
             if (items == null) return;
             AccountInfo accountInfo = new AccountInfo();
             await Task.Run(() =>
@@ -220,9 +227,10 @@ namespace Zhy.Components.Wpf.Demos
         /// 批量删除命令
         /// </summary>
         [ZFormToolButton("批量删除", Index = 1, ButtonStyle = ZFormButtonStyle.ErrorButton)]
-        public RelayCommand<IList?> CommandBatchDeleteItem => new RelayCommand<IList?>(BatchDeleteItem);
-        private void BatchDeleteItem(IList? items)
+        public RelayCommand CommandBatchDeleteItem => new RelayCommand(BatchDeleteItem);
+        private void BatchDeleteItem(object param)
         {
+            IList? items = param as IList;
             if (items == null) return;
             List<AccountInfo> rm = new List<AccountInfo>();
             foreach (AccountInfo accountInfo in items)

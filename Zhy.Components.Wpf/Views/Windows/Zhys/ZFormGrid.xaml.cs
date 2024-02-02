@@ -1,9 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using Zhy.Components.Wpf.Models;
+using Zhy.Components.Wpf.Views.Windows.ViewModel;
 
 namespace Zhy.Components.Wpf.Views.Windows.Zhys
 {
@@ -26,7 +25,7 @@ namespace Zhy.Components.Wpf.Views.Windows.Zhys
         }
     }
 
-    internal class ZFormGridViewModel : ObservableObject
+    internal class ZFormGridViewModel : ViewModelBase
     {
         private List<ZFormItem> zFormItems = new List<ZFormItem>();
         public List<ZFormItem> ZFormItems

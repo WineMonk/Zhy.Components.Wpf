@@ -1,12 +1,12 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Zhy.Components.Wpf.Views.Windows.ViewModel;
 
 namespace Zhy.Components.Wpf.Models
 {
     /// <summary>
     /// 表单项组
     /// </summary>
-    public class ZFormItemGroup : ObservableObject
+    public class ZFormItemGroup : ViewModelBase
     {
         /// <summary>
         /// 表单项组键

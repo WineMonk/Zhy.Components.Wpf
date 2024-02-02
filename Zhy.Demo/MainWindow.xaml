@@ -38,6 +38,18 @@
                 Click="buttonZhyFormGroupGrid_Click"
                 Content="ZhyFormGroupGrid"
                 Style="{DynamicResource SuccessButton}" />
+            <Button
+                x:Name="buttonTree"
+                Margin="10"
+                Click="buttonTree_Click"
+                Content="Tree"
+                Style="{DynamicResource SuccessButton}" />
+            <Button
+                x:Name="buttonZhyTreeView"
+                Margin="10"
+                Click="buttonZhyTreeView_Click"
+                Content="TreeView"
+                Style="{DynamicResource SuccessButton}" />
         </UniformGrid>
     </Grid>
 </Window>

@@ -129,7 +129,47 @@ namespace Zhy.Demo._Model
         public RelayCommand<Tuple<object?, IList?>> CommandUpdateItem => new RelayCommand<Tuple<object?, IList?>>(UpdateItem);
         private void UpdateItem(Tuple<object?, IList?>? param)
         {
-            MessageBox.Show("更新");
+            if (param == null)
+            {
+                return;
+            }
+            AccountInfo? accountInfo = param.Item1 as AccountInfo;
+            if (accountInfo == null)
+            {
+                return;
+            }
+
+            AccountInfo accountTemp = new AccountInfo
+            {
+                ArchivesPath = accountInfo.ArchivesPath,
+                CreateDate = accountInfo.CreateDate,
+                Enable = accountInfo.Enable,
+                IsChecked = accountInfo.IsChecked,
+                NO = accountInfo.NO,
+                Permission = accountInfo.Permission,
+                Phone = accountInfo.Phone,
+                Role = accountInfo.Role,
+                Roles = accountInfo.Roles,
+                Username = accountInfo.Username
+            };
+
+            ZFormDialog zFormDialog = new ZFormDialog(accountTemp);
+            zFormDialog.Title = "Add";
+            bool? dr = zFormDialog.ShowDialog();
+            if (dr == false)
+            {
+                return;
+            }
+            accountInfo.ArchivesPath = accountTemp.ArchivesPath;
+            accountInfo.CreateDate = accountTemp.CreateDate;
+            accountInfo.Enable = accountTemp.Enable;
+            accountInfo.IsChecked = accountTemp.IsChecked;
+            accountInfo.NO = accountTemp.NO;
+            accountInfo.Permission = accountTemp.Permission;
+            accountInfo.Phone = accountTemp.Phone;
+            accountInfo.Role = accountTemp.Role;
+            accountInfo.Roles = accountTemp.Roles;
+            accountInfo.Username = accountTemp.Username;
         }
         /// <summary>
         /// 导出命令

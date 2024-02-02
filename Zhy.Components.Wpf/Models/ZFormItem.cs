@@ -1,13 +1,13 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
+﻿using System;
 using Zhy.Components.Wpf.Events;
+using Zhy.Components.Wpf.Views.Windows.ViewModel;
 
 namespace Zhy.Components.Wpf.Models
 {
     /// <summary>
     /// 表单项
     /// </summary>
-    public class ZFormItem : ObservableObject
+    public class ZFormItem : ViewModelBase
     {
         /// <summary>
         /// 序号

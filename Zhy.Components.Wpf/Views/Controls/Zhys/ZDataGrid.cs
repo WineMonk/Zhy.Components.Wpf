@@ -687,7 +687,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                 }
                 if (parent != null && parent is Window window && window.Icon == null)
                 {
-                    window.Icon = new BitmapImage(new("pack://application:,,,/Zhy.Components.Wpf;component\\_Resource\\_Icon\\logo_light.ico"));
+                    window.Icon = new BitmapImage(new("pack://application:,,,/Zhy.Components.Wpf;component\\Resources\\Icons\\logo_light.ico"));
                 }
             }));
         }

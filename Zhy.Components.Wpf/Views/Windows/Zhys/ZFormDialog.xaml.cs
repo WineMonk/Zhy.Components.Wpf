@@ -1,6 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +11,7 @@ using Zhy.Components.Wpf.Attributes.Interfaces;
 using Zhy.Components.Wpf.Attributes.ZFormItems;
 using Zhy.Components.Wpf.Commons.Comparers;
 using Zhy.Components.Wpf.Views.Controls.Zhys;
+using Zhy.Components.Wpf.Views.Windows.ViewModel;
 
 namespace Zhy.Components.Wpf.Views.Windows.Zhys
 {
@@ -19,14 +20,14 @@ namespace Zhy.Components.Wpf.Views.Windows.Zhys
     /// </summary>
     public partial class ZFormDialog : Window
     {
-        Func<ObservableObject, bool> _funcValuesCheck = null;
-        ObservableObject _observableObject = null;
+        Func<INotifyPropertyChanged, bool> _funcValuesCheck = null;
+        INotifyPropertyChanged _observableObject = null;
         /// <summary>
         /// 表单项对话框
         /// </summary>
         /// <param name="observableObject">表单项实例</param>
         /// <param name="funcValuesCheck">属性验证方法，输入为当前编辑的表单项实例，如验证各项属性符合要求则返回true，否则返回false</param>
-        public ZFormDialog(ObservableObject observableObject, Func<ObservableObject, bool> funcValuesCheck = null)
+        public ZFormDialog(INotifyPropertyChanged observableObject, Func<INotifyPropertyChanged, bool> funcValuesCheck = null)
         {
             _observableObject = observableObject;
             _funcValuesCheck = funcValuesCheck;

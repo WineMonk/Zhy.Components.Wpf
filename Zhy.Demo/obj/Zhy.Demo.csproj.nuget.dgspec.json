@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
-      "version": "1.0.0.3",
+      "version": "1.1.0.2",
       "restore": {
         "projectUniqueName": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj",
         "projectName": "Zhy.Components.Wpf",
@@ -46,12 +46,6 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "dependencies": {
-            "CommunityToolkit.Mvvm": {
-              "target": "Package",
-              "version": "[8.2.1, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

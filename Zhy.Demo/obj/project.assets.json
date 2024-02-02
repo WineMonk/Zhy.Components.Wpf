@@ -31,12 +31,9 @@
           }
         }
       },
-      "Zhy.Components.Wpf/1.0.0.3": {
+      "Zhy.Components.Wpf/1.1.0.2": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "CommunityToolkit.Mvvm": "8.2.1"
-        },
         "compile": {
           "bin/placeholder/Zhy.Components.Wpf.dll": {}
         },
@@ -111,7 +108,7 @@
         "packageIcon.png"
       ]
     },
-    "Zhy.Components.Wpf/1.0.0.3": {
+    "Zhy.Components.Wpf/1.1.0.2": {
       "type": "project",
       "path": "../Zhy.Components.Wpf/Zhy.Components.Wpf.csproj",
       "msbuildProject": "../Zhy.Components.Wpf/Zhy.Components.Wpf.csproj"
@@ -121,7 +118,7 @@
     "net6.0-windows7.0": [
       "CommunityToolkit.Mvvm >= 8.2.1",
       "Newtonsoft.Json >= 13.0.3",
-      "Zhy.Components.Wpf >= 1.0.0.3"
+      "Zhy.Components.Wpf >= 1.1.0.2"
     ]
   },
   "packageFolders": {
