@@ -680,15 +680,19 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
             {
-                DependencyObject parent = VisualTreeHelper.GetParent(this);
-                while (parent != null && !(parent is Window))
+                try
                 {
-                    parent = VisualTreeHelper.GetParent(parent);
+                    DependencyObject parent = VisualTreeHelper.GetParent(this);
+                    while (parent != null && !(parent is Window))
+                    {
+                        parent = VisualTreeHelper.GetParent(parent);
+                    }
+                    if (parent != null && parent is Window window && window.Icon == null)
+                    {
+                        window.Icon = new BitmapImage(new("pack://application:,,,/Zhy.Components.Wpf;component\\Resources\\Icons\\logo_light.ico"));
+                    }
                 }
-                if (parent != null && parent is Window window && window.Icon == null)
-                {
-                    window.Icon = new BitmapImage(new("pack://application:,,,/Zhy.Components.Wpf;component\\Resources\\Icons\\logo_light.ico"));
-                }
+                catch { }
             }));
         }
     }

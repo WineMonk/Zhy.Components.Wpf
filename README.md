@@ -2,11 +2,11 @@
 
 ## Doc
 
-[API帮助文档 - CHM](https://github.com/WineMonk/Zhy.Components.Wpf/tree/master/Doc/Help/CHM)
-
-[API帮助文档 - Markdown](https://github.com/WineMonk/Zhy.Components.Wpf/tree/master/Doc/Help/Markdown)
-
 [主 页](https://shaoshao.net.cn)
+
+[GitHub](https://github.com/WineMonk/Zhy.Components.Wpf/tree/master/)
+
+[API帮助文档](https://github.com/WineMonk/Zhy.Components.Wpf/tree/master/Doc/Help/CHM)
 
 ## UserControl
 
