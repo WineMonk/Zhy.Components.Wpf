@@ -62,7 +62,7 @@ namespace Zhy.Demo._View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Zhy.Demo;component/_view/zhydatagridwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Zhy.Demo;V1.0.0.0;component/_view/zhydatagridwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\_View\ZhyDataGridWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

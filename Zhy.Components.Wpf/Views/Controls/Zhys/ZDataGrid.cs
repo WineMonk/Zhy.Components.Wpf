@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -124,6 +125,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         {
             InitZDataGrid();
             InjectIcon();
+
         }
 
         /// <summary>
@@ -131,10 +133,9 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         /// </summary>
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
-            InitializeFormComponent();
             base.OnItemsSourceChanged(oldValue, newValue);
+            InitializeFormComponent();
             _collectionView = CollectionViewSource.GetDefaultView(newValue);
-            _isLoad = true;
         }
 
         /// <summary>
@@ -144,17 +145,11 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         {
             if (e.Property == IsReadOnlyProperty)
             {
-                if (!_isLoad)
-                {
-                    base.OnPropertyChanged(e);
-                    return;
-                }
+                base.OnPropertyChanged(e);
                 InitializeFormComponent();
             }
             base.OnPropertyChanged(e);
         }
-
-        private bool _isLoad = false;
 
         #region Search
         private ICollectionView? _collectionView;
@@ -173,7 +168,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             }
             else
             {
-                searchButtonStyle = FindResource(ZFormButtonStyle.InfoButton.ToString()) as Style;
+                searchButtonStyle = IZFormItemUtils.FindResource(ZFormButtonStyle.InfoButton.ToString()) as Style;
             }
             Style? cancelSearchButtonStyle = null;
             if (CancelSearchButtonStyle != null)
@@ -182,7 +177,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             }
             else
             {
-                cancelSearchButtonStyle = FindResource(ZFormButtonStyle.ErrorButton.ToString()) as Style;
+                cancelSearchButtonStyle = IZFormItemUtils.FindResource(ZFormButtonStyle.ErrorButton.ToString()) as Style;
             }
             Button buttonSearch = new()
             {
@@ -200,7 +195,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                 Margin = new Thickness(1, 2, 1, 2),
                 VerticalContentAlignment = VerticalAlignment.Center,
                 MinWidth = 200.0,
-                Style = FindResource("InfoTextBox") as Style
+                Style = IZFormItemUtils.FindResource("InfoTextBox") as Style
             };
             textBoxSearch.SetValue(TextBoxHelper.TextMarkProperty, "输入查询内容");
             textBoxSearch.KeyUp += (o, e) =>
@@ -456,6 +451,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             SortedDictionary<IZFormFuncButton, PropertyInfo> toolButtonDic = new(new ZFormSortItemComparer(true));
             foreach (PropertyInfo propertyInfo in propertyInfos)
             {
+                List<Attribute> attributes = propertyInfo.GetCustomAttributes().ToList();
                 Attribute? attributeColumn = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute), true);
                 Attribute? attributeButton = propertyInfo.GetCustomAttribute(typeof(ZFormFuncButtonAttribute), true);
                 if (attributeColumn != null && attributeColumn is IZFormColumn zFormItemAttribute)
@@ -636,7 +632,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                     {
                         toolButton.SetValue(StyleProperty, buttonStyle);
                     }
-                    else if (FindResource(zButtonAttribute.ButtonStyle.ToString()) is Style toolButtonStyle)
+                    else if (IZFormItemUtils.FindResource(zButtonAttribute.ButtonStyle.ToString()) is Style toolButtonStyle)
                     {
                         toolButton.SetValue(StyleProperty, toolButtonStyle);
                     }
@@ -687,9 +683,12 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                     {
                         parent = VisualTreeHelper.GetParent(parent);
                     }
-                    if (parent != null && parent is Window window && window.Icon == null)
+                    if (parent != null && parent is Window window)
                     {
-                        window.Icon = new BitmapImage(new("pack://application:,,,/Zhy.Components.Wpf;component\\Resources\\Icons\\logo_light.ico"));
+                        if (window.Icon == null)
+                        {
+                            window.Icon = new BitmapImage(new("pack://application:,,,/Zhy.Components.Wpf;component\\Resources\\Icons\\logo_light.ico"));
+                        }
                     }
                 }
                 catch { }

@@ -24,11 +24,11 @@ namespace Zhy.Components.Wpf.Attributes.ZFormColumns
         /// <summary>
         /// 列宽度
         /// </summary>
-        public double Width { get; set; } = 1;
+        public double Width { get; set; }
         /// <summary>
         /// 列宽度单位
         /// </summary>
-        public DataGridLengthUnitType WidthUnit { get; set; } = DataGridLengthUnitType.Star;
+        public DataGridLengthUnitType WidthUnit { get; set; } = DataGridLengthUnitType.Auto;
         /// <summary>
         /// 是否为查询列
         /// 查询时查询该列的值，则为true，否则为false。

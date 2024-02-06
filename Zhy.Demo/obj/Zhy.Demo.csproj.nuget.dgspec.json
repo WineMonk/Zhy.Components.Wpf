@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj": {}
+    "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Demo\\Zhy.Demo.csproj": {}
   },
   "projects": {
-    "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
-      "version": "1.1.0.2",
+    "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
+      "version": "1.2.0",
       "restore": {
-        "projectUniqueName": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj",
+        "projectUniqueName": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj",
         "projectName": "Zhy.Components.Wpf",
-        "projectPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj",
+        "projectPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\obj\\",
+        "outputPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\software\\DevExpress 23.1\\Components\\Offline Packages",
@@ -69,14 +69,14 @@
         }
       }
     },
-    "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj": {
+    "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Demo\\Zhy.Demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj",
+        "projectUniqueName": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Demo\\Zhy.Demo.csproj",
         "projectName": "Zhy.Demo",
-        "projectPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Demo\\Zhy.Demo.csproj",
+        "projectPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Demo\\Zhy.Demo.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Demo\\obj\\",
+        "outputPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Demo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\software\\DevExpress 23.1\\Components\\Offline Packages",
@@ -100,8 +100,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
-                "projectPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj"
+              "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj": {
+                "projectPath": "D:\\file\\program\\zhyhub\\c\\Zhy.Components\\Zhy.Components.Wpf\\Zhy.Components.Wpf\\Zhy.Components.Wpf.csproj"
               }
             }
           }

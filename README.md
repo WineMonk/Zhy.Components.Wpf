@@ -56,6 +56,12 @@ ZDataGrid-Search
 
 ## Demo
 
+添加资源字典
+
+```xaml
+<ResourceDictionary Source="pack://application:,,,/Zhy.Components.Wpf;component\Views\Theme\AppDictionary.xaml" />
+```
+
 AccountInfo.cs
 
 ```csharp
