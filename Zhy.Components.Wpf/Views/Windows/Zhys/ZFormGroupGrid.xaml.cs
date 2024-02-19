@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using Zhy.Components.Wpf.Models;
 using Zhy.Components.Wpf.Views.Windows.ViewModel;
 
 namespace Zhy.Components.Wpf.Views.Windows.Zhys
 {
     /// <summary>
-    /// ZFormGroupGrid.xaml 的交互逻辑
+    /// ZFormGroupGrid 表单项分组表格
     /// </summary>
     public partial class ZFormGroupGrid : Window
     {
@@ -22,6 +23,22 @@ namespace Zhy.Components.Wpf.Views.Windows.Zhys
             InitializeComponent();
             vm = new ZFormGroupGridViewModel(zFormItemGroups, dr => this.DialogResult = dr);
             this.DataContext = vm;
+        }
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public string Tip
+        {
+            get { return textBoxTip.Text; }
+            set { textBoxTip.Text = value; }
+        }
+        /// <summary>
+        /// 提示信息前景色
+        /// </summary>
+        public Brush TipForeground
+        {
+            get { return textBoxTip.Foreground; }
+            set { textBoxTip.Foreground = value; }
         }
 
         public bool IsReadOnly { get => vm.IsReadOnly; set => vm.IsReadOnly = value; }

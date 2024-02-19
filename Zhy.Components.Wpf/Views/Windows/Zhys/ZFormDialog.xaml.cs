@@ -16,14 +16,14 @@ using Zhy.Components.Wpf.Views.Windows.ViewModel;
 namespace Zhy.Components.Wpf.Views.Windows.Zhys
 {
     /// <summary>
-    /// ZFormDialog.xaml 的交互逻辑
+    /// ZFormDialog 表单项对话框
     /// </summary>
     public partial class ZFormDialog : Window
     {
         Func<INotifyPropertyChanged, bool> _funcValuesCheck = null;
         INotifyPropertyChanged _observableObject = null;
         /// <summary>
-        /// 表单项对话框
+        /// ZFormDialog构造函数
         /// </summary>
         /// <param name="observableObject">表单项实例</param>
         /// <param name="funcValuesCheck">属性验证方法，输入为当前编辑的表单项实例，如验证各项属性符合要求则返回true，否则返回false</param>
@@ -34,6 +34,22 @@ namespace Zhy.Components.Wpf.Views.Windows.Zhys
             InitializeComponent();
             InitOwner();
             InitView();
+        }
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public string Tip
+        {
+            get { return textBoxTip.Text; }
+            set { textBoxTip.Text = value; }
+        }
+        /// <summary>
+        /// 提示信息前景色
+        /// </summary>
+        public Brush TipForeground
+        {
+            get { return textBoxTip.Foreground; }
+            set { textBoxTip.Foreground = value; }
         }
 
         private void InitOwner()

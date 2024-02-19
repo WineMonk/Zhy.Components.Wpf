@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 using Zhy.Components.Wpf.Models;
 using Zhy.Components.Wpf.Views.Controls.Zhys;
 using Zhy.Components.Wpf.Views.Windows.Zhys;
@@ -78,6 +79,8 @@ namespace Zhy.Demo
             }).ToList();
             zFormItems[2].Value = DateTime.Now.ToString();
             ZFormGrid zFormGrid = new ZFormGrid(zFormItems);
+            zFormGrid.Tip = "*提示：\r\n\t提示信息。";
+            zFormGrid.TipForeground = new SolidColorBrush(Colors.Blue);
             zFormGrid.ShowDialog();
         }
 
@@ -91,6 +94,8 @@ namespace Zhy.Demo
             accountInfo.Role = accountInfo.Roles.FirstOrDefault(r => r == "员工");
             accountInfo.Permission.ForEach(permission => permission.IsChecked = true);
             ZFormDialog zFormDialog = new ZFormDialog(accountInfo);
+            zFormDialog.Tip = "*提示：\r\n\t提示信息。";
+            zFormDialog.TipForeground = new SolidColorBrush(Colors.Green);
             bool dr = (bool)zFormDialog.ShowDialog();
             if (!dr)
                 return;
@@ -124,6 +129,8 @@ namespace Zhy.Demo
             }).ToList();
             ZFormGroupGrid zFormGroupGrid = new ZFormGroupGrid(
                 new List<ZFormItemGroup>() { zFormItemGroup, zFormItemGroup1, zFormItemGroup2});
+            zFormGroupGrid.Tip = "*提示：\r\n\t提示信息。";
+            zFormGroupGrid.TipForeground = new SolidColorBrush(Colors.Red);
             zFormGroupGrid.IsReadOnly = false;
             zFormGroupGrid.ShowDialog();
         }

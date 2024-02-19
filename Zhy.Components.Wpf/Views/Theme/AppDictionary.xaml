@@ -161,7 +161,7 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="3">
                         <ContentPresenter
-                            Margin="8,3"
+                            Margin="10,5"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Border>

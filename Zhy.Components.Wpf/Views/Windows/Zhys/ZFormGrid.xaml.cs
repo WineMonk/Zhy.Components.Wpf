@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 using Zhy.Components.Wpf.Models;
 using Zhy.Components.Wpf.Views.Windows.ViewModel;
 
 namespace Zhy.Components.Wpf.Views.Windows.Zhys
 {
     /// <summary>
-    /// ZFormGrid.xaml 的交互逻辑
+    /// ZFormGrid 表单项表格
     /// </summary>
     public partial class ZFormGrid : Window
     {
@@ -22,6 +23,22 @@ namespace Zhy.Components.Wpf.Views.Windows.Zhys
             InitializeComponent();
             vm = new ZFormGridViewModel(zFormItems, dr => this.DialogResult = dr);
             this.DataContext = vm;
+        }
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public string Tip
+        {
+            get { return textBoxTip.Text; }
+            set { textBoxTip.Text = value; }
+        }
+        /// <summary>
+        /// 提示信息前景色
+        /// </summary>
+        public Brush TipForeground
+        {
+            get { return textBoxTip.Foreground; }
+            set { textBoxTip.Foreground = value; }
         }
     }
 

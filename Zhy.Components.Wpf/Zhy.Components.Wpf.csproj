@@ -16,13 +16,13 @@
     <RepositoryUrl>https://github.com/WineMonk/Zhy.Components.Wpf</RepositoryUrl>
     <PackageTags>WPF;UI;</PackageTags>
     <NeutralLanguage>zh-CN</NeutralLanguage>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
+    <AssemblyVersion>1.2.0.1</AssemblyVersion>
+    <FileVersion>1.2.0.1</FileVersion>
 	<PackageIcon>Resources\Images\logo_light%40180.png</PackageIcon>
 	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	<PackageLicenseFile>License.txt</PackageLicenseFile>
-	<Version>1.2.0.0</Version>
-	<PackageReleaseNotes>1. 解决列生成问题；</PackageReleaseNotes>
+	<Version>1.2.0.1</Version>
+	<PackageReleaseNotes>1. 添加窗体提示信息属性；</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

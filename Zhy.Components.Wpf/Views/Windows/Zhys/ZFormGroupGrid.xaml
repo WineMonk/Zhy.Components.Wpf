@@ -165,19 +165,30 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <DockPanel Grid.Row="1" LastChildFill="False">
+        <DockPanel Grid.Row="1">
             <Button
                 Margin="10,10"
+                VerticalAlignment="Bottom"
                 Command="{Binding CancelCommand}"
                 Content="取  消"
                 DockPanel.Dock="Right"
                 Style="{DynamicResource DefaultButton}" />
             <Button
                 Margin="10,10"
+                VerticalAlignment="Bottom"
                 Command="{Binding OKCommand}"
                 Content="确  定"
                 DockPanel.Dock="Right"
                 Style="{DynamicResource InfoButton}" />
+            <TextBox
+                x:Name="textBoxTip"
+                MaxHeight="42"
+                Padding="10,0,10,10"
+                Background="Transparent"
+                BorderThickness="0"
+                IsReadOnly="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Hidden" />
         </DockPanel>
     </Grid>
 </Window>

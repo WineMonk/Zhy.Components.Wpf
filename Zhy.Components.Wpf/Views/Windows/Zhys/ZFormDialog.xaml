@@ -26,10 +26,11 @@
             VerticalScrollBarVisibility="Auto">
             <Grid x:Name="gridContent" Margin="3" />
         </ScrollViewer>
-        <DockPanel Grid.Row="1" LastChildFill="False">
+        <DockPanel Grid.Row="1">
             <Button
                 x:Name="buttonCancel"
                 Margin="10"
+                VerticalAlignment="Bottom"
                 Click="buttonCancel_Click"
                 Content="取  消"
                 DockPanel.Dock="Right"
@@ -38,11 +39,21 @@
             <Button
                 x:Name="buttonOK"
                 Margin="10"
+                VerticalAlignment="Bottom"
                 Click="buttonOK_Click"
                 Content="确  定"
                 DockPanel.Dock="Right"
                 IsDefault="True"
                 Style="{DynamicResource InfoButton}" />
+            <TextBox
+                x:Name="textBoxTip"
+                MaxHeight="42"
+                Padding="10,0,10,10"
+                Background="Transparent"
+                BorderThickness="0"
+                IsReadOnly="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Hidden" />
         </DockPanel>
     </Grid>
 </Window>
