@@ -10,7 +10,7 @@
     Icon="pack://application:,,,/Zhy.Components.Wpf;component\Resources\Icons\logo_light.ico"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
-    <!--  Icon="pack://application:,,,/Zhy.Components.Wpf;component\_Resource\_Icon\logo_light.ico"  -->
+    <!--  Icon="pack://application:,,,/Zhy.Components.Wpf;component\Resources\Icons\logo_light.ico"  -->
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/Zhy.Components.Wpf;component\Views\Theme\AppDictionary.xaml" />
     </Window.Resources>

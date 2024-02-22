@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+	<TargetFrameworks>netcoreapp3.0;netcoreapp3.1;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;net481;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ApplicationIcon>Resources\Icons\logo_light.ico</ApplicationIcon>
@@ -16,22 +15,27 @@
     <RepositoryUrl>https://github.com/WineMonk/Zhy.Components.Wpf</RepositoryUrl>
     <PackageTags>WPF;UI;</PackageTags>
     <NeutralLanguage>zh-CN</NeutralLanguage>
-    <AssemblyVersion>1.2.0.1</AssemblyVersion>
-    <FileVersion>1.2.0.1</FileVersion>
-	<PackageIcon>Resources\Images\logo_light%40180.png</PackageIcon>
+    <AssemblyVersion>1.2.0.2</AssemblyVersion>
+    <FileVersion>1.2.0.2</FileVersion>
 	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	<PackageLicenseFile>License.txt</PackageLicenseFile>
-	<Version>1.2.0.1</Version>
-	<PackageReleaseNotes>1. 添加窗体提示信息属性；</PackageReleaseNotes>
+	<Version>1.2.0.2</Version>
+	<PackageReleaseNotes>1.添加支持版本；2.取消图标注入；3.修改主题颜色；</PackageReleaseNotes>
+	<PackageIcon>logo_light@180.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Components\Tree\**" />
+    <EmbeddedResource Remove="Components\Tree\**" />
+    <None Remove="Components\Tree\**" />
+    <Page Remove="Components\Tree\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Attributes\ZDataColumnAttribute.cs" />
     <Compile Remove="Attributes\ZFormDataGridAttribute.cs" />
     <Compile Remove="Attributes\ZOperateButtonAttribute.cs" />
     <Compile Remove="Attributes\Bases\ZFormColumnAttribute.cs" />
-    <Compile Remove="Components\Tree\TestTree.cs" />
-    <Compile Remove="Components\Tree\Tree.cs" />
     <Compile Remove="Views\Controls\MultiComboBox.cs" />
     <Compile Remove="Views\Controls\ZDataGrid - 复制.cs" />
     <Compile Remove="Views\Controls\ZDataGrid - 复制.xaml.cs" />
@@ -59,6 +63,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Resources\Images\logo_light%40180.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\License.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -93,6 +101,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\" />
   </ItemGroup>
 
 </Project>

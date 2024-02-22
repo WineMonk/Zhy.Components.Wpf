@@ -9,8 +9,8 @@ namespace Zhy.Components.Wpf.Commons.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            object? item = null;
-            IList? list = null;
+            object item = null;
+            IList list = null;
             if (values != null)
             {
                 if (values.Length > 0)

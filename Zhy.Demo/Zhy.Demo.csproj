@@ -8,6 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="_Model\TestItem.cs" />
+    <Compile Remove="_Model\TestTree.cs" />
+    <Compile Remove="_Model\TestTree`2.cs" />
+    <Compile Remove="_Model\Tree.cs" />
+    <Compile Remove="_Model\Tree`2.cs" />
+    <Compile Remove="_ViewModel\ZhyTreeViewWindowViewModel.cs" />
+    <Compile Remove="_View\ZhyTreeViewWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="_View\ZhyTreeViewWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

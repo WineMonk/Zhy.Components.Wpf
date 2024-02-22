@@ -95,7 +95,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             textBoxDateTime.Text = SelectDate.ToString(DisplayFormat);
         }
 
-        private void Calendar_SelectedDatesChanged(object? sender, SelectionChangedEventArgs e)
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems == null || e.AddedItems.Count < 1)
             {
@@ -124,7 +124,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
 
         private void textBoxHour_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            TextBox? textBox = sender as TextBox;
+            TextBox textBox = sender as TextBox;
             int selectionStart = textBox.SelectionStart;
             if (textBox == null)
             {
@@ -150,7 +150,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
 
         private void textBoxMinute_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            TextBox? textBox = sender as TextBox;
+            TextBox textBox = sender as TextBox;
             int selectionStart = textBox.SelectionStart;
             if (textBox == null)
             {
@@ -176,7 +176,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
 
         private void textBoxSecond_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            TextBox? textBox = sender as TextBox;
+            TextBox textBox = sender as TextBox;
             int selectionStart = textBox.SelectionStart;
             if (textBox == null)
             {

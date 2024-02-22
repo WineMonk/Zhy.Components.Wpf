@@ -26,21 +26,21 @@ namespace Zhy.Components.Wpf.Commons.Utils
             PropertyInfo[] propertyInfos = obj.GetType().GetProperties();
             foreach (var propertyInfo in propertyInfos)
             {
-                ZFormItemAttribute? zFormItemAttribute = propertyInfo.GetCustomAttribute<ZFormItemAttribute>();
+                ZFormItemAttribute zFormItemAttribute = propertyInfo.GetCustomAttribute<ZFormItemAttribute>();
                 if (zFormItemAttribute == null)
                     continue;
                 if (zFormItemAttribute is ZFormMultiCheckItemAttribute)
                 {
                     ZFormMultiCheckItemAttribute zFormMultiCheckItem = (ZFormMultiCheckItemAttribute)zFormItemAttribute;
-                    PropertyInfo? propertyInfo1 = obj.GetType().GetProperty(propertyInfo.Name);
-                    object? val = propertyInfo1.GetValue(obj);
+                    PropertyInfo propertyInfo1 = obj.GetType().GetProperty(propertyInfo.Name);
+                    object val = propertyInfo1.GetValue(obj);
                     IList list = val as IList;
                     msg += zFormItemAttribute.Title + ": ";
                     foreach (var item in list)
                     {
-                        PropertyInfo? propertyInfo2 = item.GetType().GetProperty(zFormMultiCheckItem.MemberPath);
-                        PropertyInfo? propertyInfo3 = item.GetType().GetProperty(zFormMultiCheckItem.ContentProperty);
-                        object? vval = propertyInfo2.GetValue(item);
+                        PropertyInfo propertyInfo2 = item.GetType().GetProperty(zFormMultiCheckItem.MemberPath);
+                        PropertyInfo propertyInfo3 = item.GetType().GetProperty(zFormMultiCheckItem.ContentProperty);
+                        object vval = propertyInfo2.GetValue(item);
                         bool check = (bool)vval;
                         if (check)
                             msg += propertyInfo3.GetValue(item) + " ";
@@ -52,9 +52,9 @@ namespace Zhy.Components.Wpf.Commons.Utils
                         msg += zFormItemAttribute.Title + ": " + propertyInfo.GetValue(obj) + "\r\n";
                     else
                     {
-                        object? val = propertyInfo.GetValue(obj);
+                        object val = propertyInfo.GetValue(obj);
                         if (val == null) continue;
-                        PropertyInfo? propertyInfo2 = val.GetType().GetProperty(zFormItemAttribute.MemberPath);
+                        PropertyInfo propertyInfo2 = val.GetType().GetProperty(zFormItemAttribute.MemberPath);
                         msg += zFormItemAttribute.Title + ": " + propertyInfo2.GetValue(val) + "\r\n";
                     }
                 }

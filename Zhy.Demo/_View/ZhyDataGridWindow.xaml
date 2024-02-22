@@ -11,9 +11,9 @@
     Icon="pack://application:,,,/Zhy.Components.Wpf;component\Resources\Icons\logo_light.ico"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Window.Resources>
+    <!--<Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/Zhy.Components.Wpf;component\Views\Theme\AppDictionary.xaml" />
-    </Window.Resources>
+    </Window.Resources>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

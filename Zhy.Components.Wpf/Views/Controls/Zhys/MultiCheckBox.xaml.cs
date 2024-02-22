@@ -96,10 +96,10 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             CheckedItemsSource = Activator.CreateInstance(type) as IList;
             foreach (object item in ItemsSource)
             {
-                PropertyInfo? propertyInfo = item.GetType().GetProperty(CheckPropertyName);
+                PropertyInfo propertyInfo = item.GetType().GetProperty(CheckPropertyName);
                 if (propertyInfo == null)
                     continue;
-                object? val = propertyInfo.GetValue(item);
+                object val = propertyInfo.GetValue(item);
                 if (val == null)
                     continue;
                 bool check = false;
@@ -266,7 +266,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                         break;
                     }
                 }
-                PropertyInfo? propertyInfo = checkBox.DataContext.GetType().GetProperty(CheckPropertyName);
+                PropertyInfo propertyInfo = checkBox.DataContext.GetType().GetProperty(CheckPropertyName);
                 if (propertyInfo == null)
                     return;
                 propertyInfo.SetValue(checkBox.DataContext, true);
@@ -280,7 +280,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             CheckBox checkBox = sender as CheckBox;
             if (CheckedItemsSource.Contains(checkBox.DataContext))
             {
-                PropertyInfo? propertyInfo = checkBox.DataContext.GetType().GetProperty(CheckPropertyName);
+                PropertyInfo propertyInfo = checkBox.DataContext.GetType().GetProperty(CheckPropertyName);
                 if (propertyInfo == null)
                     return;
                 propertyInfo.SetValue(checkBox.DataContext, false);
@@ -295,7 +295,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             Button button = sender as Button;
             if (CheckedItemsSource.Contains(button.DataContext))
             {
-                PropertyInfo? propertyInfo = button.DataContext.GetType().GetProperty(CheckPropertyName);
+                PropertyInfo propertyInfo = button.DataContext.GetType().GetProperty(CheckPropertyName);
                 if (propertyInfo == null)
                     return;
                 propertyInfo.SetValue(button.DataContext, false);

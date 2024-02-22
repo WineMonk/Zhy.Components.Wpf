@@ -14,7 +14,7 @@
         <GradientStop Offset="1" Color="#88DDFF" />
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="DefaultBrush" StartPoint="0,0" EndPoint="1,1">
+    <!--<LinearGradientBrush x:Key="DefaultBrush" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Offset="0" Color="#eeeeee" />
         <GradientStop Offset="1" Color="LightGray" />
     </LinearGradientBrush>
@@ -33,16 +33,16 @@
     <LinearGradientBrush x:Key="ErrorBrush" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Offset="0" Color="Red" />
         <GradientStop Offset="1" Color="DarkRed" />
-    </LinearGradientBrush>
-    <!--<SolidColorBrush x:Key="DefaultBrush" Color="LightGray" />
-    <SolidColorBrush x:Key="InfoBrush" Color="#0177ce" />
+    </LinearGradientBrush>-->
+    <SolidColorBrush x:Key="DefaultBrush" Color="White" />
+    <SolidColorBrush x:Key="InfoBrush" Color="#0077CC" />
     <SolidColorBrush x:Key="SuccessBrush" Color="#2EB330" />
     <SolidColorBrush x:Key="WarnBrush" Color="#FF9900" />
-    <SolidColorBrush x:Key="ErrorBrush" Color="#d70000" />-->
+    <SolidColorBrush x:Key="ErrorBrush" Color="#d70000" />
 
     <SolidColorBrush x:Key="DefaultBrushSelected" Color="#d0d0d0" />
-    <SolidColorBrush x:Key="InfoBrushSelected" Color="#1133AA" />
-    <SolidColorBrush x:Key="SuccessBrushSelected" Color="#42B371" />
+    <SolidColorBrush x:Key="InfoBrushSelected" Color="#1144AA" />
+    <SolidColorBrush x:Key="SuccessBrushSelected" Color="#118811" />
     <SolidColorBrush x:Key="WarnBrushSelected" Color="#CC7700" />
     <SolidColorBrush x:Key="ErrorBrushSelected" Color="#aa0000" />
 
@@ -157,11 +157,11 @@
                 <ControlTemplate TargetType="Button">
                     <Border
                         Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{DynamicResource DarkBrush}"
+                        BorderThickness="1"
                         CornerRadius="3">
                         <ContentPresenter
-                            Margin="10,5"
+                            Margin="9,4"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Border>

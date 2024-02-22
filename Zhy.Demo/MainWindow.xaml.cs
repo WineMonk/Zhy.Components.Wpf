@@ -134,27 +134,5 @@ namespace Zhy.Demo
             zFormGroupGrid.IsReadOnly = false;
             zFormGroupGrid.ShowDialog();
         }
-
-        private void buttonTree_Click(object sender, RoutedEventArgs e)
-        {
-            TestTree testTree = new TestTree();
-            testTree.TestSearch();
-            testTree.TestSafeTraversal();
-            string json = testTree.TestToJson();
-            Tree? tree = testTree.TestFromJson(json);
-
-
-            TestTree2 testTree2 = new TestTree2();
-            testTree2.TestSearch();
-            testTree2.TestSafeTraversal();
-            string json2 = testTree2.TestToJson();
-            Tree2? tree2 = testTree2.TestFromJson(json2);
-        }
-
-        private void buttonZhyTreeView_Click(object sender, RoutedEventArgs e)
-        {
-            ZhyTreeViewWindow zhyTreeViewWindow = new ZhyTreeViewWindow();
-            zhyTreeViewWindow.ShowDialog();
-        }
     }
 }

@@ -14,7 +14,7 @@ namespace Zhy.Components.Wpf.Views.Windows.ViewModel
     /// </summary>
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T backingField, T value, Expression<Func<T>> property)
         {

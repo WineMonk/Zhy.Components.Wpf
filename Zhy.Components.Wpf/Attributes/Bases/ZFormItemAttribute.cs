@@ -21,7 +21,7 @@ namespace Zhy.Components.Wpf.Attributes.Bases
         /// 成员路径
         /// 如为基础类型，则保持为空；如为引用类型，设置为相应成员属性名。
         /// </summary>
-        public string? MemberPath { get; set; }
+        public string MemberPath { get; set; }
         /// <summary>
         /// 是否为只读项，默认false
         /// </summary>

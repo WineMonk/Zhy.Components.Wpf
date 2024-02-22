@@ -20,12 +20,12 @@ namespace Zhy.Components.Wpf.Demos
     {
         private int _no;
         private bool _isChecked;
-        private string? _username;
-        private string? _createDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        private string? _role;
+        private string _username;
+        private string _createDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        private string _role;
         private bool _enable;
-        private string? _phone;
-        private string? _archivesPath;
+        private string _phone;
+        private string _archivesPath;
         private List<Permission> _permission = new List<Permission>()
         {
             new Permission(false, "测试项1","测试项1"),
@@ -52,17 +52,17 @@ namespace Zhy.Components.Wpf.Demos
         /// 用户名
         /// </summary>
         [ZFormTextColumn("用户名", Index = 1, IsHideFormColumn = false, IsReadOnlyColumn = false, IsHideFormItem = false, IsReadOnlyItem = false, IsSearchProperty = true, MemberPath = null, Width = 100, WidthUnit = DataGridLengthUnitType.Pixel)]
-        public virtual string? Username { get => _username; set => SetProperty(ref _username, value); }
+        public virtual string Username { get => _username; set => SetProperty(ref _username, value); }
         /// <summary>
         /// 创建日期
         /// </summary>
         [ZFormDateColumn("创建日期", Index = 2, Width = 200, WidthUnit = DataGridLengthUnitType.Pixel)]
-        public string? CreateDate { get => _createDate; set => SetProperty(ref _createDate, value); }
+        public string CreateDate { get => _createDate; set => SetProperty(ref _createDate, value); }
         /// <summary>
         /// 用户角色
         /// </summary>
         [ZFormComboColumn("角 色", Index = 3, IsSearchProperty = true, ItemsSourceProperty = nameof(Roles), Width = 100, WidthUnit = DataGridLengthUnitType.Pixel)]
-        public string? Role { get => _role; set => SetProperty(ref _role, value); }
+        public string Role { get => _role; set => SetProperty(ref _role, value); }
         /// <summary>
         /// 全部角色
         /// </summary>
@@ -76,19 +76,19 @@ namespace Zhy.Components.Wpf.Demos
         /// 联系电话
         /// </summary>
         [ZFormTextColumn("联系电话", Index = 4, IsSearchProperty = true, Width = 100, WidthUnit = DataGridLengthUnitType.Pixel)]
-        public string? Phone { get => _phone; set => SetProperty(ref _phone, value); }
+        public string Phone { get => _phone; set => SetProperty(ref _phone, value); }
         /// <summary>
         /// 档案路径
         /// </summary>
         [ZFormTextButtonColumn("档案路径", Index = 5, ButtonContent = "更 改", RelayCommandName = nameof(CommandModifyArchivesPath), Width = 200, WidthUnit = DataGridLengthUnitType.Pixel)]
-        public string? ArchivesPath { get => _archivesPath; set => SetProperty(ref _archivesPath, value); }
+        public string ArchivesPath { get => _archivesPath; set => SetProperty(ref _archivesPath, value); }
         /// <summary>
         /// 更改档案路径命令
         /// </summary>
         public RelayCommand CommandModifyArchivesPath => new RelayCommand(ModifyArchivesPath);
         private void ModifyArchivesPath(object param)
         {
-            AccountInfo? accountInfo = param as AccountInfo;
+            AccountInfo accountInfo = param as AccountInfo;
             if (accountInfo == null)
             {
                 return;
@@ -113,12 +113,12 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandViewItem => new RelayCommand(ViewItem);
         private void ViewItem(object param)
         {
-            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
+            Tuple<object, IList> tuple = param as Tuple<object, IList>;
             if (tuple == null)
             {
                 return;
             }
-            AccountInfo? accountInfo = tuple.Item1 as AccountInfo;
+            AccountInfo accountInfo = tuple.Item1 as AccountInfo;
             if (accountInfo == null)
             {
                 return;
@@ -133,7 +133,7 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandUpdateItem => new RelayCommand(UpdateItem);
         private void UpdateItem(object param)
         {
-            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
+            Tuple<object, IList> tuple = param as Tuple<object, IList>;
             MessageBox.Show("更新");
         }
         /// <summary>
@@ -143,7 +143,7 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandExportItem => new RelayCommand(ExportItem);
         private void ExportItem(object param)
         {
-            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
+            Tuple<object, IList> tuple = param as Tuple<object, IList>;
             MessageBox.Show("导出");
         }
         /// <summary>
@@ -153,13 +153,13 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandDeleteItem => new RelayCommand(DeleteItem);
         private void DeleteItem(object param)
         {
-            Tuple<object?, IList?>? tuple = param as Tuple<object?, IList?>;
+            Tuple<object, IList> tuple = param as Tuple<object, IList>;
             if (tuple == null)
             {
                 return;
             }
-            AccountInfo? accountInfo = tuple.Item1 as AccountInfo;
-            IList? accountInfos = tuple.Item2 as IList;
+            AccountInfo accountInfo = tuple.Item1 as AccountInfo;
+            IList accountInfos = tuple.Item2 as IList;
             MessageBoxResult messageBoxResult = MessageBox.Show("确认删除？！", "提示", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (messageBoxResult != MessageBoxResult.Yes)
             {
@@ -174,9 +174,9 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandCheckTotalItem => new RelayCommand(CheckTotalItem);
         private void CheckTotalItem(object param)
         {
-            IList? items = param as IList;
+            IList items = param as IList;
             if (items == null) return;
-            foreach (AccountInfo? item in items)
+            foreach (AccountInfo item in items)
             {
                 if (item == null) continue;
                 item.IsChecked = true;
@@ -189,9 +189,9 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandUncheckTotalItem => new RelayCommand(UncheckTotalItem);
         private void UncheckTotalItem(object param)
         {
-            IList? items = param as IList;
+            IList items = param as IList;
             if (items == null) return;
-            foreach (AccountInfo? item in items)
+            foreach (AccountInfo item in items)
             {
                 if (item == null) continue;
                 item.IsChecked = false;
@@ -204,7 +204,7 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandAddItem => new RelayCommand(AddItem);
         private async void AddItem(object param)
         {
-            IList? items = param as IList;
+            IList items = param as IList;
             if (items == null) return;
             AccountInfo accountInfo = new AccountInfo();
             await Task.Run(() =>
@@ -230,7 +230,7 @@ namespace Zhy.Components.Wpf.Demos
         public RelayCommand CommandBatchDeleteItem => new RelayCommand(BatchDeleteItem);
         private void BatchDeleteItem(object param)
         {
-            IList? items = param as IList;
+            IList items = param as IList;
             if (items == null) return;
             List<AccountInfo> rm = new List<AccountInfo>();
             foreach (AccountInfo accountInfo in items)

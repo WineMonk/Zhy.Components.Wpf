@@ -125,7 +125,6 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         {
             InitZDataGrid();
             InjectIcon();
-
         }
 
         /// <summary>
@@ -152,16 +151,16 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         }
 
         #region Search
-        private ICollectionView? _collectionView;
+        private ICollectionView _collectionView;
         private void InitSearchComponent()
         {
-            DockPanel? dockPanelSearch = Template.FindName("searchZDataGridDockPanel", this) as DockPanel;
+            DockPanel dockPanelSearch = Template.FindName("searchZDataGridDockPanel", this) as DockPanel;
             if (dockPanelSearch == null)
             {
                 return;
             }
             dockPanelSearch?.Children.Clear();
-            Style? searchButtonStyle = null;
+            Style searchButtonStyle = null;
             if (SearchButtonStyle != null)
             {
                 searchButtonStyle = SearchButtonStyle;
@@ -170,7 +169,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             {
                 searchButtonStyle = IZFormItemUtils.FindResource(ZFormButtonStyle.InfoButton.ToString()) as Style;
             }
-            Style? cancelSearchButtonStyle = null;
+            Style cancelSearchButtonStyle = null;
             if (CancelSearchButtonStyle != null)
             {
                 cancelSearchButtonStyle = CancelSearchButtonStyle;
@@ -179,7 +178,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             {
                 cancelSearchButtonStyle = IZFormItemUtils.FindResource(ZFormButtonStyle.ErrorButton.ToString()) as Style;
             }
-            Button buttonSearch = new()
+            Button buttonSearch = new Button()
             {
                 Name = "buttonSearch",
                 Content = "查 询",
@@ -188,7 +187,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             };
             buttonSearch.SetValue(DockPanel.DockProperty, Dock.Right);
             buttonSearch.Click += ButtonSearch_Click;
-            TextBox textBoxSearch = new()
+            TextBox textBoxSearch = new TextBox()
             {
                 Name = "textBoxSearch",
                 BorderThickness = new Thickness(0.8),
@@ -237,12 +236,12 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             {
                 return;
             }
-            if (Template.FindName("searchZDataGridDockPanel", this) is not DockPanel dockPanelSearch)
+            if (!(Template.FindName("searchZDataGridDockPanel", this) is DockPanel dockPanelSearch))
             {
                 return;
             }
-            TextBox? textBoxItem = null;
-            foreach (FrameworkElement? child in dockPanelSearch.Children)
+            TextBox textBoxItem = null;
+            foreach (FrameworkElement child in dockPanelSearch.Children)
             {
                 if (child?.Name == "textBoxSearch")
                 {
@@ -256,10 +255,10 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             }
             Type sourceItemType = ItemsSource.GetType().GetGenericArguments()[0];
             PropertyInfo[] propertyInfos = sourceItemType.GetProperties();
-            SortedDictionary<IZFormColumn, PropertyInfo> sortColumnTempDic = new(new ZFormSortItemComparer());
+            SortedDictionary<IZFormColumn, PropertyInfo> sortColumnTempDic = new SortedDictionary<IZFormColumn, PropertyInfo>(new ZFormSortItemComparer());
             foreach (PropertyInfo propertyInfo in propertyInfos)
             {
-                Attribute? attributeColumn = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute), true);
+                Attribute attributeColumn = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute), true);
                 if (attributeColumn != null && attributeColumn is IZFormColumn zFormItemAttribute)
                 {
                     sortColumnTempDic.Add(zFormItemAttribute, propertyInfo);
@@ -283,13 +282,13 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             {
                 return;
             }
-            if (Template.FindName("searchZDataGridDockPanel", this) is not DockPanel dockPanelSearch)
+            if (!(Template.FindName("searchZDataGridDockPanel", this) is DockPanel dockPanelSearch))
             {
                 return;
             }
-            TextBox? textBoxSearch = null;
-            Button? buttonCancelSearch = null;
-            foreach (FrameworkElement? child in dockPanelSearch.Children)
+            TextBox textBoxSearch = null;
+            Button buttonCancelSearch = null;
+            foreach (FrameworkElement child in dockPanelSearch.Children)
             {
                 if (child?.Name == "textBoxSearch")
                 {
@@ -325,7 +324,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         }
         private List<PropertyInfo> GetSearchColumnPropertyInfo(object ObservableObjects)
         {
-            List<PropertyInfo> columnPropertyInfos = new();
+            List<PropertyInfo> columnPropertyInfos = new List<PropertyInfo>();
             if (!ObservableObjects.GetType().IsGenericType)
             {
                 return columnPropertyInfos;
@@ -353,20 +352,20 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             }
             foreach (var propertyInfo in propertyInfos)
             {
-                object? val = propertyInfo.GetValue(item, null);
+                object val = propertyInfo.GetValue(item, null);
                 if (val == null)
                 {
                     continue;
                 }
-                Attribute? attribute = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute));
+                Attribute attribute = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute));
                 if (attribute is ZFormComboColumnAttribute zComboDataColumnAttribute && !string.IsNullOrEmpty(zComboDataColumnAttribute.MemberPath))
                 {
-                    PropertyInfo? pi = val.GetType().GetProperty(zComboDataColumnAttribute.MemberPath);
+                    PropertyInfo pi = val.GetType().GetProperty(zComboDataColumnAttribute.MemberPath);
                     if (pi == null)
                     {
                         continue;
                     }
-                    object? vval = pi.GetValue(val, null);
+                    object vval = pi.GetValue(val, null);
                     if (vval == null)
                     {
                         continue;
@@ -378,12 +377,12 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                 }
                 else if (attribute is ZFormTextButtonColumnAttribute zFormTextButtonColumnAttribute && !string.IsNullOrEmpty(zFormTextButtonColumnAttribute.MemberPath))
                 {
-                    PropertyInfo? pi = val.GetType().GetProperty(zFormTextButtonColumnAttribute.MemberPath);
+                    PropertyInfo pi = val.GetType().GetProperty(zFormTextButtonColumnAttribute.MemberPath);
                     if (pi == null)
                     {
                         continue;
                     }
-                    object? vval = pi.GetValue(val, null);
+                    object vval = pi.GetValue(val, null);
                     if (vval == null)
                     {
                         continue;
@@ -395,20 +394,20 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                 }
                 else if (attribute is ZFormMultiCheckColumnAttribute zFormMultiCheck && !string.IsNullOrEmpty(zFormMultiCheck.MemberPath))
                 {
-                    if (val is not IEnumerable objects)
+                    if (!(val is IEnumerable objects))
                     {
                         continue;
                     }
                     foreach (var obj in objects)
                     {
-                        PropertyInfo? propertyInfoMember = obj.GetType().GetProperty(zFormMultiCheck.MemberPath);
-                        PropertyInfo? propertyInfoContent = obj.GetType().GetProperty(zFormMultiCheck.ContentProperty);
+                        PropertyInfo propertyInfoMember = obj.GetType().GetProperty(zFormMultiCheck.MemberPath);
+                        PropertyInfo propertyInfoContent = obj.GetType().GetProperty(zFormMultiCheck.ContentProperty);
                         if (propertyInfoMember == null || propertyInfoContent == null)
                         {
                             continue;
                         }
-                        object? member = propertyInfoMember.GetValue(obj, null);
-                        object? content = propertyInfoContent.GetValue(obj, null);
+                        object member = propertyInfoMember.GetValue(obj, null);
+                        object content = propertyInfoContent.GetValue(obj, null);
                         if (member == null || content == null)
                         {
                             continue;
@@ -446,14 +445,14 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             Columns.Clear();
             Type sourceItemType = ItemsSource.GetType().GetGenericArguments()[0];
             PropertyInfo[] propertyInfos = sourceItemType.GetProperties();
-            SortedDictionary<IZFormColumn, PropertyInfo> columnPropertyInfoDic = new(new ZFormSortItemComparer());
-            SortedDictionary<IZFormFuncButton, PropertyInfo> columnButtonDic = new(new ZFormSortItemComparer());
-            SortedDictionary<IZFormFuncButton, PropertyInfo> toolButtonDic = new(new ZFormSortItemComparer(true));
+            SortedDictionary<IZFormColumn, PropertyInfo> columnPropertyInfoDic = new SortedDictionary<IZFormColumn, PropertyInfo>(new ZFormSortItemComparer());
+            SortedDictionary<IZFormFuncButton, PropertyInfo> columnButtonDic = new SortedDictionary<IZFormFuncButton, PropertyInfo>(new ZFormSortItemComparer());
+            SortedDictionary<IZFormFuncButton, PropertyInfo> toolButtonDic = new SortedDictionary<IZFormFuncButton, PropertyInfo>(new ZFormSortItemComparer(true));
             foreach (PropertyInfo propertyInfo in propertyInfos)
             {
                 List<Attribute> attributes = propertyInfo.GetCustomAttributes().ToList();
-                Attribute? attributeColumn = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute), true);
-                Attribute? attributeButton = propertyInfo.GetCustomAttribute(typeof(ZFormFuncButtonAttribute), true);
+                Attribute attributeColumn = propertyInfo.GetCustomAttribute(typeof(ZFormItemAttribute), true);
+                Attribute attributeButton = propertyInfo.GetCustomAttribute(typeof(ZFormFuncButtonAttribute), true);
                 if (attributeColumn != null && attributeColumn is IZFormColumn zFormItemAttribute)
                 {
                     if (!zFormItemAttribute.IsHideFormColumn)
@@ -476,7 +475,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
             foreach (var item in columnPropertyInfoDic)
             {
                 PropertyInfo propertyInfo = item.Value;
-                IZFormColumn? attribute = item.Key;
+                IZFormColumn attribute = item.Key;
                 if (attribute == null) continue;
                 if (!IsReadOnly && !attribute.IsReadOnlyColumn)
                 {
@@ -487,7 +486,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                     }
                     else if (attribute is ZFormTextButtonColumnAttribute zButtonAttribute)
                     {
-                        Style? buttonStyle = null;
+                        Style buttonStyle = null;
                         switch (zButtonAttribute.ButtonStyle)
                         {
                             case ZFormButtonStyle.DefaultButton:
@@ -587,18 +586,18 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
         }
         private void InitToolComponent(SortedDictionary<IZFormFuncButton, PropertyInfo> toolButtonDic)
         {
-            DockPanel? dockPanelTop = Template.FindName("topZDataGridDockPanel", this) as DockPanel;
+            DockPanel dockPanelTop = Template.FindName("topZDataGridDockPanel", this) as DockPanel;
             dockPanelTop?.Children.Clear();
-            DockPanel? dockPanelBottom = Template.FindName("bottomZDataGridDockPanel", this) as DockPanel;
+            DockPanel dockPanelBottom = Template.FindName("bottomZDataGridDockPanel", this) as DockPanel;
             dockPanelBottom?.Children.Clear();
-            List<Button> bottomButtonList = new();
+            List<Button> bottomButtonList = new List<Button>();
             foreach (var item in toolButtonDic)
             {
                 PropertyInfo propertyInfo = item.Value;
                 IZFormFuncButton attribute = item.Key;
                 if (attribute is ZFormToolButtonAttribute zButtonAttribute)
                 {
-                    Button toolButton = new()
+                    Button toolButton = new Button()
                     {
                         Content = zButtonAttribute.ButtonContent,
                         Margin = new Thickness(1, 2, 1, 2),
@@ -607,7 +606,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                     {
                         toolButton.DataContext = Activator.CreateInstance(propertyInfo.ReflectedType);
                     }
-                    Style? buttonStyle = null;
+                    Style buttonStyle = null;
                     switch (zButtonAttribute.ButtonStyle)
                     {
                         case ZFormButtonStyle.DefaultButton:
@@ -687,7 +686,7 @@ namespace Zhy.Components.Wpf.Views.Controls.Zhys
                     {
                         if (window.Icon == null)
                         {
-                            window.Icon = new BitmapImage(new("pack://application:,,,/Zhy.Components.Wpf;component\\Resources\\Icons\\logo_light.ico"));
+                            window.Icon = new BitmapImage(new Uri("pack://application:,,,/Zhy.Components.Wpf;component\\Resources\\Icons\\logo_light.ico"));
                         }
                     }
                 }

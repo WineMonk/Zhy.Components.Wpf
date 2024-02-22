@@ -8,7 +8,7 @@ namespace Zhy.Components.Wpf.Attributes.Interfaces
     internal interface IZFormColumn : IZFormItemSortable
     {
         string Title { get; set; }
-        string? MemberPath { get; set; }
+        string MemberPath { get; set; }
         double Width { get; set; }
         DataGridLengthUnitType WidthUnit { get; set; }
         bool IsReadOnlyColumn { get; set; }

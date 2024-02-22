@@ -10,7 +10,7 @@
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.1",
           "Newtonsoft.Json": "13.0.3",
-          "Zhy.Components.Wpf": "1.2.0.1"
+          "Zhy.Components.Wpf": "1.2.0.2"
         },
         "runtime": {
           "Zhy.Demo.dll": {}
@@ -32,7 +32,7 @@
           }
         }
       },
-      "Zhy.Components.Wpf/1.2.0.1": {
+      "Zhy.Components.Wpf/1.2.0.2": {
         "runtime": {
           "Zhy.Components.Wpf.dll": {}
         }
@@ -59,7 +59,7 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
-    "Zhy.Components.Wpf/1.2.0.1": {
+    "Zhy.Components.Wpf/1.2.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

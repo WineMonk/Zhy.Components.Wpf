@@ -29,11 +29,11 @@ namespace Zhy.Components.Wpf.Commons.Utils
                 IZFormFuncButton zFormFuncButton = item.Key;
                 if (zFormFuncButton is ZFormFuncButtonAttribute zButtonAttribute)
                 {
-                    FrameworkElementFactory buttonFactory = new(typeof(Button));
+                    FrameworkElementFactory buttonFactory = new FrameworkElementFactory(typeof(Button));
                     buttonFactory.SetValue(Button.MarginProperty, new Thickness(1, 2, 2, 1));
                     buttonFactory.SetValue(Button.ContentProperty, zButtonAttribute.ButtonContent);
                     buttonFactory.SetBinding(Button.CommandProperty, new Binding() { Path = new PropertyPath(propertyInfo.Name) });
-                    if (buttonStyleDir.TryGetValue(zButtonAttribute.ButtonStyle, out Style? buttonStyle) && buttonStyle != null)
+                    if (buttonStyleDir.TryGetValue(zButtonAttribute.ButtonStyle, out Style buttonStyle) && buttonStyle != null)
                     {
                         buttonFactory.SetValue(Button.StyleProperty, buttonStyle);
                     }
@@ -41,7 +41,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
                     {
                         buttonFactory.SetValue(Button.StyleProperty, buttonStyle1);
                     }
-                    MultiBinding multiBinding = new()
+                    MultiBinding multiBinding = new MultiBinding()
                     {
                         Converter = new ColumnButtonConverter()
                     };
@@ -55,7 +55,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
                     cellFactory.AppendChild(buttonFactory);
                 }
             }
-            DataGridTemplateColumn dataGridTemplateColumn = new()
+            DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
             {
                 Header = string.Empty,
                 Width = DataGridLength.Auto,
@@ -70,7 +70,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
 
         public static DataGridTemplateColumn GetTextColumn(ZFormTextColumnAttribute zTextAttribute, PropertyInfo propertyInfo)
         {
-            FrameworkElementFactory textBoxFactory = new(typeof(TextBox));
+            FrameworkElementFactory textBoxFactory = new FrameworkElementFactory(typeof(TextBox));
             textBoxFactory.SetValue(TextBox.PaddingProperty, new Thickness(5, 0, 5, 0));
             textBoxFactory.SetValue(TextBox.VerticalContentAlignmentProperty, VerticalAlignment.Center);
             textBoxFactory.SetValue(TextBox.BorderThicknessProperty, new Thickness(0));
@@ -80,14 +80,14 @@ namespace Zhy.Components.Wpf.Commons.Utils
             {
                 textBoxFactory.SetValue(TextBox.StyleProperty, textBoxStyle);
             }
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(textBoxFactory);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zTextAttribute, propertyInfo, cellFactory);
             return dataGridTemplateColumn;
         }
         public static DataGridTemplateColumn GetTextReadOnlyColumn(IZFormColumn zFormColumn, PropertyInfo propertyInfo)
         {
-            FrameworkElementFactory textBoxFactory = new(typeof(TextBox));
+            FrameworkElementFactory textBoxFactory = new FrameworkElementFactory(typeof(TextBox));
             textBoxFactory.SetValue(TextBox.IsReadOnlyProperty, true);
             textBoxFactory.SetValue(TextBox.PaddingProperty, new Thickness(5, 0, 5, 0));
             textBoxFactory.SetValue(TextBox.VerticalContentAlignmentProperty, VerticalAlignment.Center);
@@ -98,14 +98,14 @@ namespace Zhy.Components.Wpf.Commons.Utils
             {
                 textBoxFactory.SetValue(TextBox.StyleProperty, textBoxStyle);
             }
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(textBoxFactory);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zFormColumn, propertyInfo, cellFactory);
             return dataGridTemplateColumn;
         }
-        public static DataGridTemplateColumn GetTextButtonColumn(ZFormTextButtonColumnAttribute zButtonAttribute, PropertyInfo propertyInfo, Style? style)
+        public static DataGridTemplateColumn GetTextButtonColumn(ZFormTextButtonColumnAttribute zButtonAttribute, PropertyInfo propertyInfo, Style style)
         {
-            FrameworkElementFactory buttonFactory = new(typeof(Button));
+            FrameworkElementFactory buttonFactory = new FrameworkElementFactory(typeof(Button));
             buttonFactory.SetValue(DockPanel.DockProperty, Dock.Right);
             buttonFactory.SetValue(Button.ContentProperty, zButtonAttribute.ButtonContent);
             buttonFactory.SetValue(Button.MarginProperty, new Thickness(1, 2, 2, 1));
@@ -119,7 +119,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
             {
                 buttonFactory.SetValue(Button.StyleProperty, buttonStyle);
             }
-            FrameworkElementFactory textBoxFactory = new(typeof(TextBox));
+            FrameworkElementFactory textBoxFactory = new FrameworkElementFactory(typeof(TextBox));
             textBoxFactory.SetValue(TextBox.PaddingProperty, new Thickness(5, 0, 5, 0));
             textBoxFactory.SetValue(TextBox.VerticalContentAlignmentProperty, VerticalAlignment.Center);
             textBoxFactory.SetValue(TextBox.IsReadOnlyProperty, true);
@@ -130,7 +130,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
             {
                 textBoxFactory.SetValue(TextBox.StyleProperty, textBoxStyle);
             }
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(buttonFactory);
             cellFactory.AppendChild(textBoxFactory);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zButtonAttribute, propertyInfo, cellFactory);
@@ -144,7 +144,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
             checkBoxFactory.SetValue(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center);
             checkBoxFactory.SetValue(CheckBox.HorizontalAlignmentProperty, HorizontalAlignment.Center);
             checkBoxFactory.SetBinding(CheckBox.IsCheckedProperty, GetBinding(zCheckAttribute, propertyInfo));
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(checkBoxFactory);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zCheckAttribute, propertyInfo, cellFactory);
             return dataGridTemplateColumn;
@@ -157,7 +157,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
             checkBoxFactory.SetValue(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center);
             checkBoxFactory.SetValue(CheckBox.HorizontalAlignmentProperty, HorizontalAlignment.Center);
             checkBoxFactory.SetBinding(CheckBox.IsCheckedProperty, GetBinding(zCheckAttribute, propertyInfo));
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(checkBoxFactory);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zCheckAttribute, propertyInfo, cellFactory);
             return dataGridTemplateColumn;
@@ -186,7 +186,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
             {
                 comboBoxFactory.SetValue(ComboBox.StyleProperty, comboBoxStyle);
             }
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(comboBoxFactory);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zComboAttribute, propertyInfo, cellFactory);
             return dataGridTemplateColumn;
@@ -203,7 +203,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             });
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(multiCheckBox);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zMultiCheckAttribute, propertyInfo, cellFactory);
             return dataGridTemplateColumn;
@@ -211,10 +211,10 @@ namespace Zhy.Components.Wpf.Commons.Utils
 
         public static DataGridTemplateColumn GetMultiCheckReadOnlyColumn(ZFormMultiCheckColumnAttribute zMultiCheckAttribute, PropertyInfo propertyInfo)
         {
-            FrameworkElementFactory itemsControlFactory = new(typeof(ItemsControl));
-            FrameworkElementFactory itemsPanelFactory = new(typeof(StackPanel));
+            FrameworkElementFactory itemsControlFactory = new FrameworkElementFactory(typeof(ItemsControl));
+            FrameworkElementFactory itemsPanelFactory = new FrameworkElementFactory(typeof(StackPanel));
             itemsPanelFactory.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
-            ItemsPanelTemplate itemsPanelTemplate = new(itemsPanelFactory);
+            ItemsPanelTemplate itemsPanelTemplate = new ItemsPanelTemplate(itemsPanelFactory);
             itemsControlFactory.SetValue(ItemsControl.ItemsPanelProperty, itemsPanelTemplate);
             itemsControlFactory.SetBinding(ItemsControl.ItemsSourceProperty, new Binding()
             {
@@ -222,7 +222,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             });
-            FrameworkElementFactory buttonFactory = new(typeof(Button), "buttonContentItem");
+            FrameworkElementFactory buttonFactory = new FrameworkElementFactory(typeof(Button), "buttonContentItem");
             buttonFactory.SetValue(Button.MarginProperty, new Thickness(2, 0, 2, 0));
             buttonFactory.SetValue(Button.BackgroundProperty, new SolidColorBrush(Colors.Transparent));
             buttonFactory.SetValue(Button.BorderThicknessProperty, new Thickness(0));
@@ -239,31 +239,31 @@ namespace Zhy.Components.Wpf.Commons.Utils
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             });
-            FrameworkElementFactory dockPanelFactory = new(typeof(DockPanel));
+            FrameworkElementFactory dockPanelFactory = new FrameworkElementFactory(typeof(DockPanel));
             dockPanelFactory.AppendChild(buttonFactory);
-            FrameworkElementFactory frameworkElementFactory = new(typeof(Border), "borderContentItem");
+            FrameworkElementFactory frameworkElementFactory = new FrameworkElementFactory(typeof(Border), "borderContentItem");
             frameworkElementFactory.SetValue(Border.HeightProperty, 24.0);
             frameworkElementFactory.SetValue(Border.MarginProperty, new Thickness(3));
             frameworkElementFactory.SetValue(Border.BackgroundProperty, new SolidColorBrush(Colors.AliceBlue));
             frameworkElementFactory.AppendChild(dockPanelFactory);
-            Trigger trigger = new()
+            Trigger trigger = new Trigger()
             {
                 SourceName = "buttonContentItem",
                 Property = Button.IsEnabledProperty,
                 Value = false
             };
             trigger.Setters.Add(new Setter(Button.VisibilityProperty, Visibility.Collapsed, "borderContentItem"));
-            DataTemplate dataTemplateItemsControl = new();
+            DataTemplate dataTemplateItemsControl = new DataTemplate();
             dataTemplateItemsControl.Triggers.Add(trigger);
             dataTemplateItemsControl.VisualTree = frameworkElementFactory;
             itemsControlFactory.SetValue(ItemsControl.ItemTemplateProperty, dataTemplateItemsControl);
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(itemsControlFactory);
-            DataGridTemplateColumn dataGridTemplateColumn = new()
+            DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
             {
                 Header = zMultiCheckAttribute.Title,
                 Width = new DataGridLength(zMultiCheckAttribute.Width, zMultiCheckAttribute.WidthUnit),
-                CellTemplate = new()
+                CellTemplate = new DataTemplate()
                 {
                     VisualTree = cellFactory
                 }
@@ -280,7 +280,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
             dateTimePicker.SetValue(DateTimePicker.DisplayFormatProperty, zDateAttribute.DateFormat);
             dateTimePicker.SetValue(DateTimePicker.ForegroundProperty, new SolidColorBrush(Colors.Black));
             dateTimePicker.SetBinding(DateTimePicker.DisplayDateProperty, GetBinding(zDateAttribute, propertyInfo));
-            FrameworkElementFactory cellFactory = new(typeof(DockPanel));
+            FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
             cellFactory.AppendChild(dateTimePicker);
             DataGridTemplateColumn dataGridTemplateColumn = GetBaseColumn(zDateAttribute, propertyInfo, cellFactory);
             return dataGridTemplateColumn;
@@ -288,11 +288,11 @@ namespace Zhy.Components.Wpf.Commons.Utils
 
         public static DataGridTemplateColumn GetBaseColumn(IZFormColumn zFormColumn, PropertyInfo propertyInfo, FrameworkElementFactory cellFactory)
         {
-            DataGridTemplateColumn dataGridTemplateColumn = new()
+            DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
             {
                 Header = zFormColumn.Title,
                 Width = new DataGridLength(zFormColumn.Width, zFormColumn.WidthUnit),
-                CellTemplate = new()
+                CellTemplate = new DataTemplate()
                 {
                     VisualTree = cellFactory
                 },
@@ -325,7 +325,7 @@ namespace Zhy.Components.Wpf.Commons.Utils
             };
         }
 
-        public static object? FindResource(string key)
+        public static object FindResource(string key)
         {
             ResourceDictionary resourceDict = new ResourceDictionary();
             resourceDict.Source = new Uri("/Zhy.Components.Wpf;component/Views/Theme/AppDictionary.xaml", UriKind.Relative);

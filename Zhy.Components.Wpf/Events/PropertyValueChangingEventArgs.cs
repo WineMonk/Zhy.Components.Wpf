@@ -14,11 +14,11 @@ namespace Zhy.Components.Wpf.Events
         /// <summary>
         /// 新值
         /// </summary>
-        public object? NewValue { get; set; }
+        public object NewValue { get; set; }
         /// <summary>
         /// 旧值
         /// </summary>
-        public object? OldValue { get; set; }
+        public object OldValue { get; set; }
         /// <summary>
         /// 取消变更
         /// </summary>
@@ -29,7 +29,7 @@ namespace Zhy.Components.Wpf.Events
         /// <param name="propertyName">属性名</param>
         /// <param name="newValue">新值</param>
         /// <param name="oldValue">旧值</param>
-        public PropertyValueChangingEventArgs(string propertyName, object? newValue, object? oldValue)
+        public PropertyValueChangingEventArgs(string propertyName, object newValue, object oldValue)
         {
             this.PropertyName = propertyName;
             this.NewValue = newValue;

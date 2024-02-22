@@ -14,7 +14,7 @@ namespace Zhy.Components.Wpf.Commons.Comparers
             _isInverted = isInverted;
         }
 
-        public int Compare(IZFormItemSortable? x, IZFormItemSortable? y)
+        public int Compare(IZFormItemSortable x, IZFormItemSortable y)
         {
             if (x == null && y == null) return _isInverted ? -1 : 1;
             else if (x == null && y != null) return _isInverted ? -1 : 1;

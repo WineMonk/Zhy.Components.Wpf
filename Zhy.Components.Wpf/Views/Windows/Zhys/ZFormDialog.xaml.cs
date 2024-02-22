@@ -79,7 +79,7 @@ namespace Zhy.Components.Wpf.Views.Windows.Zhys
                 new SortedDictionary<ZFormItemAttribute, PropertyInfo>(new ZFormSortItemComparer());
             foreach (var propertyInfo in propertyInfos)
             {
-                ZFormItemAttribute? zFormItem =
+                ZFormItemAttribute zFormItem =
                    propertyInfo.GetCustomAttribute<ZFormItemAttribute>();
                 if (zFormItem == null)
                     continue;
